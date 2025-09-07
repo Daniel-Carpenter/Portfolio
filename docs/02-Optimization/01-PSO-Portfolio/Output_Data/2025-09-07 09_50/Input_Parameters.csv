@@ -1,0 +1,19 @@
+,Parameter Value
+StockTickers,"['NVDA', 'MSFT', 'AAPL', 'AMZN', 'META', 'AVGO', 'GOOGL', 'GOOG', 'TSLA', 'JPM', 'WMT', 'V', 'LLY', 'ORCL', 'MA', 'NFLX', 'XOM', 'JNJ', 'COST', 'HD', 'BAC']"
+minDate,2010-09-11 09:48:40.205645
+maxDate,2025-09-07 09:48:40.205645
+totalRunTime,97.70107460021973
+totalSimulations,1500
+totalIterations,25
+numPorfolios,15
+minDesiredReturn,0.07
+evalGoal,risk
+method,global
+ROUND_VALUE_TO,2
+phi1,2
+phi2,2
+intertiaWeight,0.1
+absoluteMoveLimit,0.1
+investmentThreshold,0.001
+printDims,False
+ANNUALIZER_VALUE,1
