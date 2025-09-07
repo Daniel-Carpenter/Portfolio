@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Daniel Carpenter, MS">
+<meta name="dcterms.date" content="2023-01-01">
+<meta name="description" content="Particle Swarm Optimization is applied to portfolio choice modeling.">
+
+<title>Portfolio Optimization with Python Particle Swarm Optimizer – Portfolio | Daniel Carpenter, MS</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../docs/img/headshot-only.png" rel="icon" type="image/png">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-75bf49e5243268451c8e82f943c08bcc.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-4c79f29c640a642911e1b6e9dddcbba0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+<script type="text/javascript">
+
+window.PlotlyConfig = {MathJaxConfig: 'local'};
+
+if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+
+if (typeof require !== 'undefined') {
+
+require.undef("plotly");
+
+requirejs.config({
+
+    paths: {
+
+        'plotly': ['https://cdn.plot.ly/plotly-2.35.2.min']
+
+    }
+
+});
+
+require(['plotly'], function(Plotly) {
+
+    window._Plotly = Plotly;
+
+});
+
+}
+
+</script>
+
+
+
+
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Portfolio | Daniel Carpenter, MS</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../docs/"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../resume.html"> 
+<span class="menu-text">Resume</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://www.linkedin.com/in/dbry1024" title="LinkedIn" class="quarto-navigation-tool px-1" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+    <a href="https://github.com/Daniel-Carpenter" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+    <a href="mailto:dbry1024@gmail.com" title="Contact Me" class="quarto-navigation-tool px-1" aria-label="Contact Me"><i class="bi bi-envelope"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../docs/index.html">Projects</a></li><li class="breadcrumb-item"><a href="../../../docs/02-Optimization/index.html">Optimization: Deterministic &amp; Stochastic</a></li><li class="breadcrumb-item"><a href="../../../docs/02-Optimization/01-PSO-Portfolio/index.html">Portfolio Optimization with Python Particle Swarm Optimizer</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../docs/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Projects</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../docs/03-ML/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Applied Machine Learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../docs/04-Dashboards/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Designing Interactive Business Dashboards</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../docs/05-ETL/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Automating Data Pipelines for Data Science Applications</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../docs/01-Visual-Storytelling/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Visual Analysis to Problem Solve</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../docs/01-Visual-Storytelling/02-Post-Mortem/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assessing Impact of Competitor Market Entry</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../docs/01-Visual-Storytelling/03-Marketing-Effectiveness/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Evaluating Shifts in Marketing Strategy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../docs/01-Visual-Storytelling/01-Capital-Allocation/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Allocating Capital for Sustainable Operations</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Functions</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth4 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sankey Diagram - Capital Allocation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../docs/02-Optimization/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Optimization: Deterministic &amp; Stochastic</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../docs/02-Optimization/02-Opt-DSA/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Solving Resource Allocation with Deterministic and Stochastic Optimization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../docs/02-Optimization/01-PSO-Portfolio/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Portfolio Optimization with Python Particle Swarm Optimizer</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../docs/02-Optimization/01-PSO-Portfolio/Optimal_Portfolio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Stock Portfolio Optimization with Particle Swarm Optimizer</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#presentation-of-process-and-research" id="toc-presentation-of-process-and-research" class="nav-link active" data-scroll-target="#presentation-of-process-and-research"><span class="header-section-number">1</span> Presentation of Process and Research</a></li>
+  <li><a href="#documentation-of-process-and-research" id="toc-documentation-of-process-and-research" class="nav-link" data-scroll-target="#documentation-of-process-and-research"><span class="header-section-number">2</span> Documentation of Process and Research</a></li>
+  <li><a href="#executed-code" id="toc-executed-code" class="nav-link" data-scroll-target="#executed-code"><span class="header-section-number">3</span> Executed Code</a>
+  <ul class="collapse">
+  <li><a href="#overview-of-code" id="toc-overview-of-code" class="nav-link" data-scroll-target="#overview-of-code"><span class="header-section-number">3.1</span> Overview of Code</a></li>
+  <li><a href="#pull-and-prepare-stock-data" id="toc-pull-and-prepare-stock-data" class="nav-link" data-scroll-target="#pull-and-prepare-stock-data"><span class="header-section-number">3.2</span> Pull and Prepare Stock Data</a></li>
+  <li><a href="#run-particle-swarm-optimization" id="toc-run-particle-swarm-optimization" class="nav-link" data-scroll-target="#run-particle-swarm-optimization"><span class="header-section-number">3.3</span> Run Particle Swarm Optimization</a></li>
+  </ul></li>
+  <li><a href="#view-results" id="toc-view-results" class="nav-link" data-scroll-target="#view-results"><span class="header-section-number">4</span> View Results</a>
+  <ul class="collapse">
+  <li><a href="#review-minimum-risk-portfolio" id="toc-review-minimum-risk-portfolio" class="nav-link" data-scroll-target="#review-minimum-risk-portfolio"><span class="header-section-number">4.1</span> Review Minimum Risk Portfolio</a></li>
+  <li><a href="#compare-optimal-portfolio-to-the-efficient-frontier" id="toc-compare-optimal-portfolio-to-the-efficient-frontier" class="nav-link" data-scroll-target="#compare-optimal-portfolio-to-the-efficient-frontier"><span class="header-section-number">4.2</span> Compare Optimal Portfolio to the Efficient Frontier</a></li>
+  <li><a href="#compare-optimal-portfolio-to-all-other-simulated-portfolios" id="toc-compare-optimal-portfolio-to-all-other-simulated-portfolios" class="nav-link" data-scroll-target="#compare-optimal-portfolio-to-all-other-simulated-portfolios"><span class="header-section-number">4.3</span> Compare Optimal Portfolio to All Other Simulated Portfolios</a></li>
+  <li><a href="#compare-optimal-portfolio-to-all-investable-assets" id="toc-compare-optimal-portfolio-to-all-investable-assets" class="nav-link" data-scroll-target="#compare-optimal-portfolio-to-all-investable-assets"><span class="header-section-number">4.4</span> Compare Optimal Portfolio to All Investable Assets</a></li>
+  <li><a href="#other-class-functions" id="toc-other-class-functions" class="nav-link" data-scroll-target="#other-class-functions"><span class="header-section-number">4.5</span> Other Class Functions</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../docs/index.html">Projects</a></li><li class="breadcrumb-item"><a href="../../../docs/02-Optimization/index.html">Optimization: Deterministic &amp; Stochastic</a></li><li class="breadcrumb-item"><a href="../../../docs/02-Optimization/01-PSO-Portfolio/index.html">Portfolio Optimization with Python Particle Swarm Optimizer</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Portfolio Optimization with Python Particle Swarm Optimizer</h1>
+</div>
+
+<div>
+  <div class="description">
+    Particle Swarm Optimization is applied to portfolio choice modeling.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Daniel Carpenter, MS </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<hr>
+<div class="callout callout-style-default callout-note callout-titled" title="Note: Tickers are randomly selected">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note: Tickers are randomly selected
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For demonstration only, the tickers are randomly chosen.</p>
+</div>
+</div>
+<section id="presentation-of-process-and-research" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Presentation of Process and Research</h1>
+<p><a href="https://vimeo.com/manage/videos/724082009?embedded=false&amp;source=video_title&amp;owner=179170794" target="_blank"> <img src="../../../docs/02-Optimization/01-PSO-Portfolio/img/video.png" alt="Presentation of Project" style="width:100%;"> </a></p>
+<hr>
+<p><br></p>
+</section>
+<section id="documentation-of-process-and-research" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Documentation of Process and Research</h1>
+<ul>
+<li>
+<a href="../../../docs/02-Optimization/01-PSO-Portfolio/documentation/Presentation.PDF" target="_blank">Presentation Slides</a>
+</li>
+<li>
+<a href="../../../docs/02-Optimization/01-PSO-Portfolio/documentation/Paper.PDF" target="_blank">Research Paper</a>
+</li>
+<li>
+<a href="../../../docs/02-Optimization/01-PSO-Portfolio/documentation/Literature.PDF" target="_blank">Literature Review</a>
+</li>
+</ul>
+<hr>
+<p><br></p>
+</section>
+<section id="executed-code" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Executed Code</h1>
+<section id="overview-of-code" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="overview-of-code"><span class="header-section-number">3.1</span> Overview of Code</h2>
+<blockquote class="blockquote">
+<p>Class-based Python approach minimized portfolio risk and selected the max-Sharpe portfolio across simulations.</p>
+</blockquote>
+<ol type="1">
+<li><p>Inputs for model:</p>
+<ul>
+<li>Stock tickers from publically traded companies, investment funds, etc. available on Yahoo Finance<br>
+</li>
+<li>Date range of Stocks to include in sample (Default last 10 years)<br>
+</li>
+<li>Minimum desired return on portfolio as a soft constraint<br>
+</li>
+<li>Some Metaheuristic inputs</li>
+</ul></li>
+<li><p><code>StockFinanceMPT.py</code>: Calls <code>PullStockData.py</code> to pull stock data, then prepares stock data to get excess returns, variance-covariance matrix, etc. for <strong>Modern Porfolio Theory</strong>. <em>Must be in working directory</em></p></li>
+<li><p><code>SimulateOptimalPortfolios.py</code>:</p>
+<ul>
+<li>Runs individual Particle Swarm Optimization routine, searching for the global minimum risk. Specifically, it creates many <code>OptimizePortfolioPSO</code> class objects.<br>
+</li>
+<li>Repeatedly simulate PSO modeling as desired.<br>
+</li>
+<li>Returns optimal allocation of weights to invest into stocks and associated investment weights.</li>
+</ul></li>
+<li><p><code>ViewSimulatedPortfolios.py</code>: Class that processes results of the simulations, which yields the following performance plots:</p>
+<ul>
+<li>Displays variance characteristics across all simulations.<br>
+</li>
+<li>Across all simulations, plots:
+<ul>
+<li>Global minimum risk portfolio and maximum Sharpe portfolios against all non-optimal portfolios.<br>
+</li>
+<li>Global minimum risk portfolio and maximum Sharpe portfolios against all investable tickers, or funds.<br>
+</li>
+</ul></li>
+<li>Frontier of all simulated portfolios. I.e., risk vs.&nbsp;return of all simulated portfolios.</li>
+</ul></li>
+<li><p>Exports CSVs of inputs, performance data, weights, etc.</p></li>
+</ol>
+<hr>
+<p><br></p>
+<div id="6767f922" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>View Code Here</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set working directory to the R project directory</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>sys.path.append(os.getcwd() <span class="op">+</span> <span class="st">"//docs//02-Optimization//01-PSO-Portfolio//"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Import custom classes</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime                  <span class="im">as</span> dt  <span class="co"># For dates</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> StockFinanceMPT           <span class="im">as</span> mpt <span class="co"># Stock pull from yfinance in current wrkdir</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> SimulateOptimalPortfolios <span class="im">as</span> sop <span class="co"># Run simulations of global best portfolios</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ViewSimulatedPortfolios   <span class="im">as</span> vsp <span class="co"># Wrapper class to plot, export, etc., simulations</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="pull-and-prepare-stock-data" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="pull-and-prepare-stock-data"><span class="header-section-number">3.2</span> Pull and Prepare Stock Data</h2>
+<blockquote class="blockquote">
+<p>Pulled price history and T-bill rates; built returns and covariance to power risk/return modeling.</p>
+</blockquote>
+<p><a href="https://github.com/Daniel-Carpenter/Portfolio/docs/02-Optimization/01-PSO-Portfolio/StockFinanceMPT.py" target="_blank">See full function here.</a></p>
+<div id="38ddc50c" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>View Code Here</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List of stock tickers to pull data</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>StockTickers <span class="op">=</span> [<span class="st">'NVDA'</span>, <span class="st">'MSFT'</span>, <span class="st">'AAPL'</span>, <span class="st">'AMZN'</span>, <span class="st">'META'</span>, </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                <span class="st">'AVGO'</span>, <span class="st">'GOOGL'</span>, <span class="st">'GOOG'</span>, <span class="st">'TSLA'</span>,<span class="st">'JPM'</span>, </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                <span class="st">'WMT'</span>, <span class="st">'V'</span>, <span class="st">'LLY'</span>, <span class="st">'ORCL'</span>, <span class="st">'MA'</span>, <span class="st">'NFLX'</span>, </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                <span class="st">'XOM'</span>, <span class="st">'JNJ'</span>, <span class="st">'COST'</span>, <span class="st">'HD'</span>, <span class="st">'BAC'</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Date range for stock &amp; t-bill data pull - default last 10 years</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>maxDate <span class="op">=</span> dt.datetime.today()                    <span class="co"># Max date to pull from</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>minDate <span class="op">=</span> maxDate <span class="op">-</span> dt.timedelta(days <span class="op">=</span> <span class="dv">15</span><span class="op">*</span><span class="dv">365</span>) <span class="co"># Min date to pull from</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Pull stock data</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>PulledStockData <span class="op">=</span> mpt.StockFinanceMPT(StockTickers, minDate, maxDate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>YF.download() has changed argument auto_adjust default to True</code></pre>
+</div>
+</div>
+<hr>
+<p><br></p>
+</section>
+<section id="run-particle-swarm-optimization" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="run-particle-swarm-optimization"><span class="header-section-number">3.3</span> Run Particle Swarm Optimization</h2>
+<blockquote class="blockquote">
+<p>Simple Interpretation of Code: Start with 15 random portfolios, let each adjust 25 times while sharing results, and repeat 1,500 runs to identify both the minimum-risk and maximum-Sharpe portfolios.</p>
+</blockquote>
+<p><a href="https://github.com/Daniel-Carpenter/Portfolio/docs/02-Optimization/01-PSO-Portfolio/SimulateOptimalPortfolios.py" target="_blank">See full function here.</a></p>
+<div id="92b82a0d" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>View Code Here</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the simulation</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>simulatedPortfolios <span class="op">=</span> sop.SimulateOptimalPortfolios(    </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    PulledStockData,               <span class="co"># Using the pulled stock data above</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    totalSimulations    <span class="op">=</span> <span class="dv">1500</span>,    <span class="co"># Number of min risk portfolio's to simulate</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    totalIterations     <span class="op">=</span> <span class="dv">25</span>,      <span class="co"># Total number of iterations (or movements within one simulation)</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    numPorfolios        <span class="op">=</span> <span class="dv">15</span>,      <span class="co"># Total number of portfolios in a swarm. </span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    minDesiredReturn    <span class="op">=</span> <span class="fl">0.07</span>     <span class="co"># Targeted expected return, soft constraint</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>simulatedPortfolios.runSimulation() <span class="co"># Run the simulation given parameters above</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<hr>
+<p><br></p>
+</section>
+</section>
+<section id="view-results" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> View Results</h1>
+<section id="review-minimum-risk-portfolio" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="review-minimum-risk-portfolio"><span class="header-section-number">4.1</span> Review Minimum Risk Portfolio</h2>
+<blockquote class="blockquote">
+<p>Identified the minimum-risk mix as the baseline; quantified risk reduction versus the starting set.</p>
+</blockquote>
+<p><a href="https://github.com/Daniel-Carpenter/Portfolio/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py" target="_blank">See full function here.</a></p>
+<div id="281701f9" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>View Code Here</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the viewer wrapper class</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>simulationViewer <span class="op">=</span> vsp.ViewSimulatedPortfolios(simulatedPortfolios, displayResults <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<hr>
+<p><br></p>
+</section>
+<section id="compare-optimal-portfolio-to-the-efficient-frontier" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="compare-optimal-portfolio-to-the-efficient-frontier"><span class="header-section-number">4.2</span> Compare Optimal Portfolio to the Efficient Frontier</h2>
+<blockquote class="blockquote">
+<p>Placed the chosen portfolio on the frontier to confirm its risk/return position.</p>
+</blockquote>
+<p><a href="https://github.com/Daniel-Carpenter/Portfolio/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py" target="_blank">See full function here.</a></p>
+<div id="fc94d972" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>View Code Here</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>simulationViewer.plotRiskVsReturnVsSharpe(TRANSPARENCY_LEVEL<span class="op">=</span><span class="fl">0.33</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>                            <div id="70f13cab-4c42-4bcf-9b75-56ce433bec64" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("70f13cab-4c42-4bcf-9b75-56ce433bec64")) {                    Plotly.newPlot(                        "70f13cab-4c42-4bcf-9b75-56ce433bec64",                        [{"customdata":[["Simulation 0"],["Simulation 1"],["Simulation 2"],["Simulation 3"],["Simulation 4"],["Simulation 5"],["Simulation 6"],["Simulation 7"],["Simulation 8"],["Simulation 9"],["Simulation 10"],["Simulation 11"],["Simulation 12"],["Simulation 13"],["Simulation 14"],["Simulation 15"],["Simulation 16"],["Simulation 17"],["Simulation 18"],["Simulation 19"],["Simulation 20"],["Simulation 21"],["Simulation 22"],["Simulation 23"],["Simulation 24"],["Simulation 25"],["Simulation 26"],["Simulation 27"],["Simulation 28"],["Simulation 29"],["Simulation 30"],["Simulation 31"],["Simulation 32"],["Simulation 33"],["Simulation 34"],["Simulation 35"],["Simulation 36"],["Simulation 37"],["Simulation 38"],["Simulation 39"],["Simulation 40"],["Simulation 41"],["Simulation 42"],["Simulation 43"],["Simulation 44"],["Simulation 45"],["Simulation 46"],["Simulation 47"],["Simulation 48"],["Simulation 49"],["Simulation 50"],["Simulation 51"],["Simulation 52"],["Simulation 53"],["Simulation 54"],["Simulation 55"],["Simulation 56"],["Simulation 57"],["Simulation 58"],["Simulation 59"],["Simulation 60"],["Simulation 61"],["Simulation 62"],["Simulation 63"],["Simulation 64"],["Simulation 65"],["Simulation 66"],["Simulation 67"],["Simulation 68"],["Simulation 69"],["Simulation 70"],["Simulation 71"],["Simulation 72"],["Simulation 73"],["Simulation 74"],["Simulation 75"],["Simulation 76"],["Simulation 77"],["Simulation 78"],["Simulation 79"],["Simulation 80"],["Simulation 81"],["Simulation 82"],["Simulation 83"],["Simulation 84"],["Simulation 85"],["Simulation 86"],["Simulation 87"],["Simulation 88"],["Simulation 89"],["Simulation 90"],["Simulation 91"],["Simulation 92"],["Simulation 93"],["Simulation 94"],["Simulation 95"],["Simulation 96"],["Simulation 97"],["Simulation 98"],["Simulation 99"],["Simulation 100"],["Simulation 101"],["Simulation 102"],["Simulation 103"],["Simulation 104"],["Simulation 105"],["Simulation 106"],["Simulation 107"],["Simulation 108"],["Simulation 109"],["Simulation 110"],["Simulation 111"],["Simulation 112"],["Simulation 113"],["Simulation 114"],["Simulation 115"],["Simulation 116"],["Simulation 117"],["Simulation 118"],["Simulation 119"],["Simulation 120"],["Simulation 121"],["Simulation 122"],["Simulation 123"],["Simulation 124"],["Simulation 125"],["Simulation 126"],["Simulation 127"],["Simulation 128"],["Simulation 129"],["Simulation 130"],["Simulation 131"],["Simulation 132"],["Simulation 133"],["Simulation 134"],["Simulation 135"],["Simulation 136"],["Simulation 137"],["Simulation 138"],["Simulation 139"],["Simulation 140"],["Simulation 141"],["Simulation 142"],["Simulation 143"],["Simulation 144"],["Simulation 145"],["Simulation 146"],["Simulation 147"],["Simulation 148"],["Simulation 149"],["Simulation 150"],["Simulation 151"],["Simulation 152"],["Simulation 153"],["Simulation 154"],["Simulation 155"],["Simulation 156"],["Simulation 157"],["Simulation 158"],["Simulation 159"],["Simulation 160"],["Simulation 161"],["Simulation 162"],["Simulation 163"],["Simulation 164"],["Simulation 165"],["Simulation 166"],["Simulation 167"],["Simulation 168"],["Simulation 169"],["Simulation 170"],["Simulation 171"],["Simulation 172"],["Simulation 173"],["Simulation 174"],["Simulation 175"],["Simulation 176"],["Simulation 177"],["Simulation 178"],["Simulation 179"],["Simulation 180"],["Simulation 181"],["Simulation 182"],["Simulation 183"],["Simulation 184"],["Simulation 185"],["Simulation 186"],["Simulation 187"],["Simulation 188"],["Simulation 189"],["Simulation 190"],["Simulation 191"],["Simulation 192"],["Simulation 193"],["Simulation 194"],["Simulation 195"],["Simulation 196"],["Simulation 197"],["Simulation 198"],["Simulation 199"],["Simulation 200"],["Simulation 201"],["Simulation 202"],["Simulation 203"],["Simulation 204"],["Simulation 205"],["Simulation 206"],["Simulation 207"],["Simulation 208"],["Simulation 209"],["Simulation 210"],["Simulation 211"],["Simulation 212"],["Simulation 213"],["Simulation 214"],["Simulation 215"],["Simulation 216"],["Simulation 217"],["Simulation 218"],["Simulation 219"],["Simulation 220"],["Simulation 221"],["Simulation 222"],["Simulation 223"],["Simulation 224"],["Simulation 225"],["Simulation 226"],["Simulation 227"],["Simulation 228"],["Simulation 229"],["Simulation 230"],["Simulation 231"],["Simulation 232"],["Simulation 233"],["Simulation 234"],["Simulation 235"],["Simulation 236"],["Simulation 237"],["Simulation 238"],["Simulation 239"],["Simulation 240"],["Simulation 241"],["Simulation 242"],["Simulation 243"],["Simulation 244"],["Simulation 245"],["Simulation 246"],["Simulation 247"],["Simulation 248"],["Simulation 249"],["Simulation 250"],["Simulation 251"],["Simulation 252"],["Simulation 253"],["Simulation 254"],["Simulation 255"],["Simulation 256"],["Simulation 257"],["Simulation 258"],["Simulation 259"],["Simulation 260"],["Simulation 261"],["Simulation 262"],["Simulation 263"],["Simulation 264"],["Simulation 265"],["Simulation 266"],["Simulation 267"],["Simulation 268"],["Simulation 269"],["Simulation 270"],["Simulation 271"],["Simulation 272"],["Simulation 273"],["Simulation 274"],["Simulation 275"],["Simulation 276"],["Simulation 277"],["Simulation 278"],["Simulation 279"],["Simulation 280"],["Simulation 281"],["Simulation 282"],["Simulation 283"],["Simulation 284"],["Simulation 285"],["Simulation 286"],["Simulation 287"],["Simulation 288"],["Simulation 289"],["Simulation 290"],["Simulation 291"],["Simulation 292"],["Simulation 293"],["Simulation 294"],["Simulation 295"],["Simulation 296"],["Simulation 297"],["Simulation 298"],["Simulation 299"],["Simulation 300"],["Simulation 301"],["Simulation 302"],["Simulation 303"],["Simulation 304"],["Simulation 305"],["Simulation 306"],["Simulation 307"],["Simulation 308"],["Simulation 309"],["Simulation 310"],["Simulation 311"],["Simulation 312"],["Simulation 313"],["Simulation 314"],["Simulation 315"],["Simulation 316"],["Simulation 317"],["Simulation 318"],["Simulation 319"],["Simulation 320"],["Simulation 321"],["Simulation 322"],["Simulation 323"],["Simulation 324"],["Simulation 325"],["Simulation 326"],["Simulation 327"],["Simulation 328"],["Simulation 329"],["Simulation 330"],["Simulation 331"],["Simulation 332"],["Simulation 333"],["Simulation 334"],["Simulation 335"],["Simulation 336"],["Simulation 337"],["Simulation 338"],["Simulation 339"],["Simulation 340"],["Simulation 341"],["Simulation 342"],["Simulation 343"],["Simulation 344"],["Simulation 345"],["Simulation 346"],["Simulation 347"],["Simulation 348"],["Simulation 349"],["Simulation 350"],["Simulation 351"],["Simulation 352"],["Simulation 353"],["Simulation 354"],["Simulation 355"],["Simulation 356"],["Simulation 357"],["Simulation 358"],["Simulation 359"],["Simulation 360"],["Simulation 361"],["Simulation 362"],["Simulation 363"],["Simulation 364"],["Simulation 365"],["Simulation 366"],["Simulation 367"],["Simulation 368"],["Simulation 369"],["Simulation 370"],["Simulation 371"],["Simulation 372"],["Simulation 373"],["Simulation 374"],["Simulation 375"],["Simulation 376"],["Simulation 377"],["Simulation 378"],["Simulation 379"],["Simulation 380"],["Simulation 381"],["Simulation 382"],["Simulation 383"],["Simulation 384"],["Simulation 385"],["Simulation 386"],["Simulation 387"],["Simulation 388"],["Simulation 389"],["Simulation 390"],["Simulation 391"],["Simulation 392"],["Simulation 393"],["Simulation 394"],["Simulation 395"],["Simulation 396"],["Simulation 397"],["Simulation 398"],["Simulation 399"],["Simulation 400"],["Simulation 401"],["Simulation 402"],["Simulation 403"],["Simulation 404"],["Simulation 405"],["Simulation 406"],["Simulation 407"],["Simulation 408"],["Simulation 409"],["Simulation 410"],["Simulation 411"],["Simulation 412"],["Simulation 413"],["Simulation 414"],["Simulation 415"],["Simulation 416"],["Simulation 417"],["Simulation 418"],["Simulation 419"],["Simulation 420"],["Simulation 421"],["Simulation 422"],["Simulation 423"],["Simulation 424"],["Simulation 425"],["Simulation 426"],["Simulation 427"],["Simulation 428"],["Simulation 429"],["Simulation 430"],["Simulation 431"],["Simulation 432"],["Simulation 433"],["Simulation 434"],["Simulation 435"],["Simulation 436"],["Simulation 437"],["Simulation 438"],["Simulation 439"],["Simulation 440"],["Simulation 441"],["Simulation 442"],["Simulation 443"],["Simulation 444"],["Simulation 445"],["Simulation 446"],["Simulation 447"],["Simulation 448"],["Simulation 449"],["Simulation 450"],["Simulation 451"],["Simulation 452"],["Simulation 453"],["Simulation 454"],["Simulation 455"],["Simulation 456"],["Simulation 457"],["Simulation 458"],["Simulation 459"],["Simulation 460"],["Simulation 461"],["Simulation 462"],["Simulation 463"],["Simulation 464"],["Simulation 465"],["Simulation 466"],["Simulation 467"],["Simulation 468"],["Simulation 469"],["Simulation 470"],["Simulation 471"],["Simulation 472"],["Simulation 473"],["Simulation 474"],["Simulation 475"],["Simulation 476"],["Simulation 477"],["Simulation 478"],["Simulation 479"],["Simulation 480"],["Simulation 481"],["Simulation 482"],["Simulation 483"],["Simulation 484"],["Simulation 485"],["Simulation 486"],["Simulation 487"],["Simulation 488"],["Simulation 489"],["Simulation 490"],["Simulation 491"],["Simulation 492"],["Simulation 493"],["Simulation 494"],["Simulation 495"],["Simulation 496"],["Simulation 497"],["Simulation 498"],["Simulation 499"],["Simulation 500"],["Simulation 501"],["Simulation 502"],["Simulation 503"],["Simulation 504"],["Simulation 505"],["Simulation 506"],["Simulation 507"],["Simulation 508"],["Simulation 509"],["Simulation 510"],["Simulation 511"],["Simulation 512"],["Simulation 513"],["Simulation 514"],["Simulation 515"],["Simulation 516"],["Simulation 517"],["Simulation 518"],["Simulation 519"],["Simulation 520"],["Simulation 521"],["Simulation 522"],["Simulation 523"],["Simulation 524"],["Simulation 525"],["Simulation 526"],["Simulation 527"],["Simulation 528"],["Simulation 529"],["Simulation 530"],["Simulation 531"],["Simulation 532"],["Simulation 533"],["Simulation 534"],["Simulation 535"],["Simulation 536"],["Simulation 537"],["Simulation 538"],["Simulation 539"],["Simulation 540"],["Simulation 541"],["Simulation 542"],["Simulation 543"],["Simulation 544"],["Simulation 545"],["Simulation 546"],["Simulation 547"],["Simulation 548"],["Simulation 549"],["Simulation 550"],["Simulation 551"],["Simulation 552"],["Simulation 553"],["Simulation 554"],["Simulation 555"],["Simulation 556"],["Simulation 557"],["Simulation 558"],["Simulation 559"],["Simulation 560"],["Simulation 561"],["Simulation 562"],["Simulation 563"],["Simulation 564"],["Simulation 565"],["Simulation 566"],["Simulation 567"],["Simulation 568"],["Simulation 569"],["Simulation 570"],["Simulation 571"],["Simulation 572"],["Simulation 573"],["Simulation 574"],["Simulation 575"],["Simulation 576"],["Simulation 577"],["Simulation 578"],["Simulation 579"],["Simulation 580"],["Simulation 581"],["Simulation 582"],["Simulation 583"],["Simulation 584"],["Simulation 585"],["Simulation 586"],["Simulation 587"],["Simulation 588"],["Simulation 589"],["Simulation 590"],["Simulation 591"],["Simulation 592"],["Simulation 593"],["Simulation 594"],["Simulation 595"],["Simulation 596"],["Simulation 597"],["Simulation 598"],["Simulation 599"],["Simulation 600"],["Simulation 601"],["Simulation 602"],["Simulation 603"],["Simulation 604"],["Simulation 605"],["Simulation 606"],["Simulation 607"],["Simulation 608"],["Simulation 609"],["Simulation 610"],["Simulation 611"],["Simulation 612"],["Simulation 613"],["Simulation 614"],["Simulation 615"],["Simulation 616"],["Simulation 617"],["Simulation 618"],["Simulation 619"],["Simulation 620"],["Simulation 621"],["Simulation 622"],["Simulation 623"],["Simulation 624"],["Simulation 625"],["Simulation 626"],["Simulation 627"],["Simulation 628"],["Simulation 629"],["Simulation 630"],["Simulation 631"],["Simulation 632"],["Simulation 633"],["Simulation 634"],["Simulation 635"],["Simulation 636"],["Simulation 637"],["Simulation 638"],["Simulation 639"],["Simulation 640"],["Simulation 641"],["Simulation 642"],["Simulation 643"],["Simulation 644"],["Simulation 645"],["Simulation 646"],["Simulation 647"],["Simulation 648"],["Simulation 649"],["Simulation 650"],["Simulation 651"],["Simulation 652"],["Simulation 653"],["Simulation 654"],["Simulation 655"],["Simulation 656"],["Simulation 657"],["Simulation 658"],["Simulation 659"],["Simulation 660"],["Simulation 661"],["Simulation 662"],["Simulation 663"],["Simulation 664"],["Simulation 665"],["Simulation 666"],["Simulation 667"],["Simulation 668"],["Simulation 669"],["Simulation 670"],["Simulation 671"],["Simulation 672"],["Simulation 673"],["Simulation 674"],["Simulation 675"],["Simulation 676"],["Simulation 677"],["Simulation 678"],["Simulation 679"],["Simulation 680"],["Simulation 681"],["Simulation 682"],["Simulation 683"],["Simulation 684"],["Simulation 685"],["Simulation 686"],["Simulation 687"],["Simulation 688"],["Simulation 689"],["Simulation 690"],["Simulation 691"],["Simulation 692"],["Simulation 693"],["Simulation 694"],["Simulation 695"],["Simulation 696"],["Simulation 697"],["Simulation 698"],["Simulation 699"],["Simulation 700"],["Simulation 701"],["Simulation 702"],["Simulation 703"],["Simulation 704"],["Simulation 705"],["Simulation 706"],["Simulation 707"],["Simulation 708"],["Simulation 709"],["Simulation 710"],["Simulation 711"],["Simulation 712"],["Simulation 713"],["Simulation 714"],["Simulation 715"],["Simulation 716"],["Simulation 717"],["Simulation 718"],["Simulation 719"],["Simulation 720"],["Simulation 721"],["Simulation 722"],["Simulation 723"],["Simulation 724"],["Simulation 725"],["Simulation 726"],["Simulation 727"],["Simulation 728"],["Simulation 729"],["Simulation 730"],["Simulation 731"],["Simulation 732"],["Simulation 733"],["Simulation 734"],["Simulation 735"],["Simulation 736"],["Simulation 737"],["Simulation 738"],["Simulation 739"],["Simulation 740"],["Simulation 741"],["Simulation 742"],["Simulation 743"],["Simulation 744"],["Simulation 745"],["Simulation 746"],["Simulation 747"],["Simulation 748"],["Simulation 749"],["Simulation 750"],["Simulation 751"],["Simulation 752"],["Simulation 753"],["Simulation 754"],["Simulation 755"],["Simulation 756"],["Simulation 757"],["Simulation 758"],["Simulation 759"],["Simulation 760"],["Simulation 761"],["Simulation 762"],["Simulation 763"],["Simulation 764"],["Simulation 765"],["Simulation 766"],["Simulation 767"],["Simulation 768"],["Simulation 769"],["Simulation 770"],["Simulation 771"],["Simulation 772"],["Simulation 773"],["Simulation 774"],["Simulation 775"],["Simulation 776"],["Simulation 777"],["Simulation 778"],["Simulation 779"],["Simulation 780"],["Simulation 781"],["Simulation 782"],["Simulation 783"],["Simulation 784"],["Simulation 785"],["Simulation 786"],["Simulation 787"],["Simulation 788"],["Simulation 789"],["Simulation 790"],["Simulation 791"],["Simulation 792"],["Simulation 793"],["Simulation 794"],["Simulation 795"],["Simulation 796"],["Simulation 797"],["Simulation 798"],["Simulation 799"],["Simulation 800"],["Simulation 801"],["Simulation 802"],["Simulation 803"],["Simulation 804"],["Simulation 805"],["Simulation 806"],["Simulation 807"],["Simulation 808"],["Simulation 809"],["Simulation 810"],["Simulation 811"],["Simulation 812"],["Simulation 813"],["Simulation 814"],["Simulation 815"],["Simulation 816"],["Simulation 817"],["Simulation 818"],["Simulation 819"],["Simulation 820"],["Simulation 821"],["Simulation 822"],["Simulation 823"],["Simulation 824"],["Simulation 825"],["Simulation 826"],["Simulation 827"],["Simulation 828"],["Simulation 829"],["Simulation 830"],["Simulation 831"],["Simulation 832"],["Simulation 833"],["Simulation 834"],["Simulation 835"],["Simulation 836"],["Simulation 837"],["Simulation 838"],["Simulation 839"],["Simulation 840"],["Simulation 841"],["Simulation 842"],["Simulation 843"],["Simulation 844"],["Simulation 845"],["Simulation 846"],["Simulation 847"],["Simulation 848"],["Simulation 849"],["Simulation 850"],["Simulation 851"],["Simulation 852"],["Simulation 853"],["Simulation 854"],["Simulation 855"],["Simulation 856"],["Simulation 857"],["Simulation 858"],["Simulation 859"],["Simulation 860"],["Simulation 861"],["Simulation 862"],["Simulation 863"],["Simulation 864"],["Simulation 865"],["Simulation 866"],["Simulation 867"],["Simulation 868"],["Simulation 869"],["Simulation 870"],["Simulation 871"],["Simulation 872"],["Simulation 873"],["Simulation 874"],["Simulation 875"],["Simulation 876"],["Simulation 877"],["Simulation 878"],["Simulation 879"],["Simulation 880"],["Simulation 881"],["Simulation 882"],["Simulation 883"],["Simulation 884"],["Simulation 885"],["Simulation 886"],["Simulation 887"],["Simulation 888"],["Simulation 889"],["Simulation 890"],["Simulation 891"],["Simulation 892"],["Simulation 893"],["Simulation 894"],["Simulation 895"],["Simulation 896"],["Simulation 897"],["Simulation 898"],["Simulation 899"],["Simulation 900"],["Simulation 901"],["Simulation 902"],["Simulation 903"],["Simulation 904"],["Simulation 905"],["Simulation 906"],["Simulation 907"],["Simulation 908"],["Simulation 909"],["Simulation 910"],["Simulation 911"],["Simulation 912"],["Simulation 913"],["Simulation 914"],["Simulation 915"],["Simulation 916"],["Simulation 917"],["Simulation 918"],["Simulation 919"],["Simulation 920"],["Simulation 921"],["Simulation 922"],["Simulation 923"],["Simulation 924"],["Simulation 925"],["Simulation 926"],["Simulation 927"],["Simulation 928"],["Simulation 929"],["Simulation 930"],["Simulation 931"],["Simulation 932"],["Simulation 933"],["Simulation 934"],["Simulation 935"],["Simulation 936"],["Simulation 937"],["Simulation 938"],["Simulation 939"],["Simulation 940"],["Simulation 941"],["Simulation 942"],["Simulation 943"],["Simulation 944"],["Simulation 945"],["Simulation 946"],["Simulation 947"],["Simulation 948"],["Simulation 949"],["Simulation 950"],["Simulation 951"],["Simulation 952"],["Simulation 953"],["Simulation 954"],["Simulation 955"],["Simulation 956"],["Simulation 957"],["Simulation 958"],["Simulation 959"],["Simulation 960"],["Simulation 961"],["Simulation 962"],["Simulation 963"],["Simulation 964"],["Simulation 965"],["Simulation 966"],["Simulation 967"],["Simulation 968"],["Simulation 969"],["Simulation 970"],["Simulation 971"],["Simulation 972"],["Simulation 973"],["Simulation 974"],["Simulation 975"],["Simulation 976"],["Simulation 977"],["Simulation 978"],["Simulation 979"],["Simulation 980"],["Simulation 981"],["Simulation 982"],["Simulation 983"],["Simulation 984"],["Simulation 985"],["Simulation 986"],["Simulation 987"],["Simulation 988"],["Simulation 989"],["Simulation 990"],["Simulation 991"],["Simulation 992"],["Simulation 993"],["Simulation 994"],["Simulation 995"],["Simulation 996"],["Simulation 997"],["Simulation 998"],["Simulation 999"],["Simulation 1000"],["Simulation 1001"],["Simulation 1002"],["Simulation 1003"],["Simulation 1004"],["Simulation 1005"],["Simulation 1006"],["Simulation 1007"],["Simulation 1008"],["Simulation 1009"],["Simulation 1010"],["Simulation 1011"],["Simulation 1012"],["Simulation 1013"],["Simulation 1014"],["Simulation 1015"],["Simulation 1016"],["Simulation 1017"],["Simulation 1018"],["Simulation 1019"],["Simulation 1020"],["Simulation 1021"],["Simulation 1022"],["Simulation 1023"],["Simulation 1024"],["Simulation 1025"],["Simulation 1026"],["Simulation 1027"],["Simulation 1028"],["Simulation 1029"],["Simulation 1030"],["Simulation 1031"],["Simulation 1032"],["Simulation 1033"],["Simulation 1034"],["Simulation 1035"],["Simulation 1036"],["Simulation 1037"],["Simulation 1038"],["Simulation 1039"],["Simulation 1040"],["Simulation 1041"],["Simulation 1042"],["Simulation 1043"],["Simulation 1044"],["Simulation 1045"],["Simulation 1046"],["Simulation 1047"],["Simulation 1048"],["Simulation 1049"],["Simulation 1050"],["Simulation 1051"],["Simulation 1052"],["Simulation 1053"],["Simulation 1054"],["Simulation 1055"],["Simulation 1056"],["Simulation 1057"],["Simulation 1058"],["Simulation 1059"],["Simulation 1060"],["Simulation 1061"],["Simulation 1062"],["Simulation 1063"],["Simulation 1064"],["Simulation 1065"],["Simulation 1066"],["Simulation 1067"],["Simulation 1068"],["Simulation 1069"],["Simulation 1070"],["Simulation 1071"],["Simulation 1072"],["Simulation 1073"],["Simulation 1074"],["Simulation 1075"],["Simulation 1076"],["Simulation 1077"],["Simulation 1078"],["Simulation 1079"],["Simulation 1080"],["Simulation 1081"],["Simulation 1082"],["Simulation 1083"],["Simulation 1084"],["Simulation 1085"],["Simulation 1086"],["Simulation 1087"],["Simulation 1088"],["Simulation 1089"],["Simulation 1090"],["Simulation 1091"],["Simulation 1092"],["Simulation 1093"],["Simulation 1094"],["Simulation 1095"],["Simulation 1096"],["Simulation 1097"],["Simulation 1098"],["Simulation 1099"],["Simulation 1100"],["Simulation 1101"],["Simulation 1102"],["Simulation 1103"],["Simulation 1104"],["Simulation 1105"],["Simulation 1106"],["Simulation 1107"],["Simulation 1108"],["Simulation 1109"],["Simulation 1110"],["Simulation 1111"],["Simulation 1112"],["Simulation 1113"],["Simulation 1114"],["Simulation 1115"],["Simulation 1116"],["Simulation 1117"],["Simulation 1118"],["Simulation 1119"],["Simulation 1120"],["Simulation 1121"],["Simulation 1122"],["Simulation 1123"],["Simulation 1124"],["Simulation 1125"],["Simulation 1126"],["Simulation 1127"],["Simulation 1128"],["Simulation 1129"],["Simulation 1130"],["Simulation 1131"],["Simulation 1132"],["Simulation 1133"],["Simulation 1134"],["Simulation 1135"],["Simulation 1136"],["Simulation 1137"],["Simulation 1138"],["Simulation 1139"],["Simulation 1140"],["Simulation 1141"],["Simulation 1142"],["Simulation 1143"],["Simulation 1144"],["Simulation 1145"],["Simulation 1146"],["Simulation 1147"],["Simulation 1148"],["Simulation 1149"],["Simulation 1150"],["Simulation 1151"],["Simulation 1152"],["Simulation 1153"],["Simulation 1154"],["Simulation 1155"],["Simulation 1156"],["Simulation 1157"],["Simulation 1158"],["Simulation 1159"],["Simulation 1160"],["Simulation 1161"],["Simulation 1162"],["Simulation 1163"],["Simulation 1164"],["Simulation 1165"],["Simulation 1166"],["Simulation 1167"],["Simulation 1168"],["Simulation 1169"],["Simulation 1170"],["Simulation 1171"],["Simulation 1172"],["Simulation 1173"],["Simulation 1174"],["Simulation 1175"],["Simulation 1176"],["Simulation 1177"],["Simulation 1178"],["Simulation 1179"],["Simulation 1180"],["Simulation 1181"],["Simulation 1182"],["Simulation 1183"],["Simulation 1184"],["Simulation 1185"],["Simulation 1186"],["Simulation 1187"],["Simulation 1188"],["Simulation 1189"],["Simulation 1190"],["Simulation 1191"],["Simulation 1192"],["Simulation 1193"],["Simulation 1194"],["Simulation 1195"],["Simulation 1196"],["Simulation 1197"],["Simulation 1198"],["Simulation 1199"],["Simulation 1200"],["Simulation 1201"],["Simulation 1202"],["Simulation 1203"],["Simulation 1204"],["Simulation 1205"],["Simulation 1206"],["Simulation 1207"],["Simulation 1208"],["Simulation 1209"],["Simulation 1210"],["Simulation 1211"],["Simulation 1212"],["Simulation 1213"],["Simulation 1214"],["Simulation 1215"],["Simulation 1216"],["Simulation 1217"],["Simulation 1218"],["Simulation 1219"],["Simulation 1220"],["Simulation 1221"],["Simulation 1222"],["Simulation 1223"],["Simulation 1224"],["Simulation 1225"],["Simulation 1226"],["Simulation 1227"],["Simulation 1228"],["Simulation 1229"],["Simulation 1230"],["Simulation 1231"],["Simulation 1232"],["Simulation 1233"],["Simulation 1234"],["Simulation 1235"],["Simulation 1236"],["Simulation 1237"],["Simulation 1238"],["Simulation 1239"],["Simulation 1240"],["Simulation 1241"],["Simulation 1242"],["Simulation 1243"],["Simulation 1244"],["Simulation 1245"],["Simulation 1246"],["Simulation 1247"],["Simulation 1248"],["Simulation 1249"],["Simulation 1250"],["Simulation 1251"],["Simulation 1252"],["Simulation 1253"],["Simulation 1254"],["Simulation 1255"],["Simulation 1256"],["Simulation 1257"],["Simulation 1258"],["Simulation 1259"],["Simulation 1260"],["Simulation 1261"],["Simulation 1262"],["Simulation 1263"],["Simulation 1264"],["Simulation 1265"],["Simulation 1266"],["Simulation 1267"],["Simulation 1268"],["Simulation 1269"],["Simulation 1270"],["Simulation 1271"],["Simulation 1272"],["Simulation 1273"],["Simulation 1274"],["Simulation 1275"],["Simulation 1276"],["Simulation 1277"],["Simulation 1278"],["Simulation 1279"],["Simulation 1280"],["Simulation 1281"],["Simulation 1282"],["Simulation 1283"],["Simulation 1284"],["Simulation 1285"],["Simulation 1286"],["Simulation 1287"],["Simulation 1288"],["Simulation 1289"],["Simulation 1290"],["Simulation 1291"],["Simulation 1292"],["Simulation 1293"],["Simulation 1294"],["Simulation 1295"],["Simulation 1296"],["Simulation 1297"],["Simulation 1298"],["Simulation 1299"],["Simulation 1300"],["Simulation 1301"],["Simulation 1302"],["Simulation 1303"],["Simulation 1304"],["Simulation 1305"],["Simulation 1306"],["Simulation 1307"],["Simulation 1308"],["Simulation 1309"],["Simulation 1310"],["Simulation 1311"],["Simulation 1312"],["Simulation 1313"],["Simulation 1314"],["Simulation 1315"],["Simulation 1316"],["Simulation 1317"],["Simulation 1318"],["Simulation 1319"],["Simulation 1320"],["Simulation 1321"],["Simulation 1322"],["Simulation 1323"],["Simulation 1324"],["Simulation 1325"],["Simulation 1326"],["Simulation 1327"],["Simulation 1328"],["Simulation 1329"],["Simulation 1330"],["Simulation 1331"],["Simulation 1332"],["Simulation 1333"],["Simulation 1334"],["Simulation 1335"],["Simulation 1336"],["Simulation 1337"],["Simulation 1338"],["Simulation 1339"],["Simulation 1340"],["Simulation 1341"],["Simulation 1342"],["Simulation 1343"],["Simulation 1344"],["Simulation 1345"],["Simulation 1346"],["Simulation 1347"],["Simulation 1348"],["Simulation 1349"],["Simulation 1350"],["Simulation 1351"],["Simulation 1352"],["Simulation 1353"],["Simulation 1354"],["Simulation 1355"],["Simulation 1356"],["Simulation 1357"],["Simulation 1358"],["Simulation 1359"],["Simulation 1360"],["Simulation 1361"],["Simulation 1362"],["Simulation 1363"],["Simulation 1364"],["Simulation 1365"],["Simulation 1366"],["Simulation 1367"],["Simulation 1368"],["Simulation 1369"],["Simulation 1370"],["Simulation 1371"],["Simulation 1372"],["Simulation 1373"],["Simulation 1374"],["Simulation 1375"],["Simulation 1376"],["Simulation 1377"],["Simulation 1378"],["Simulation 1379"],["Simulation 1380"],["Simulation 1381"],["Simulation 1382"],["Simulation 1383"],["Simulation 1384"],["Simulation 1385"],["Simulation 1386"],["Simulation 1387"],["Simulation 1388"],["Simulation 1389"],["Simulation 1390"],["Simulation 1391"],["Simulation 1392"],["Simulation 1393"],["Simulation 1394"],["Simulation 1395"],["Simulation 1396"],["Simulation 1397"],["Simulation 1398"],["Simulation 1399"],["Simulation 1400"],["Simulation 1401"],["Simulation 1402"],["Simulation 1403"],["Simulation 1404"],["Simulation 1405"],["Simulation 1406"],["Simulation 1407"],["Simulation 1408"],["Simulation 1409"],["Simulation 1410"],["Simulation 1411"],["Simulation 1412"],["Simulation 1413"],["Simulation 1414"],["Simulation 1415"],["Simulation 1416"],["Simulation 1417"],["Simulation 1418"],["Simulation 1419"],["Simulation 1420"],["Simulation 1421"],["Simulation 1422"],["Simulation 1423"],["Simulation 1424"],["Simulation 1425"],["Simulation 1426"],["Simulation 1427"],["Simulation 1428"],["Simulation 1429"],["Simulation 1430"],["Simulation 1431"],["Simulation 1432"],["Simulation 1433"],["Simulation 1434"],["Simulation 1435"],["Simulation 1436"],["Simulation 1437"],["Simulation 1438"],["Simulation 1439"],["Simulation 1440"],["Simulation 1441"],["Simulation 1442"],["Simulation 1443"],["Simulation 1444"],["Simulation 1445"],["Simulation 1446"],["Simulation 1447"],["Simulation 1448"],["Simulation 1449"],["Simulation 1450"],["Simulation 1451"],["Simulation 1452"],["Simulation 1453"],["Simulation 1454"],["Simulation 1455"],["Simulation 1456"],["Simulation 1457"],["Simulation 1458"],["Simulation 1459"],["Simulation 1460"],["Simulation 1461"],["Simulation 1462"],["Simulation 1463"],["Simulation 1464"],["Simulation 1465"],["Simulation 1466"],["Simulation 1467"],["Simulation 1468"],["Simulation 1469"],["Simulation 1470"],["Simulation 1471"],["Simulation 1472"],["Simulation 1473"],["Simulation 1474"],["Simulation 1475"],["Simulation 1476"],["Simulation 1477"],["Simulation 1478"],["Simulation 1479"],["Simulation 1480"],["Simulation 1481"],["Simulation 1482"],["Simulation 1483"],["Simulation 1484"],["Simulation 1485"],["Simulation 1486"],["Simulation 1487"],["Simulation 1488"],["Simulation 1489"],["Simulation 1490"],["Simulation 1491"],["Simulation 1492"],["Simulation 1493"],["Simulation 1494"],["Simulation 1495"],["Simulation 1496"],["Simulation 1497"],["Simulation 1498"],["Simulation 1499"]],"hovertemplate":"Risk (Standard Deviation of the Portfolio)=%{x}\u003cbr\u003eExpected Return=%{y}\u003cbr\u003eSimulation_Number=%{customdata[0]}\u003cbr\u003eSharpe Ratio=%{marker.color}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":[1.638,1.518,1.929,1.502,1.688,1.667,1.679,1.499,1.685,1.86,1.617,1.813,1.622,1.551,1.636,1.75,1.406,1.711,1.732,1.766,1.505,1.631,1.564,1.708,1.639,1.769,1.747,1.605,1.656,1.392,1.502,1.89,1.775,1.567,1.719,1.538,1.658,1.302,1.767,1.789,1.579,1.894,1.863,1.895,1.152,1.779,1.416,1.769,1.682,1.453,1.54,1.58,1.825,1.653,1.419,1.745,1.623,1.807,1.569,1.587,1.603,1.689,1.745,1.807,1.723,1.324,1.802,1.712,1.46,1.634,1.386,1.365,1.638,1.639,1.608,1.741,1.379,1.678,1.632,1.638,1.306,1.576,1.658,1.719,1.542,1.624,1.549,1.612,1.697,1.551,1.47,1.55,1.633,1.658,1.45,1.731,1.46,1.76,1.649,1.67,1.698,1.829,1.773,1.647,1.573,1.631,1.88,1.553,1.8,1.525,1.606,1.813,1.607,1.47,1.824,1.787,1.729,1.859,1.84,1.405,1.505,1.813,1.526,1.45,1.603,1.478,1.791,1.361,1.663,1.537,1.536,1.599,1.681,1.601,1.738,1.819,1.504,1.611,1.608,1.454,1.542,1.644,1.607,1.825,1.707,1.512,1.827,1.657,1.686,1.799,1.868,1.452,1.871,1.732,1.822,1.746,1.52,1.741,1.648,1.334,1.508,1.585,1.515,1.623,1.685,1.514,1.552,1.706,1.702,1.525,1.666,1.603,1.586,1.66,1.601,1.742,1.843,1.603,1.587,1.555,1.584,1.569,1.454,1.673,1.752,1.569,1.675,1.547,1.57,1.886,1.736,1.588,1.989,1.878,1.384,1.721,1.476,1.649,1.645,1.689,1.562,1.54,1.319,1.642,1.581,1.706,1.492,1.553,1.706,1.637,1.59,1.75,1.475,1.772,1.782,1.719,1.643,1.661,1.62,1.884,1.457,1.653,1.638,1.576,1.622,1.443,1.719,1.253,1.594,1.59,1.295,1.409,1.541,1.783,1.771,1.612,1.63,1.662,1.809,1.459,1.538,1.62,1.51,1.353,1.639,1.746,1.48,1.769,1.805,1.593,1.946,1.555,1.67,1.516,1.673,1.514,1.575,1.759,1.647,1.597,1.598,1.515,1.584,1.592,1.634,1.655,1.797,1.746,1.587,1.596,1.72,1.563,1.801,1.923,1.633,1.56,1.715,1.577,1.583,1.735,1.669,1.51,1.397,1.625,1.429,1.823,1.748,1.408,1.405,1.879,1.618,1.774,1.631,1.703,1.668,1.441,1.682,1.564,1.327,1.754,1.508,1.663,1.744,1.755,1.829,1.676,1.669,1.651,1.745,1.365,1.697,1.555,1.868,1.651,1.852,1.489,1.4,1.545,1.692,1.745,1.708,1.696,1.558,1.855,1.608,1.679,1.544,1.548,1.758,1.426,1.645,1.629,1.518,1.638,1.921,1.537,1.733,1.421,1.605,1.951,1.711,1.687,1.808,1.545,1.455,1.983,1.632,1.839,1.66,1.78,1.655,1.622,1.855,1.642,1.596,1.717,1.788,1.301,1.292,1.514,1.734,1.448,1.792,1.639,1.689,1.747,1.56,1.634,1.953,1.606,1.571,1.3,1.669,1.583,1.767,1.635,1.766,1.538,1.8,1.465,1.784,1.755,1.672,1.574,1.661,1.742,1.688,1.743,1.737,1.78,1.374,1.391,1.617,1.971,1.552,1.538,1.769,1.829,1.486,1.634,1.646,1.49,1.892,1.663,1.635,1.621,1.553,1.442,1.989,1.444,1.483,1.817,1.894,1.661,1.767,1.671,1.752,1.962,1.807,1.8,1.634,1.664,1.81,1.671,1.952,1.479,1.795,1.591,1.716,1.783,1.556,1.621,1.527,1.796,1.768,1.974,1.702,1.651,1.341,1.403,1.815,1.602,1.766,1.641,1.457,1.69,1.823,1.422,1.754,1.711,1.674,1.869,1.756,1.613,1.689,1.633,1.75,1.759,1.558,1.123,1.927,1.647,1.363,1.802,1.802,1.674,1.715,1.499,1.644,1.516,1.221,1.613,1.67,1.62,1.75,1.443,1.827,1.624,1.586,1.801,1.547,1.722,1.757,1.603,1.396,1.671,1.494,1.642,1.724,1.675,1.759,1.479,1.85,1.399,1.388,1.792,1.765,1.586,1.625,1.694,1.74,1.617,1.796,1.521,1.449,1.678,1.804,1.698,1.594,1.643,1.703,1.518,1.894,1.325,1.344,1.583,1.414,1.36,1.809,1.615,1.614,1.886,1.405,1.457,1.36,1.499,1.69,1.606,1.74,1.755,1.835,1.817,1.93,1.645,1.347,1.743,1.569,1.609,1.723,1.778,1.584,1.664,1.744,1.737,1.685,1.772,1.821,1.76,1.536,1.877,1.469,1.77,1.647,1.826,1.543,1.673,1.831,1.841,1.692,1.641,1.494,1.59,1.679,1.66,1.649,1.369,1.707,1.791,1.616,1.662,1.434,1.443,1.793,1.722,1.43,1.905,1.788,1.661,1.551,1.533,1.924,1.636,1.629,1.839,1.658,1.687,1.697,1.615,1.674,1.658,1.485,1.856,1.701,1.718,1.657,1.643,1.625,1.761,1.747,1.566,1.701,1.692,1.736,1.707,1.821,1.597,1.422,1.688,1.824,1.975,1.739,1.583,1.814,1.424,1.662,1.847,1.653,1.741,1.645,1.64,1.669,1.503,1.263,1.578,1.67,1.496,1.653,1.721,1.635,1.577,1.68,1.674,1.682,1.49,1.593,1.76,1.317,1.659,1.503,1.678,1.668,1.661,1.379,1.598,1.616,1.376,1.727,1.675,1.444,1.436,1.765,1.607,1.744,1.804,1.568,1.579,1.551,1.666,1.788,1.558,1.632,1.638,1.426,2.017,1.501,1.761,1.39,1.785,1.711,1.663,1.779,1.487,1.925,1.673,1.625,1.831,1.557,1.622,1.719,1.691,1.371,1.624,1.794,1.582,1.676,1.585,1.667,1.703,1.585,1.58,1.852,1.625,1.895,1.648,1.471,1.789,1.516,1.88,1.482,1.684,1.613,1.737,1.457,1.689,1.653,1.611,1.728,1.872,1.373,1.692,1.726,1.625,1.673,1.653,1.646,1.578,1.664,1.541,1.666,1.692,1.791,1.512,1.937,1.74,1.681,1.591,1.549,1.697,1.753,1.609,1.64,1.603,1.871,1.715,1.478,1.477,1.557,1.641,1.783,1.559,1.685,1.887,1.498,1.583,1.582,1.667,1.765,1.809,1.746,1.713,1.542,1.48,1.765,1.398,1.598,1.508,1.743,1.585,1.693,1.512,1.835,1.622,1.627,1.548,1.884,1.516,1.833,1.438,1.899,1.476,1.805,1.701,1.659,1.742,1.626,1.706,1.725,1.574,1.663,1.645,1.402,1.433,2.0,1.665,1.556,1.695,1.35,1.814,1.606,1.77,1.71,1.652,1.295,1.6,1.871,1.707,1.506,1.634,1.55,1.583,1.753,1.771,1.623,1.681,1.958,1.959,1.938,1.784,1.657,1.782,2.008,1.454,1.578,1.743,2.116,1.607,1.269,1.786,1.695,1.515,1.279,1.509,1.611,1.707,1.837,1.534,1.656,1.732,1.813,1.765,1.965,1.652,1.622,1.706,1.716,1.486,1.618,1.548,1.753,1.638,1.677,1.707,1.62,1.852,1.381,1.766,1.458,1.933,1.631,1.584,1.671,1.92,1.503,1.57,1.637,1.837,1.403,1.553,1.549,1.695,1.647,1.786,1.665,1.737,1.505,1.628,1.545,1.723,1.683,1.287,1.766,1.574,1.568,1.529,1.567,1.68,1.596,1.586,1.62,1.578,1.698,1.686,1.577,1.672,1.671,1.599,1.575,1.596,1.634,1.649,1.76,1.698,1.61,1.691,1.657,1.447,1.487,1.674,1.334,1.744,1.65,1.711,1.898,1.577,1.649,1.554,1.582,1.422,1.729,1.389,1.618,1.751,1.672,1.703,1.641,1.403,1.869,1.682,1.712,1.677,1.571,1.858,1.784,1.839,1.498,1.783,1.606,1.826,1.769,1.588,1.897,1.607,1.778,1.599,1.691,1.847,1.615,1.912,1.695,1.76,1.612,1.863,1.735,1.899,1.691,1.731,1.671,1.724,1.725,1.719,1.927,1.61,1.748,1.662,1.618,1.838,1.551,1.552,1.737,1.781,1.701,1.696,1.42,1.627,1.567,1.805,1.803,1.429,1.603,1.912,1.554,1.891,1.58,1.694,1.302,1.819,1.739,1.697,1.571,1.47,1.619,1.632,1.396,1.549,1.516,1.566,1.813,1.74,1.562,1.598,1.743,1.751,1.682,1.487,1.321,2.024,1.74,1.466,1.848,1.798,1.885,1.598,1.888,1.435,1.83,1.593,1.59,1.501,1.572,1.392,1.466,1.631,1.51,1.699,1.591,1.572,1.752,1.922,1.732,1.634,1.711,1.733,1.399,1.589,1.732,1.52,1.76,1.534,1.686,2.043,1.494,1.68,1.787,1.603,1.894,1.7,1.501,1.629,1.344,1.522,1.529,1.43,1.404,1.798,1.474,1.737,1.816,1.801,1.496,1.743,1.466,1.606,1.767,1.584,1.551,1.422,1.549,1.721,1.716,1.668,1.428,1.693,1.617,1.956,1.5,1.347,1.676,1.617,1.58,1.62,1.706,1.452,1.503,1.622,1.698,1.645,1.657,1.813,1.784,1.706,1.822,1.648,1.581,1.768,1.694,1.802,1.722,1.673,1.536,1.561,1.552,1.762,1.265,1.657,1.81,1.699,1.564,1.43,1.691,1.883,1.856,1.6,1.471,1.402,1.563,1.637,1.719,1.765,1.413,1.614,1.788,1.267,1.515,1.687,1.577,1.593,1.666,1.8,1.855,1.783,1.489,1.781,1.659,1.663,1.714,1.548,1.606,1.705,1.903,1.778,1.459,1.493,1.63,1.338,1.485,1.456,1.46,1.632,1.672,1.946,1.881,1.753,1.525,1.723,1.678,1.771,1.554,1.791,1.759,1.62,1.822,1.586,1.711,1.543,1.642,1.569,1.667,1.597,1.746,1.662,1.624,1.578,1.795,1.532,1.723,1.536,1.514,1.662,1.547,1.635,1.306,1.544,1.594,1.561,1.522,1.571,1.413,1.676,1.731,1.564,1.595,1.336,1.474,1.589,1.738,1.427,1.679,1.663,1.759,1.67,1.674,1.696,1.973,1.432,1.706,1.448,1.524,1.379,1.647,1.651,1.527,1.78,1.634,1.389,1.583,1.655,1.52,1.537,1.671,1.787,1.665,1.644,1.69,1.545,1.668,1.704,1.616,1.736,1.734,1.551,1.676,1.529,1.657,1.568,1.626,1.702,1.337,1.647,1.736,1.658,1.578,1.379,1.668,1.372,1.775,1.516,1.713,1.908,1.588,1.45,1.844,1.426,1.54,1.943,1.612,1.673,1.623,1.255,1.981,1.674,1.571,1.787,1.718,1.656,1.433,1.779,1.59,1.895,1.422,1.632,1.36,1.778,1.782,1.488,1.691,1.579,1.708,1.76,1.696,1.553,1.65,1.633,1.552,1.825,1.768,1.445,1.682,2.145,1.432,1.663,1.793,1.697,1.653,1.656,1.279,1.931,1.597,1.473,1.748,1.628,1.691,1.691,1.649,1.764,1.459,1.694,1.578,1.42,1.483,1.529,1.685,1.725,1.632,1.751,1.592,1.715,1.441,1.506,1.706,1.827,1.658,1.378,1.619,1.596,1.134,1.575,1.504,1.507,1.695,1.724,1.517,1.628,1.79,1.713,1.293,1.576,1.325,1.599,1.531,1.465,1.739,1.754,1.745,1.664,1.778,1.628,1.49,1.556,1.698,1.709,1.559,1.826,1.588,1.533,1.797,1.878,1.46,1.317,1.502,1.708,1.462,1.806,1.67,1.486,1.668,2.125,1.798,1.589,1.657,1.611,1.585,1.65,1.641,1.629,1.682,1.651,1.827,1.57,1.717,1.817,1.635,1.74,1.504,1.695,1.741,1.668,1.603,1.63,1.712,1.844,1.465,1.798,1.559,1.296,1.822,1.693,1.588,1.296,1.365,1.692,1.74,1.653,1.669,1.731,1.761,1.706,1.56,1.417,1.601,2.003,1.637,1.559,1.681,1.558,1.408,1.809,1.71,1.859,1.609,1.428,1.784,1.665,1.666,1.702,1.66,1.591,1.493,1.771,1.366,1.824,1.715,1.713,1.603,1.61,1.736,1.874,1.857,1.556,1.788,1.648,1.525,1.638,1.809,1.552,1.619,1.665,1.669,1.469,1.611,1.593,1.667,1.727,1.777,1.332,1.675,1.713,1.43,1.475,1.664,1.61,1.504,1.735,1.435,1.62,1.779,1.459,1.608,1.573,1.755,1.734,1.537,1.391,1.526,1.585,1.809,1.678,1.5,1.513,1.724,1.565,1.831,1.605,1.338,1.607,1.592,1.923,1.721,1.396,1.585,1.444,1.628,1.668,1.617,1.603,2.006,1.217,1.698,1.696,1.576,1.947,1.717,1.484,1.476,1.561,1.576,1.711,1.787,1.561,1.629,1.481],"coloraxis":"coloraxis","opacity":0.33,"symbol":"circle","size":10},"mode":"markers","name":"","showlegend":false,"x":[0.12882134499215292,0.16213386306498515,0.12154441835976611,0.19487292151059485,0.15950774780164198,0.18993083512214243,0.15435532703319785,0.1928748243361013,0.15512351522688558,0.11992246823102057,0.16507430539858672,0.1059226853605687,0.16164364644874032,0.15947873855883787,0.16728653934131385,0.13180928097370534,0.21283707359949494,0.12445082440259526,0.1383405751689803,0.13712308051149721,0.14845765783823486,0.15519285241188985,0.17492618541129623,0.146349298129648,0.16266179757152419,0.14374230251273185,0.11971766491832336,0.17057219054239436,0.15443715887062145,0.2325085046056809,0.18716255911225213,0.131505171903982,0.14139270584409633,0.1776064529645413,0.16973070864587425,0.1996774622930118,0.13540976235069,0.2292783085364689,0.15868130184535814,0.15745524538013153,0.1592847892684103,0.12934118223158453,0.11164056272063996,0.1312461538427615,0.29616317393152086,0.13815219532260267,0.2540357742844724,0.15436716547701934,0.15742531717545066,0.23760123826171498,0.17497280707979396,0.18234955402806077,0.1469249438047201,0.15978790006314395,0.20453433889005168,0.16695852760241758,0.18629509477981315,0.12880372522387584,0.13440033506453922,0.18678141646370616,0.13251770925734657,0.17168260007898556,0.14076809248903346,0.12447792865699317,0.15864720222522635,0.2111974799527423,0.11690628836775073,0.16134648960457612,0.19907938342811268,0.15400275036617497,0.2015192454250225,0.20628083252317142,0.15016011769816032,0.17422484592857457,0.15938278386222038,0.10494088693033968,0.22005954850082732,0.15806911701187096,0.14142372114208449,0.14601879724384118,0.23411999340487902,0.1515997380195028,0.14772479156142193,0.11889927692460474,0.1797378812092451,0.15802846282337263,0.17383149687985416,0.17360543040836926,0.12675184256861086,0.1783669020977627,0.22859850294145936,0.17890553246356392,0.1805838587726361,0.14296165402021715,0.15309133477331774,0.15319017702007734,0.21374749239611562,0.13100041349149497,0.17832375821959587,0.1519970458679301,0.14345249456736886,0.11704484247153249,0.12770014325901188,0.16481687345974458,0.14834250169040106,0.15345741250250386,0.13204803697594206,0.13731280360615633,0.1182378050728086,0.17415984905032575,0.17741711229521057,0.1270377839677187,0.145286011183844,0.1871169047866805,0.1467706444439691,0.1251768847647533,0.15701684767462015,0.1326021647680247,0.1232789562376874,0.21424740628868064,0.19128215206337104,0.13343928565565955,0.1825893892737058,0.13927189593667574,0.1806314524951802,0.2022520402832484,0.129813973262905,0.21393476379263895,0.14394193372727593,0.15730698698713713,0.1874560141570112,0.19042289151291555,0.1461137417401444,0.15330066799931244,0.1356329395916323,0.1154878803311279,0.1343821903042777,0.15443065782701332,0.14107145056106063,0.18732257606324826,0.17763868682736425,0.14287481725959553,0.14303593037285198,0.1347223293675973,0.13396597004693275,0.17113421906564658,0.10653663879328062,0.12051830822836675,0.15920676413131135,0.11477190639282016,0.12654889381647816,0.17770224926600928,0.12614431989906852,0.17656690063709482,0.13635525555058353,0.1267940856987457,0.16652296149678378,0.14773343067462205,0.17163343983350052,0.24833989897713712,0.19665775871378555,0.19030775206359646,0.1972669777921062,0.14401474635741823,0.1559958864727487,0.188045827135621,0.18118381745200257,0.1434981023023316,0.1337252452954585,0.1747687787963413,0.14283892669857412,0.1641694765606634,0.14287705774366286,0.15509942606903881,0.16799582361429358,0.15945161679848832,0.14608044683213314,0.15455153039010477,0.15339028900726817,0.18290074845465065,0.15088984777151945,0.17426936501770104,0.20398387986599267,0.15001323634327465,0.12847389858701166,0.1981799797702315,0.13438996251988747,0.17475040737510592,0.187221257950966,0.1192856033286721,0.14130564825086117,0.16451946227061676,0.10414190213111026,0.13275825227620452,0.213847366728964,0.14474754282607358,0.19236090298940997,0.13503657548983194,0.15281741604867843,0.16878219728688337,0.17904555942100195,0.16505013187385503,0.21447219776045964,0.18388150467623468,0.18708895418373003,0.1330873250636785,0.17335218506548863,0.19615869328807706,0.14132576652501416,0.1533407199934719,0.15105677092927172,0.1275972510137268,0.13707076431368886,0.13621286799566545,0.13008800997541797,0.15384408868436605,0.14756165409155528,0.15008926478171628,0.16541371999594823,0.11869510070414653,0.17756595595601732,0.15248544649151932,0.12259127356775407,0.14779946780522538,0.18478310802303743,0.15304443302888335,0.1366392047921236,0.23640064016813195,0.17396976945214818,0.18501597133161168,0.20551583952722288,0.2474358264795781,0.18996988271751222,0.16290882381480964,0.1479382591787233,0.1586613103348966,0.15597212708180297,0.19504923968270385,0.14854626405966237,0.1745490145912623,0.1627893481985471,0.14835399398872126,0.21533091641154434,0.20369271917578163,0.1324559023138735,0.13757068550910193,0.22154742574870312,0.13682191310502184,0.1299653462947596,0.17847048196260054,0.11758447050494238,0.19412271815959242,0.14106575186290002,0.14044016290221326,0.14953072777683368,0.1792970622561542,0.16220021331005763,0.11884500240377201,0.14344945644441143,0.184398583638564,0.1366218157072301,0.15841633928525986,0.15642413582147344,0.19057335157645203,0.17123313368859913,0.1579939937423034,0.12657984472036762,0.1273742920804391,0.1937532187392575,0.16028939581748697,0.1395098054688745,0.18210204107577468,0.1175223576974044,0.12971479131520938,0.1397057582290394,0.16244960195097471,0.13806465353745895,0.13331819824794539,0.18036977746709892,0.1294029817103837,0.13534697792806966,0.16952936195674942,0.23301587879238403,0.17000329746307952,0.23915923589311253,0.1436976778265586,0.12664225326127648,0.20576486393061363,0.22895448119981315,0.10388032209498871,0.1694651860636099,0.13608905390212037,0.13263002068848653,0.15233080467667287,0.14216037928884587,0.15695685153973093,0.13015262373895342,0.1799245114901689,0.21862299745805275,0.1301754080930494,0.2056394278635969,0.1394801187047605,0.18900241569814064,0.13717948535563276,0.11674110580661971,0.17772668819628515,0.14654640105942637,0.16241216713682521,0.13210033983568076,0.17105425806562183,0.12325210922627967,0.17157234944930314,0.1208740320180203,0.14868255405418984,0.11935969506552693,0.17991915522882782,0.19371377287735286,0.20077244567943264,0.1551958507241497,0.1403275897068696,0.16559103064799846,0.1396037863379036,0.1808840647737572,0.14359606678537803,0.13273845475907808,0.14723990566033152,0.18510257577353417,0.19386204942221985,0.15824366967349032,0.21138951616176604,0.12109243929321559,0.13668969897232114,0.1876166437016117,0.1681208011239798,0.10590110790435346,0.16000892436330594,0.1335974109583938,0.1764166028884518,0.1700686760072448,0.10874729625722765,0.12075802246773926,0.17488828179312516,0.1254730423184452,0.16515921960043606,0.19177382036879584,0.11629971454982405,0.15774455123032485,0.13505256711121455,0.15021677223618954,0.11443988498986571,0.14842592999531068,0.1850176288034562,0.13850092465826616,0.13612464473784686,0.1521904658229519,0.133655044379729,0.12085809400126704,0.2294719934392611,0.22404236856165743,0.21384164095699004,0.13798442258465773,0.17189539200316933,0.13772230477089303,0.1475802022387243,0.15074173479996547,0.13946375659500254,0.19640046554426782,0.15505849243366923,0.1159228865858674,0.1355155685052487,0.16023800993517162,0.24602775546805394,0.14880549052219724,0.19343231666183244,0.14408768218165902,0.17472604275899956,0.11024660484526334,0.18861769518816707,0.12668500167728405,0.20967094066059352,0.12513904734890038,0.18002718027063302,0.15766863106638607,0.14559512227535903,0.14690259434893063,0.1287145336831433,0.15746932663276292,0.1305504563681814,0.15021294917440048,0.14182948941134418,0.1632432761389349,0.1928656508795095,0.14865842613278824,0.10766084345857144,0.18665200437998666,0.13945084550417086,0.14361949765875454,0.12166566676965972,0.21059420520813177,0.134762622039211,0.14439887118274047,0.19027795414942741,0.13225544233773437,0.12819678046828012,0.17931531325735778,0.14089465847451943,0.18046321130068307,0.23059547928794658,0.12023049817480982,0.20244644891860306,0.18880716997744493,0.13651931561768693,0.1134733907206231,0.1558382419208462,0.13789725593490273,0.14890798001231004,0.15051030435759669,0.12143815690094424,0.11541644018780071,0.13179545291128603,0.16785256371322296,0.15954177201892034,0.12623094480828845,0.16966733502056272,0.106104602372199,0.17705414228885608,0.14781260986500183,0.17068231993072425,0.17498716808472828,0.13099661230813733,0.18166941120833968,0.14064924544633484,0.21589132679368886,0.1102230156235649,0.1510869825241847,0.13406016200294665,0.1647431421918672,0.16351599781597445,0.22628642257893786,0.21752971441885202,0.10827717284867915,0.16709723714192334,0.1554480137715377,0.12419451928068241,0.12545644024858188,0.12388680972231964,0.1122239608079714,0.2414750712380588,0.12319227791397039,0.13693519880596805,0.15691365702601837,0.13516239836690289,0.15289349300550953,0.1726567952196148,0.15103225550438673,0.1260837611393001,0.15227711934647845,0.13053566178362053,0.18852515072881038,0.268076713403368,0.13518579270773992,0.1470932364777641,0.19713938236461154,0.1441161346017602,0.11119048005558824,0.12501953734464583,0.11421976605577916,0.20667545956290806,0.13417738868108697,0.202863549212025,0.2653465456310088,0.16143418788912034,0.1454835953415376,0.1285101345401724,0.15999176135132423,0.1885912907182662,0.1522494088413415,0.15423404431220983,0.15047688214555036,0.14157733085317317,0.12155487211185602,0.14196964548907573,0.12574868326960756,0.15390648541534946,0.1728615076308325,0.14590263118134172,0.20219582501805836,0.13593805282184762,0.15003956360894674,0.16678245107063938,0.1479215227252844,0.20536286371589574,0.12030272236596928,0.16146939387095466,0.18307053975980578,0.13635132686727355,0.12940782681309573,0.19555105696253314,0.1257471357959707,0.15544197520234995,0.13418781437909696,0.1941708956563183,0.14024815524113213,0.21545700279444582,0.22826979508312673,0.17182536769615311,0.12077253035616495,0.1626236767371516,0.1680683892079035,0.1705757859824224,0.14936106981557637,0.18379158596742887,0.1116423510437121,0.19233732087180752,0.19686506946080168,0.15222155812334892,0.1911196856634755,0.2414045948151804,0.15464988348362907,0.1772722985166527,0.1378707331196218,0.12928039844828415,0.17335202195716545,0.1900206121969047,0.24010086627349833,0.17726459521928684,0.16789523926791278,0.17669768345847997,0.17171827556148767,0.14462013759078474,0.13315050586603563,0.14842753312405316,0.11303641629854155,0.16676565552049488,0.23534322023614662,0.15034644347517148,0.16223275029773154,0.14820733265765929,0.15922187403022045,0.1413904506559468,0.14698540676142582,0.16290954924570375,0.138260775142205,0.1524120175750467,0.15079679803207016,0.1242844725542568,0.12544654654884083,0.12888212649436023,0.16383552586332578,0.1285168026406394,0.15600306971838118,0.1386122199589721,0.13293214026663558,0.1225610529561613,0.18238495673297822,0.15753301564642996,0.13025499821990222,0.13060198914855212,0.15735904955253568,0.14875258484232856,0.17320395199443492,0.16008342387725943,0.14803872923004419,0.1678590146457771,0.1903619202713793,0.2411181977292443,0.13067849903203685,0.1316785474497397,0.15783851260046475,0.14147553231375404,0.2008898406456561,0.1915732424312202,0.1207518195394182,0.14903275491791243,0.2527166734411937,0.1182438440035907,0.11880857907537457,0.13332869464259928,0.17115948919284535,0.23926807895110352,0.12585559014380895,0.15702972238655136,0.16854833697711316,0.137538965676577,0.14467840304667445,0.1355017611884358,0.1220443571393465,0.14610407965494038,0.12104925231615768,0.13303362391763932,0.19275885798614142,0.10314130425302571,0.1294615683597015,0.14019922162831921,0.14718947134091864,0.14399561825934518,0.14137676812773323,0.15682311077081557,0.13625972212351178,0.1516292225937155,0.1393693364654815,0.15472227193811558,0.1578523425280981,0.135122824692907,0.11850978018146807,0.1666200228870852,0.20811979965812835,0.1288364835692217,0.13466825698580553,0.10144653430502847,0.13988970341656903,0.19185966213104919,0.13123152220143977,0.18211364873339783,0.17934321903007727,0.1558694009260797,0.15402639747221678,0.1346679511976411,0.14970530848186153,0.18067890719789034,0.1596750813986295,0.20428318127972073,0.25744192548216194,0.15452339975096846,0.14322697944375637,0.17059918672962862,0.14266983125337954,0.13479060427328082,0.1645744126962604,0.14905426503422473,0.16171411051714452,0.13819651005894992,0.13899347835481216,0.2080654766228393,0.13809370473522503,0.13708087340132455,0.22901164719641284,0.18293458868120493,0.16422101310784573,0.1421507055985217,0.15227019128337232,0.19603101151423918,0.19848853802289304,0.1420754206194141,0.17634004984820617,0.19276241545110512,0.1586481979198707,0.16901995414465673,0.19889037664984016,0.1938475753802132,0.11808758642536447,0.1649012758081715,0.14594878556639126,0.17423998583393055,0.20140292156719083,0.173431422165058,0.21562318248966467,0.14142946273952967,0.13534571457407457,0.14535485005980062,0.1595786925645516,0.15340810178264516,0.237101913397535,0.12358861990415589,0.16576945349214917,0.13796443967221347,0.21130973376031842,0.11827393902449387,0.13135299623556596,0.16295639396440922,0.13329572027876307,0.1731232138053673,0.12054755968642634,0.140811909213061,0.15943648908550562,0.1314503591619415,0.17422407025036465,0.1500269533072774,0.16695285069430357,0.17117729979102628,0.22466802269461852,0.16259363759144654,0.13022680371432713,0.18454019213407719,0.15638757539438228,0.1809467662778006,0.14266532541960789,0.14481698654205077,0.1536325237462211,0.1844746121352997,0.14764430412389468,0.1791585221825575,0.1399732248707123,0.15699423803528634,0.16625310388950346,0.11336000823668178,0.1865835514298681,0.10931085084355018,0.15450820960788275,0.13173510509191125,0.164727907834522,0.13873481887694805,0.18741164229368337,0.16967023267983428,0.13382948010915965,0.13834588504424503,0.1422168125990484,0.11381825249557831,0.22947211397639022,0.16460770627808127,0.14425041357660956,0.11308115868653394,0.16021353709020258,0.1284462095519026,0.133785018296361,0.15661271186755468,0.15867176845785497,0.15037580268663914,0.14359670121828935,0.13599452489417221,0.13714517068880022,0.20513783952251827,0.13478345638311268,0.13614698024676017,0.1594895359581686,0.16478616097270718,0.181736579509757,0.1579346633598551,0.12548541036484662,0.17168455897655951,0.13260645341182084,0.12645497106671327,0.13932582576624272,0.1495998601068854,0.21467795759263997,0.14802449062818607,0.15242018253481446,0.17519843311829714,0.1361650671159579,0.18218690011341798,0.15825130631073675,0.10750951600464846,0.17837863202720444,0.16239435775173913,0.18331847385895556,0.17361681090269568,0.13710660629029242,0.1253171854028487,0.15829399647243078,0.12846057198481695,0.18784956940622527,0.1757526483116567,0.14149379487453914,0.20704939287402463,0.20046518508143313,0.15648782022830063,0.1421160647728141,0.17259065447503533,0.13742840171537954,0.17408851545348789,0.11376558851733398,0.12966197854460854,0.17876019806689675,0.164718789806167,0.14634492871666538,0.1790740207038516,0.1133971413567383,0.1853191674321509,0.12254797002988348,0.16690198504026088,0.13904385137369168,0.12848572446906656,0.14263542758412753,0.13758362657075618,0.1940113388393603,0.1382705676468863,0.12749936720560762,0.19314281622452992,0.14940983664628094,0.1425511691908652,0.2515219958604257,0.1903389187083962,0.143954259194667,0.15395291070354566,0.17928351560488848,0.1218606431009168,0.25193220847520137,0.1448930647342555,0.14753893006745294,0.14473565764463198,0.14906378850471766,0.16644219471526858,0.2677508995592212,0.13449809543293895,0.14964811075878545,0.14995357874111878,0.1863436188893621,0.17010793784841188,0.19167736855689738,0.19430294714769358,0.15241525045083312,0.13851104042776913,0.15305731489763083,0.13106962753227738,0.1246949043714263,0.13854347660606423,0.13892405626049903,0.14160531534325302,0.13020041780500785,0.15490444198734157,0.11615559842637807,0.1865721430257514,0.15742695859516095,0.1416415036861719,0.100900834401236,0.143280939454708,0.21010368967565135,0.12534713965357824,0.15488967118210528,0.161606140481512,0.24263818192461936,0.16085826230323358,0.17523410769228526,0.13271770874554567,0.13972794012728787,0.17561694186316043,0.16754656378461127,0.16778116520218966,0.11751185615167313,0.14636821945475897,0.1122756252908544,0.16363009575905335,0.13019306719909962,0.14893288450471304,0.15236994508942928,0.2096726274417462,0.14757366876920594,0.17180849136606088,0.16158427742116893,0.16756531371263117,0.1529599978812613,0.12976783485965745,0.16658974460132403,0.13021795720675663,0.24824876025209117,0.11331979687320705,0.21562600399827403,0.10587537171607089,0.13207733629029356,0.13710023156781695,0.15993875861311774,0.12113347558190496,0.20848988502148652,0.14525412660672868,0.15244932679023812,0.13707501723238374,0.1959368380030299,0.16849460763621227,0.17750841032122716,0.17445766305462032,0.1540760618171238,0.15170110713351828,0.1615031430858914,0.13354982510857824,0.19585507703507365,0.1825410423966975,0.17122678746293374,0.13855045531724314,0.13886007938046394,0.19948893786444644,0.13480280880593842,0.14492111303907773,0.16823941349290195,0.1497355324562177,0.12903748205963653,0.17141266761361598,0.14781283180960825,0.1755161665885587,0.17043155510216204,0.18758538146581713,0.1471540750864112,0.1656823265358945,0.18253177145734809,0.16147514813842892,0.1455971929636095,0.15270740520418635,0.1958865997221132,0.17937871756836177,0.18231364338378284,0.15176218857701618,0.16221118134728738,0.1164296839450507,0.15961312627630964,0.15423137134538975,0.15049349957498465,0.2281407523061561,0.21698292508615957,0.1713259945279552,0.2380518859581052,0.15051483448841102,0.14950668333083683,0.14751963454729444,0.10690115016567456,0.1496966391302877,0.14128428794997025,0.1678552201842176,0.16349385588226256,0.22101409417201653,0.13787206318488676,0.21502708233615891,0.1842050437189975,0.15349775038996138,0.15814581291100663,0.14844604994156838,0.16915393161077838,0.1937803431560944,0.11580063366169696,0.16008674415543192,0.14917056893558545,0.1418276435526693,0.13802785293705938,0.12629530208983383,0.15121789678021974,0.12089188661221,0.20140069982760167,0.11762310331435698,0.13182904483890395,0.10753476569940439,0.12266621519674671,0.14571593356155568,0.11034820404522165,0.18337308535812916,0.14047692981676022,0.15525557789721553,0.14581474556409924,0.12494061093800948,0.1086677563902089,0.12248483567487037,0.1368056302525812,0.18541437494586,0.16528902033982887,0.14441131092995763,0.1280439766249482,0.1317785764306439,0.15175592781105451,0.11851359645452864,0.1228397759990995,0.14989189281671353,0.14417053934179394,0.13437610963108793,0.10496572880167558,0.18866457059143524,0.13644392012235845,0.11787537596515033,0.16556180804546092,0.12254898814937935,0.1773488734172939,0.15711990518360464,0.12759113014920836,0.15598570434509687,0.18851910081498446,0.1239184958475326,0.19750591515776486,0.17427854569896783,0.17973854824354973,0.11067473387177883,0.12701508884191776,0.14682265289451585,0.1412356704432513,0.11821887383763585,0.16702278373726517,0.12259111710878727,0.17675746274928056,0.1492270474966286,0.17968485717505323,0.1263727547789804,0.15724194967080893,0.15146677009952897,0.1944616570515888,0.20272798790601493,0.17946515211847827,0.17953419035095697,0.22992880956589645,0.19151672971758557,0.13723099876962094,0.17126139200383358,0.14108850255822414,0.154409846321592,0.16267145757545284,0.16377328668493682,0.11707579096713602,0.10659074949025168,0.14694385973607516,0.19597364190553976,0.19208474716749774,0.11651225878377298,0.1472864345072561,0.17816267930495366,0.12607544903770215,0.1431361949482561,0.11502313577383126,0.19621203620377553,0.12438212403741461,0.22918632540964065,0.12210763095491421,0.17302623920008176,0.174967438053475,0.14385529608009243,0.1410344907926178,0.24306301667799657,0.20187980270578118,0.16438728067225306,0.1615180350999277,0.1247577539204123,0.15858418807781305,0.16064630640743255,0.143220326277765,0.1256243714915779,0.13501786207455174,0.2035736241541219,0.1799816462146637,0.11830892049348471,0.2186138500461113,0.1814392115352882,0.17120702054879386,0.19218269704152474,0.12986948887640812,0.16798637835762373,0.16707210091544916,0.10941472563581557,0.1824208568513031,0.12200509645598039,0.1345760525962411,0.17478222652250144,0.11062559036932115,0.14825093338228248,0.18391512134203178,0.14113767635708113,0.22741258029898048,0.16928203146945806,0.1865981625856746,0.19945061618201892,0.1940587890220621,0.12685339182271943,0.1612064445218398,0.14946457758967138,0.12473962094937177,0.14110806809759285,0.219871213607527,0.143833722428396,0.16703473919663117,0.17370418965850615,0.16432830106833074,0.1809677561719218,0.17894430687322882,0.19847152064394405,0.16591630236835322,0.1331292641829666,0.14645453148692333,0.1480687817203535,0.22824746654873193,0.15427449402749838,0.1733009906251026,0.11164665114780084,0.17991529500725,0.23488040115473238,0.14857176526416996,0.1781947373902912,0.1487142032127725,0.17815081920580111,0.15741490058542865,0.16745724097438006,0.19203750726832555,0.1434111167811188,0.12758179185848023,0.12746363911252429,0.16195822672251023,0.14137009033032438,0.11991217170439031,0.15056034014202566,0.13896749556761823,0.14262631023752137,0.12991310628467256,0.14260335459200307,0.15027752689000695,0.10884233484517904,0.13174878267133255,0.16349286654915735,0.20677521128069376,0.17559505559178082,0.16472565700186814,0.14596413740019307,0.2508520086136989,0.15726321701440432,0.13031296093214065,0.16180702012418136,0.13942873892869473,0.21681118128915508,0.16971382715282926,0.12933708465380508,0.11473700057358152,0.17778853432164773,0.15163331625082418,0.14849305649789432,0.1716907165386453,0.17503892829045567,0.15433033933082335,0.12823756305320405,0.1847462100267731,0.1871977373328616,0.11744620221848417,0.2073838397614347,0.17328227404155452,0.16407336209027357,0.14562834066210145,0.17312381916424488,0.144493236154284,0.13940782970177024,0.12861605139354376,0.149046762982251,0.19503117307373583,0.1499138766736958,0.17694410047767922,0.15589139733623394,0.1604723250724258,0.1650827708467856,0.13531095670609017,0.15602622693182538,0.12411325065821859,0.13628381068447018,0.2068914905890996,0.20654979405263343,0.14293369055850866,0.23172622943113594,0.15845187806477204,0.19462691035565,0.1788470461115392,0.1365955838600709,0.1554619978447761,0.12276472368620236,0.13563641371557628,0.14398457319548494,0.1624122184618334,0.16105536265534173,0.1668391075089913,0.1291142715284697,0.1971268324676673,0.1283520252403064,0.136945891191714,0.15448356735467844,0.14815762180694772,0.15235467899213373,0.1558370009076523,0.14264588539660564,0.16845554680803587,0.17843982781182094,0.17131271304435772,0.18070652091650463,0.13758962910805592,0.15337622902011117,0.19045513673834294,0.16296265915870176,0.12948708253090827,0.19475467059257412,0.1495781029873903,0.14687248498147804,0.20180730327728158,0.17844141723781207,0.1730628293747318,0.17454247208331425,0.24382716621934042,0.14627191193147232,0.18671005553893702,0.1692050395163446,0.1945403134147153,0.18164376254484055,0.1856781021262309,0.1370000832715284,0.1270267570984095,0.2316433895881366,0.1559147325948106,0.22077906468764383,0.18471388062868493,0.15493565275370988,0.15018605881469557,0.16810784170490675,0.1432210806712257,0.15371047433836876,0.15515989129499333,0.11141658261209882,0.11942080500034671,0.169491950452419,0.12298320157352523,0.2146714136812597,0.11052590992358709,0.22153313660008567,0.16717844243510632,0.22100232039834936,0.16405320703707196,0.1882677502956417,0.18634185408568335,0.15283442788338003,0.13443059647081182,0.22825155074725156,0.17199320516008557,0.15921981322838857,0.16870450182355645,0.1891854885460423,0.1389110548866356,0.13219382757661924,0.1628237603395723,0.1364997420795877,0.16119478509774343,0.17053323336487602,0.14116997366663508,0.1736196709755959,0.13023261754696172,0.1371150596890271,0.14262458515975324,0.18683916386965804,0.1709727509040234,0.20222477927890134,0.12872195670584352,0.15351946064309047,0.19021173068435066,0.15515999533804317,0.17112126072775968,0.14765297801569957,0.14984442469832077,0.14135145499429214,0.18151305670819692,0.21825055440527613,0.13260428341465252,0.2160317481204093,0.136723441196519,0.1922355329617287,0.14999257338131028,0.1029603425727796,0.18546418775177814,0.1492428945259883,0.144531358373798,0.21873612573687803,0.18059842846167215,0.13144295159431163,0.12991344771393612,0.1555567523277714,0.15115047033675272,0.2580923115326265,0.1396635832536087,0.1470127606473932,0.152013142108906,0.1279325192025294,0.13666502101779182,0.16501140127808409,0.1535388830988591,0.14027623991962654,0.1937519154918533,0.11865280893598387,0.22519559907791833,0.15931672788908247,0.23816762828620086,0.14838261827471086,0.1413440529110006,0.19094805302764023,0.1605355444932778,0.16646990024183142,0.16370946792147156,0.15553018277021827,0.14779178209796523,0.19422854521758623,0.1445870640922285,0.17357022404337127,0.19256397813979556,0.1299347048635985,0.13283256036621943,0.19530467710011154,0.16198724491579414,0.09611390439036353,0.18436049876049473,0.14665557458358908,0.14862384913210636,0.1528414693886312,0.18842251885654168,0.1418353830312663,0.2423150378870774,0.10923721942662366,0.1592021351441627,0.1899026402943704,0.14470646299812795,0.13889996985047956,0.16723420448407006,0.1226985794326022,0.18060528213269267,0.12643769047942435,0.16332317288867984,0.15739110702572034,0.15983010587314103,0.20674750486710217,0.1988861143654133,0.22015464071230564,0.1262356972571169,0.13569339062615843,0.17031245318076094,0.1333409252002056,0.17186043449301433,0.15719502224498508,0.20261695518128356,0.1812529680432046,0.16672147218803895,0.11733789691731514,0.1597877222733405,0.22993308092126885,0.16197257415194427,0.17195325442783893,0.28743894830489747,0.16695094203421393,0.20625744283543845,0.16988229084795084,0.15828486366038286,0.14686347332325259,0.17312112145079267,0.14139943929941123,0.12828736556344802,0.13908202756424348,0.20515334387494255,0.15941777627707662,0.18645696584422153,0.18695418650753604,0.1971435975342065,0.19089933377195056,0.10824288891066595,0.15714250093500887,0.15721581590961783,0.1566780754216864,0.13491489337555151,0.1289438879326249,0.19180228034982957,0.14412356723821826,0.1272560294373564,0.13558595086455044,0.17072846917286988,0.1180702143834406,0.15291424776407672,0.1551268697585379,0.11876915159129771,0.1510115677853994,0.179162448934605,0.22123837935537496,0.2005439124637998,0.1266584005049749,0.18537965267573553,0.13418645521764233,0.1375371524864415,0.1572576195011236,0.15242978001496452,0.09819708133199252,0.13315621614653758,0.17307661179231615,0.1626468683932633,0.15007819779124915,0.15214483211994695,0.14909656133730254,0.147007914165949,0.15400482937209795,0.1655020637406949,0.14503666162806803,0.1414306437883464,0.19718823562576412,0.15220336882170066,0.12518390058660264,0.14080368040648178,0.133550777138939,0.20827424057595148,0.16813374471709358,0.143204792946827,0.15116753154076207,0.18103026437725148,0.17244787994361843,0.14685729553539384,0.1306324022132054,0.15868972722726446,0.1327139677773453,0.14815102628976765,0.20296722816952145,0.13208533624651703,0.1502080327501448,0.15015798462564436,0.21378473852124782,0.22526966144430244,0.14604314409835806,0.13587290765142393,0.1531996817587137,0.15743056950631185,0.1306798665218901,0.14799680495561715,0.181331284962066,0.1614036444126894,0.1895332937591104,0.1627910575754472,0.12404971236330767,0.13962336509210221,0.13799988431350135,0.1572064341502337,0.17949597936143477,0.22336465702359046,0.12353851008253326,0.15077114391096777,0.1290076342836914,0.18107306905942994,0.18557601112989197,0.1289067497527861,0.20730435531421362,0.14417048197002424,0.14879947027266438,0.1515813316449706,0.17418468633619433,0.21396050137247427,0.1479933958812345,0.20686436150260618,0.1301808985280305,0.1579669071979647,0.15713794707570097,0.15483410787963636,0.18313877836309272,0.1339307899198905,0.10709648924723024,0.11773607919405361,0.19551344520896446,0.12692952841259017,0.1429430016209522,0.16329762719527388,0.18437332277649618,0.12152183548929085,0.15663102746279137,0.1712017284042534,0.15743171205303585,0.17322330064496494,0.2192756043861946,0.1871482133742788,0.16872444430870304,0.18293847290431103,0.14663748110046168,0.12719392783358832,0.1619738112447995,0.18590002459096333,0.1465286867135055,0.1916234202369834,0.1941282098699173,0.17184166913202328,0.15023982669915031,0.1719707304842439,0.10386173636671887,0.16677450006631792,0.1496097360143373,0.12295543339415076,0.19221135748666718,0.14865634448639647,0.16819069754651816,0.14275155037992054,0.195023315733088,0.16910737635083803,0.20084076614460844,0.1454643405428554,0.15812680770264076,0.1285533623111676,0.15161235002098483,0.1303455109133749,0.15493034951092677,0.14172473776763178,0.190394657326414,0.12064073372559354,0.15273717190392477,0.2657570802488528,0.18508173961276725,0.18076606582163854,0.10285450951447118,0.12027160248664316,0.2328135254792159,0.17390821884889346,0.15078056515149596,0.16138486369824595,0.15130837840141861,0.16011021065566755,0.1925619974158867,0.14172985477653507,0.25701533463806236,0.15279612427006098,0.16077895203810122,0.164500843508627,0.1257323880174962,0.145023661403807,0.1571830195978158,0.17511764082385922,0.14217971937133764,0.20199673633576745,0.16331607320955394,0.1311160475341724,0.1764902408119463,0.15765581415320845,0.14270789113885346],"xaxis":"x","y":[0.22219560824133572,0.25735777885233146,0.24567407244628883,0.3040139770008413,0.280523176055657,0.3278647132991649,0.2704431562246273,0.30041440199916997,0.2726873546668095,0.23432792284786624,0.27812214200671215,0.2032384273368634,0.27341028435338466,0.2585149941317591,0.2849205329362293,0.24189342182221696,0.31054200387725517,0.22420733680361365,0.25089749358334595,0.25334155178932344,0.2346695870354718,0.2643719493433955,0.2848702470827665,0.2611846350018963,0.27778184311235526,0.2655048563732618,0.22039455343272282,0.2849978301652754,0.2669997389018875,0.3347991791881112,0.292366279573122,0.2597611061040356,0.2622609581122879,0.28949949306082257,0.30299287466639613,0.318420183460965,0.23569840404361983,0.30986334109207025,0.29163214493273243,0.29287264749576575,0.26271810349416225,0.2561969892534383,0.21916582517749306,0.25999649246539996,0.3523137979732976,0.25704748036470765,0.3709476090389721,0.28423376944094425,0.27609550807373734,0.3565354800078082,0.2807588985743805,0.29933606541929975,0.2793752919466999,0.2754431615037025,0.3014594962146158,0.3025814608101797,0.31350811104507875,0.24397083823780322,0.22216105731008948,0.30756591416632034,0.22359529812302442,0.3012086258491771,0.2569278343362334,0.23617900347543908,0.2845498806519199,0.29081556981337225,0.22186936913801777,0.28752990941388296,0.3019078655242544,0.26285960659943636,0.2905415637094505,0.29281555153220146,0.25725246477180186,0.29685154686274823,0.26750929893061587,0.19393482721177321,0.3146960254659767,0.27647071158036196,0.2420288194883576,0.250462025712055,0.31689249972310857,0.25020811107925633,0.25616759991848864,0.2156367521119351,0.2883769731925138,0.26780211743204835,0.2804631568568884,0.29110996157356417,0.22634343883876495,0.28784179142865846,0.34735944179105,0.2885604106934179,0.3062179726217639,0.24823859256711295,0.23315875478943388,0.2764630350557977,0.3232603736887886,0.24176757002100052,0.30535541398596905,0.26511318704590753,0.25475237900454606,0.22529511167169639,0.23768270647860637,0.2827153468231502,0.2445827926250151,0.2614513286547518,0.25954686536140026,0.22453793549819834,0.2240730545929334,0.27689758379100043,0.29616931081923126,0.24155225190719842,0.24475104537276282,0.286345151297146,0.2789137206617884,0.23489894705081213,0.2826604402559015,0.2576920361033674,0.23807824093108915,0.3122000537801272,0.29904100653338983,0.25313532334904265,0.28985512782290435,0.21314523681643513,0.3007978756097747,0.31019621012406934,0.24377481786768843,0.302401045354102,0.2506735940431248,0.25293778863338645,0.29907619059744456,0.3156760017136181,0.2568716673247222,0.25669952849720395,0.24696491707367085,0.22129635092133615,0.21340785575569096,0.2600802771544008,0.2380766574561935,0.2836669581144583,0.2850825025512272,0.2461631838098787,0.2410832773417126,0.2571190578090948,0.23988278940031457,0.2699475616080255,0.2058279899921244,0.21092521975321518,0.27961355430324325,0.21774356516874938,0.24761670209625483,0.26923621714218804,0.24728618043681422,0.31707337233322985,0.25970705314004194,0.23259778716241866,0.264364487204612,0.26839168724496193,0.2940232610831296,0.3425434077763707,0.30772433433710605,0.3129104673481731,0.3100004529806631,0.24493674027216697,0.2741647668403058,0.29597226866546444,0.29238612314112167,0.2560354579871653,0.23880529060851363,0.2777771286174886,0.24926182242874792,0.27445833448948154,0.23784824428453885,0.268707476992615,0.28018834067537235,0.2890548869184792,0.2804092488301299,0.2589341526098071,0.25465658425720417,0.2956168705344463,0.2502955458490075,0.28472571978697797,0.30780878657911576,0.26214894916413956,0.23629618684055134,0.32227648762874794,0.23633814207677223,0.2815950719088145,0.3051444435468203,0.23618738067816525,0.2565863986389551,0.27243101186353386,0.21832272604688527,0.26061984305387165,0.3071697797229137,0.2602924771128142,0.2950754734019306,0.23387571247305652,0.2625995863288761,0.29626649566357866,0.2909838595541324,0.26543678386666386,0.29401885265363836,0.31315472126637817,0.30708952296913633,0.23826424998322693,0.2699549489336461,0.31592571234358546,0.2523282938948848,0.26220831465154043,0.2514060944602497,0.23458613922467114,0.21334961008112546,0.2526556443046899,0.2430909264151486,0.2756365778976138,0.25367920199324345,0.26053552548640435,0.27917368613814564,0.23486769446461817,0.2699254911234611,0.263289466408636,0.21201154565154579,0.244207137421069,0.3109383793216124,0.2320607623119466,0.2461330080924087,0.3073529257985414,0.2884839555752636,0.30541869628323665,0.27747655410795613,0.3598221596302302,0.3040302226321049,0.3016455573543722,0.27321909392197413,0.2669944756171619,0.2654021380589468,0.3354048422746249,0.27996478217716086,0.26597285509604457,0.26156673615964693,0.25150982072953065,0.33643718670913686,0.28683419344531563,0.22826421034046698,0.25140753130027677,0.33923047655502564,0.2533106480845951,0.24584845222472065,0.295625401390198,0.24006843990960217,0.3131152859338994,0.2468119104992225,0.2241484591779512,0.2614067349807473,0.28277492854425545,0.2666288265758655,0.22024387607444043,0.24753487178019284,0.30569462472316794,0.22956996671403626,0.2512733375873184,0.2589712085553448,0.3146745155682183,0.291002626336711,0.27272888282979496,0.23875329926920905,0.23367079522466266,0.3187400952851374,0.2670096043427363,0.2511514199824214,0.295794971930327,0.22284912293102713,0.2606228947275391,0.23935981983448398,0.26473177760826333,0.24799323694777742,0.22146423510717086,0.29669285182676225,0.23580492255987734,0.2370781140332089,0.26721502789675095,0.3366492357564731,0.2875379936115729,0.3528838673077972,0.2732250878418377,0.23256330368217928,0.30091874171242655,0.3328425577487123,0.20644476504260992,0.285428381831583,0.25264572803866675,0.22751700936694955,0.27072427551566397,0.24837116517560412,0.2373349137381492,0.23018226524717092,0.2926913274429132,0.30142349997200635,0.23951077102783688,0.32142144645897724,0.24322636265411812,0.3408972909938156,0.25202688440727816,0.2247026170086629,0.30911808471795604,0.25582046237609823,0.27940453184206654,0.2417995165342136,0.24472904284434363,0.2203511587934933,0.2779467098442102,0.2370415271306106,0.2567804270977071,0.23224529419554,0.2791992257399827,0.28250097148795417,0.3214826927083611,0.273838563787342,0.2560901533590986,0.2940303238448534,0.24795709889032863,0.29313140843468,0.2776327351484201,0.22471272212667873,0.25842268909097776,0.2969443186388174,0.3112976261811357,0.2894009262923881,0.3125949722737311,0.21039821812675275,0.23390181629635876,0.29596618394549334,0.28657554263395424,0.21468493382165507,0.2571314579685674,0.24272908314638533,0.26193666670894866,0.2842426207531796,0.2233776921448267,0.21787733320317396,0.30620700268206397,0.23804006975612887,0.26638153484580784,0.29024025257956465,0.2418792420266364,0.2686697992016443,0.2596319396970343,0.2605721023093503,0.21497732170823974,0.2569127549411292,0.3112769475325026,0.26821122648935475,0.23473989516592078,0.2540852610957525,0.24070669628108868,0.22728036161138127,0.30981366290233747,0.30064473958177007,0.3350170218608731,0.25043955110558797,0.2602068278530355,0.2580969904521828,0.253104960525349,0.26586536841824593,0.25492066573373295,0.3176908497365086,0.2646385639034539,0.2376608835565726,0.22885720845402155,0.2628889981967238,0.3311821254208552,0.2596395693199953,0.31748822211895744,0.2658558619437175,0.2969981521879615,0.20596691846132367,0.3013379160920743,0.23925455747288302,0.3183628520193423,0.23445969854913803,0.3271151668864393,0.2749269158101863,0.24043672967042742,0.2552737223005019,0.23551788964499767,0.2770416644694945,0.238810108340525,0.2721699176930318,0.263621148572626,0.23552625404520672,0.2794322462584325,0.2516573542478843,0.2234197387323889,0.30083434733868936,0.2256608860420448,0.26523727272040226,0.2337918805365483,0.32421883783903704,0.23146768607233337,0.2489662390932349,0.2947722895459305,0.261491797575841,0.22447299184675476,0.30441144270535075,0.23968777755887372,0.29144233501080824,0.34378529529535723,0.2503511893658405,0.3035852777935441,0.2912121581127179,0.2593377624599006,0.2261582328032814,0.27003727067694044,0.25494959065612155,0.2599918438356643,0.2749162871378621,0.24944734520590786,0.21983943638763032,0.2484409827643872,0.2855719800145572,0.2767780073992798,0.2396596201114072,0.2946806769330191,0.2183056207677226,0.273150590564605,0.2765721475898126,0.28278035909583793,0.31148230770236485,0.2448051922631131,0.2938607446206169,0.23921726216010186,0.340977370567127,0.20920719409865773,0.278316544705848,0.27588875106685007,0.29163114038767896,0.281280412778119,0.31476980531596027,0.316401506702042,0.20776772906780405,0.27887279211990396,0.28575945619586846,0.21501434099220917,0.19405364908360037,0.22057833167263025,0.21585072617589288,0.35463184056459535,0.22729195780418207,0.2454777520765872,0.27390315745023897,0.2638146725476886,0.2797775705591558,0.2896974224054953,0.2663562325230201,0.21716835296937514,0.2777398916361373,0.24080430057682684,0.3048697595259983,0.3123477834450846,0.27171121678772714,0.2534994070045755,0.27984124099814794,0.2708952783970977,0.21154988486546794,0.22055220303699777,0.20716528324670389,0.32105100799665787,0.23179153758167564,0.3188241106146511,0.3352271604811527,0.27170308383927816,0.25419715425828726,0.21943986601609808,0.29129059801452123,0.28328199999415143,0.2894028086722474,0.2617289960856132,0.24991148676024097,0.2662419506048874,0.19928853092600107,0.2557300863813186,0.23214822904952714,0.25793605869058706,0.2525003334967055,0.2550312097705858,0.3133726291639284,0.23449160163458851,0.2698811024300731,0.2905206647820534,0.27145664483035054,0.31491700563820146,0.23383534086788085,0.23708334107792597,0.2654013225245583,0.2555779628111969,0.23967151858211241,0.3213669894818864,0.21563260002477075,0.2745834758814668,0.2446754249140733,0.3251842462844015,0.26315156215036195,0.3389150069352413,0.34208724447527333,0.2995736964235624,0.2290664200422197,0.2874268563610325,0.2790735611212991,0.29148184319474485,0.265523383461129,0.29019067820250216,0.22264960024511948,0.26609165412168656,0.27588062916500783,0.2521987469554679,0.2815485370457213,0.3395252650014215,0.2909293073963449,0.29756767937441586,0.23379167732492068,0.25502559059949764,0.2547711878196429,0.2881025312573879,0.33778690947510676,0.2768897726422855,0.29500051720500947,0.2950348500931808,0.3099876472245225,0.26510979484333014,0.25561784538721183,0.28098141916822333,0.22938659858974694,0.2855942736319642,0.32819163238466237,0.2733210592966495,0.2657753715069417,0.24975716168293377,0.2855740412008358,0.26261692704404177,0.2440075812161828,0.28226064944151125,0.25239005909265616,0.27602017365818476,0.26537641934253353,0.23145635779282153,0.23972909056791164,0.23811977126541703,0.2629232204458608,0.2524794134698102,0.2404766055595626,0.25657918310324324,0.23012468542598408,0.23503038037476695,0.2926512185013046,0.27481908451948617,0.24972516455632388,0.251633421741952,0.27751575318111243,0.25534589564676163,0.26998952524630193,0.26577660177570206,0.2598229415697582,0.2899518022325883,0.32518000898408034,0.3413611671768887,0.2342734038369166,0.24705819994149333,0.2663291767313491,0.24631244078500575,0.2992207164394013,0.2876647808533742,0.22768768023440378,0.26780329650529167,0.37250116075545986,0.23647705661122415,0.22368089031273294,0.23266809678903877,0.2766268092780578,0.3780613781138331,0.2534351227831412,0.26813501959111896,0.2858358405407572,0.26420042378300723,0.2511387427441557,0.23983644015348787,0.2183811382644388,0.2472462645261409,0.21383093850496818,0.23175098630644614,0.29742965694903745,0.20267502197198117,0.2314063495139071,0.2521594745285729,0.2551489223032664,0.24778573247358318,0.2410330831161231,0.28740157920180504,0.24924470708031252,0.248676901675019,0.24835550716108384,0.27295151524578254,0.2852273675291304,0.24183267140671824,0.22698211742840324,0.2772749716971424,0.30720245165530047,0.22866041550965918,0.2568866779093988,0.2116268727303617,0.254512776655603,0.31501496115590955,0.24924417897212114,0.2705073130232877,0.30935117675785895,0.29918019792627487,0.2658497376746395,0.24573637606703594,0.2575127597587153,0.30752906567777516,0.2776854450885213,0.3182568606451187,0.3363125295102964,0.25511791877853984,0.2504544581599747,0.2663753077575439,0.2470664257245396,0.2431433925549218,0.28023824123488245,0.24625032425494173,0.28288277432259296,0.24256843965067754,0.24495357354793484,0.321323474050499,0.23124268761413314,0.25251537601930035,0.31273987147905885,0.3146562038006351,0.2581391772423094,0.24969642050343685,0.26526959506891107,0.3369184259188358,0.28491678781110935,0.23831042195377883,0.29622915752148127,0.2765668865849157,0.2851718565999008,0.29427029327804366,0.29845229299608217,0.2895052715938234,0.21962356808196196,0.2762890867192828,0.26571365359650445,0.32558147103783897,0.3270867843072198,0.28507604465841685,0.3456219319940118,0.24678950341767794,0.2532998650702441,0.23772628249344024,0.2716741517816805,0.26251776084173245,0.3492977927087171,0.26057075798887264,0.2600517610512808,0.2541673662370917,0.30494778101676867,0.22237131162009405,0.23598339394682183,0.2822457259913411,0.2484234912035367,0.26860407478785286,0.24325280276633746,0.24676169129364103,0.2703032124763082,0.25194101573866284,0.28257755600510776,0.2546356440404542,0.2982636378310169,0.3007382856528246,0.3191452435318919,0.2752165209587906,0.2448212097045142,0.30312010452079874,0.2733671517420136,0.29806932839086886,0.2489876333329892,0.2578734320596067,0.254780245301538,0.3026819288760241,0.2846131490994054,0.3024054738194645,0.27652827265464425,0.2700388207070954,0.25580053815442283,0.2140655311253468,0.29407615082152355,0.2167840410264028,0.24013944120038694,0.23312273360154928,0.2769047322191574,0.2522419233610043,0.2843116427248488,0.29777184054136313,0.2324432005899262,0.23416110634981163,0.2569978531474157,0.22425176966825708,0.3262947817852951,0.28975053621349806,0.2601839349004597,0.19501569712381805,0.27928121200338735,0.22353944328406739,0.23140887638736396,0.258378305514573,0.2752387214757211,0.24293522754142574,0.2504392879348956,0.24132191294855856,0.25680230229317497,0.3213166804693121,0.2723058837251644,0.24808290747683978,0.2793708774304705,0.2733598639695598,0.29281577798760117,0.2792425601768917,0.23123454214141298,0.28748867649179466,0.22869337900443173,0.21399304153075488,0.27193126377638144,0.26785609209011396,0.3285710445199104,0.22993765432740132,0.24855711381941842,0.2987154774125119,0.2539902981511195,0.2951743119043655,0.2778156233464301,0.21412852256106937,0.2785139768149187,0.2682447704752611,0.30122616162263416,0.30070612507692396,0.2531963092714889,0.2378962940960165,0.2876793059651858,0.23127479992557315,0.30082420418720296,0.27135918415463917,0.2610406544521228,0.30063940086195107,0.3316044383681706,0.24728773700254641,0.25894351849890795,0.2848398348363264,0.24394814214883306,0.274376577600872,0.2199838090983668,0.22153040648981479,0.3020199869012115,0.26617027798415377,0.2869183880030473,0.2827630834413797,0.21912634946582646,0.27774105933896076,0.24398667098327242,0.25763307273323727,0.2621441998488556,0.22980049462379043,0.24793277545272835,0.25089606584970686,0.3267053498500492,0.2471336851134359,0.23114824071877488,0.3153173417486723,0.2597114554541789,0.24570454246903886,0.36381387156992123,0.2840520531020156,0.29915546291795136,0.2674959382327174,0.2902266838927866,0.21779516604449456,0.3512383921505379,0.2741282658772473,0.24816488849093735,0.2673581536111375,0.2660688558958147,0.2862712408884778,0.35795248663142604,0.22649276778950883,0.29128338294283357,0.26717470238948043,0.2919202890385411,0.2892160143596692,0.3083504641698868,0.31889820539826286,0.2784743751155226,0.2565008888966001,0.25969660651688975,0.2315414368377939,0.2554079028215871,0.2826120750882476,0.28053213094370505,0.2638624939721579,0.22691605610900664,0.2872059550277734,0.24446911492123485,0.2824371975258509,0.2595803301208556,0.2580899646476461,0.22478615728804602,0.2414871564684328,0.2777674568704845,0.2351125982046201,0.2738096588748684,0.2561477757129396,0.32157785819036255,0.25397754846954607,0.2934536387301402,0.23774041834289347,0.2678662377417437,0.2806566043406709,0.28874085436584646,0.3018035011279532,0.22432435772225195,0.26954593000465205,0.2318864048195577,0.28150487113871847,0.22246259759848055,0.26535298184079376,0.2726609133457515,0.3228399246452095,0.24999564278595576,0.2771634919176332,0.2944183540956319,0.2857366266571115,0.2678056537829077,0.2327689698622051,0.2811239581803594,0.25234469018926264,0.3540871932537417,0.21138589979408057,0.3256772254781322,0.21586057303286785,0.22663716832007486,0.22839932922008752,0.278533483023741,0.24385857484491996,0.3245281236599691,0.2393352884057578,0.2607662005031223,0.2630090811568573,0.2860367729821984,0.2729493007187116,0.28628245487615894,0.30702398912254764,0.2649877644796573,0.28216506402811903,0.2801880082335659,0.2432264228160118,0.3060345538922419,0.3084695214829924,0.2758297991903636,0.24990510809765829,0.2448901615760394,0.268020937418109,0.24933967091552706,0.2393713721760163,0.27506281051302384,0.24013822097722312,0.2134456913323342,0.29925799738599573,0.2471905794402608,0.2896253224068575,0.2873654845457456,0.30731142654312005,0.26113142845792664,0.2905313339187461,0.2991314176217237,0.28119060100533827,0.25450475415284823,0.255432500555326,0.3197600496995798,0.2975248076837925,0.3091553223280815,0.2614472590448434,0.29668525206078367,0.20888576401732034,0.2682168311086988,0.27205084094726606,0.26063703461267257,0.3413119079063075,0.3338937730872744,0.2980175216861503,0.32870114889085617,0.2737715155547292,0.25785335990867375,0.26370470027911397,0.21413924241132262,0.24735132458385312,0.2442575576284386,0.27215275433361036,0.26994202550635027,0.32548577154609126,0.24957964190609183,0.3099907821825277,0.30922260756337294,0.27999718206709395,0.2755803098492533,0.2640683290201588,0.2887412610633515,0.2830549067081851,0.22761111021579714,0.2805596550138368,0.26667027362249157,0.24911218019442816,0.22805419562003235,0.24584482949567585,0.2809879452593667,0.2335366039565049,0.3129200311961909,0.22097268502639442,0.22293175540630789,0.20763806339783325,0.22820257749057155,0.24261304576415196,0.22059371597647098,0.3059689981529197,0.26102757274531707,0.2594775117862186,0.2577747726904877,0.24201627424282046,0.1867354585740545,0.24540498417866682,0.24306276398480772,0.33754569692180975,0.2776082262112516,0.28027777572634954,0.23341417404344236,0.2614517829563617,0.2677854518324522,0.21633854458088655,0.21651198653673787,0.26970741798688536,0.2599704946057447,0.24228034712058194,0.21348544428671798,0.3149452897652253,0.24967886336865572,0.2071484822461747,0.2791555651711267,0.23646981242971518,0.2863814766284316,0.2550366941166195,0.23285714933297477,0.2891017151939556,0.3318921729470392,0.2214144582405153,0.2916907791149432,0.2947569414506801,0.29282812573389805,0.21101490673711026,0.24028344239493452,0.22103976857127877,0.23767197604408333,0.23725782667281245,0.27071395849076296,0.2429998165522527,0.2905452856583652,0.2640653899611125,0.24521487955830723,0.24109043824939103,0.28463576246472816,0.2683402958222451,0.3168157856403608,0.30923884557879205,0.30186622696434623,0.3042540083603907,0.33210724454131196,0.30780437991138604,0.21928339287383808,0.2794491362937293,0.26709330050338503,0.2798866129744504,0.2653965660198317,0.27292984563691625,0.2152882219667176,0.1979123658511756,0.2584515595526023,0.3026942314178788,0.26501550070814756,0.24710877898660538,0.2675036761795455,0.27249105837822446,0.24416181191448935,0.268522585218748,0.22803770350816405,0.3247735533783165,0.24611599334867204,0.34003469630942146,0.23465505919447888,0.28685948436867353,0.28941211434741904,0.22717699369217612,0.23298063520120432,0.34950419907602037,0.3072210442940635,0.2793440725417462,0.255105826793792,0.22320416060115925,0.2634853186581216,0.2637571315134193,0.2621883553241954,0.25270090835506237,0.24510479166016336,0.34386124875367025,0.3191072775160041,0.2163026867642141,0.3171338046653017,0.299624948673074,0.3078144438850848,0.30327078363867277,0.23974940603825426,0.26886396283290687,0.2929535882294418,0.2347460816955632,0.2837146536199831,0.21615744780167864,0.25168169542806856,0.29144588985150455,0.22078634253511895,0.2633248042650412,0.287203974247555,0.24113783804210892,0.31682220943049666,0.2689144446192904,0.2965665371644539,0.2963735720887876,0.28372062615950305,0.23937434564119944,0.24878191361008695,0.27082031059673123,0.2377083693721736,0.26531346012185086,0.34024732761712706,0.2619201627062386,0.2560477322932065,0.2901274075770868,0.30152639670213516,0.29782131939938233,0.28876290327023646,0.2934063595858255,0.26816250835785166,0.24029919217845444,0.2625692730232772,0.2581970564646353,0.33710074154948794,0.2723541219031789,0.2914222626521408,0.2296685996642267,0.2811893366736629,0.32763902228557573,0.26024934559633073,0.29943049530077037,0.24625164792514384,0.2999221691473417,0.27984972967400445,0.2543613405386747,0.29990182028168905,0.24391008592381208,0.2278197053073453,0.22088540405562188,0.27961007951397504,0.26754431142974383,0.22516052361098252,0.26815021115583354,0.26446083355381284,0.24623250062547458,0.21668376600735725,0.2633636739118066,0.2657500300043494,0.2073901310983234,0.2381290382545719,0.2847414114027814,0.328825368761482,0.2854008477651283,0.266840620075477,0.2684514847506581,0.3285646601711187,0.27178371689126296,0.24712317623333932,0.2861364119270064,0.22936286714213364,0.3212717897136757,0.29829027643796474,0.25476402694580785,0.22418489589336685,0.2957027916493044,0.23429344746715694,0.21947335104276325,0.2795989405604085,0.2977224061335574,0.27653454404312955,0.23762319270372045,0.2723546640253588,0.31330468523972915,0.22121950733774945,0.27393137712476284,0.2737519010746843,0.28806322796921496,0.24088538769231466,0.287080182884817,0.2519299434208457,0.2621942455296747,0.24980516304083467,0.2769748157719746,0.30162826303283613,0.2782264860776333,0.3047741726961154,0.27054404154524914,0.2862946031821785,0.2667937821383383,0.22850477469816935,0.2772825741583479,0.24743176982460666,0.2534887944989401,0.3131713568153701,0.31968984650721116,0.24428164256020796,0.3213332241529823,0.24656564224417582,0.294559875553324,0.27239304657558916,0.23412392531866705,0.27113935469790057,0.25018184020824585,0.266417248044689,0.2636574927958955,0.2589150215631451,0.2887205486558987,0.2911638841117429,0.23993160060510388,0.31763852369379664,0.24105559466961113,0.2520946858340217,0.26156295357392056,0.2811504348948766,0.2528829033938742,0.2779409790849391,0.23130598106335196,0.28783996584520966,0.2911232437220641,0.2968885251116163,0.2998989960127361,0.25145611545305413,0.26617066999320493,0.32046067720228305,0.2684100551971384,0.24363199658457244,0.30960050029484737,0.2689787554973484,0.23689296700595097,0.31679293173720957,0.30784406565088807,0.27894396151710726,0.2966623573536239,0.32969753235376476,0.23706886090267895,0.3088375910376289,0.2752838700261458,0.3073543718354518,0.296676271849817,0.2735126362922773,0.24079732938812112,0.23112843660345025,0.3734272795173657,0.25985000013923143,0.30621475896419087,0.28345417004779666,0.2574592542110151,0.2722810193041504,0.2510728022229275,0.25169145040769475,0.2668203266458657,0.28422018019676165,0.1972533429276703,0.21118018292457813,0.29875215034701436,0.25386572797800433,0.31856674768277926,0.199788197650215,0.33193599755695774,0.2660055215136517,0.3160215164812841,0.2813759789768821,0.3220843552624504,0.2957060463823926,0.2833443281856057,0.2308745378191202,0.3282654773359239,0.2835762077052083,0.27478415658668065,0.26768604665105034,0.30199239839025876,0.2433956831966922,0.2474130111493372,0.2823612655217241,0.2356420799254729,0.2837041461849672,0.27472957115417956,0.24670935027986027,0.3070363382636991,0.22166101024741627,0.24931042362925956,0.2585445825813887,0.3009793429661547,0.29772917055151854,0.32044755931736413,0.22449613788084666,0.251936173961217,0.32053865231854006,0.275291037563743,0.2399601684771342,0.25445272305002176,0.27141398161573665,0.24555990371813782,0.2976546116693973,0.31211843939148864,0.23240588315012575,0.30757059572475914,0.2539035487162469,0.30258810209595394,0.2681200797997428,0.20766174829120324,0.305759003999433,0.22767963380224956,0.2777332734233081,0.3231269064247621,0.28933639267573413,0.2666349135114683,0.2206869960479167,0.271458630820182,0.25657899479058016,0.33511465176325533,0.2879250666546604,0.25733958421612574,0.2499755565690277,0.23982421841733767,0.24604383041769257,0.2844277727360109,0.23122895910345156,0.2607172617003259,0.31927639462448887,0.236061249805032,0.3313581498745424,0.2712944790841804,0.3352510144993306,0.2750635289527714,0.2631689842287161,0.29537158107974726,0.28264084277123996,0.27409034963138124,0.2908064938886326,0.28500251036814506,0.2619436204657433,0.3128227609929861,0.24980327242280295,0.29464026259619397,0.3100203495937892,0.2483483087985188,0.24602424908994855,0.2935394852782003,0.28363730986859437,0.21736789177589205,0.2751819939791998,0.2551248428348024,0.27768506593268977,0.2705646459606167,0.32277427017027854,0.24612157503348236,0.32125651577814274,0.22220145222900883,0.26549439101536787,0.29094913080657575,0.26420073428100666,0.23729727417761204,0.29395342598851953,0.2186690068067972,0.3090271265912286,0.2342864467470467,0.2495453002786826,0.2779252926411818,0.26343823061172844,0.3048494133942445,0.3062062796630387,0.3478170095290218,0.22394639946257278,0.2453035528900957,0.2892259110246328,0.2447344585043372,0.28485435115109625,0.28083290270768496,0.303273235626976,0.2841562289451645,0.2956676368757926,0.2255622601074697,0.27608342439947336,0.3281105551654615,0.27350621479847576,0.2857335185223376,0.3371917940960349,0.2741672323818281,0.3214134902254166,0.26717267637311,0.2795851229961493,0.2644137500384222,0.27387768282380187,0.2413916966485616,0.24083390366998292,0.24945832526766357,0.2765057222039366,0.2624518723946576,0.25825497951710485,0.3101391189360235,0.3130966482791711,0.29099589873278336,0.19952082663448362,0.2868405806098836,0.2855983790399509,0.2719977285791967,0.25109446541166985,0.22111546852219793,0.2969240976807575,0.235464861326107,0.2272548526933236,0.2429858479890531,0.27735105318690856,0.22679635081968733,0.25408738251250773,0.2490630127097543,0.22470018480875187,0.29485283012827224,0.2727664530623366,0.30253714255037445,0.31244671563508597,0.22760912511945905,0.28220391910258885,0.25352276871849994,0.24096460649559082,0.24487447066305693,0.26552337935285747,0.21986201447457535,0.25069009877387594,0.28621110573965136,0.2807721666815171,0.2529486638305765,0.2524212809856863,0.2572215812047731,0.2525020552291087,0.26218176059152376,0.28962747981939474,0.2506875967997,0.2696555880333432,0.3207962500101069,0.2725657043159352,0.23872103122533211,0.24141553723415018,0.2435538981430516,0.3244516083019999,0.29620362140055473,0.2605049374184173,0.2634504924090609,0.3013483894265416,0.29232509173952753,0.26265202779215185,0.2521794924528655,0.24370530972509194,0.24978833541800483,0.24224524891034932,0.2743623388339406,0.2518815996372045,0.26560085653572046,0.24973642394706705,0.28821782146089625,0.3188005270776289,0.2583236641403756,0.2476032999262099,0.2644052579090909,0.2739953719973124,0.23749107052436574,0.27183519454513105,0.3205680587821071,0.26310178273887064,0.2797619628855897,0.27188627403515797,0.2597209189101688,0.23980097407139864,0.22643612831676221,0.27552360211502147,0.29090406948430164,0.3257293197764577,0.2347751844209439,0.2690662590158316,0.25105637501796113,0.30259641266936854,0.2763151629630417,0.24119424461016192,0.3563203682132903,0.2513635569489212,0.2644885262067132,0.2628889792487927,0.28832407848665337,0.33077924408708625,0.27327065028915765,0.2939072391720291,0.24873907412127297,0.2821726609482631,0.28037957644313477,0.25949967157692017,0.3060471176827828,0.24378560315296657,0.21194431670784927,0.22986291103033896,0.31540298604797684,0.23822865186490286,0.2468052130269091,0.2602211386333443,0.313235982850998,0.23101293952783214,0.25436615593944656,0.2884889612072775,0.27338360985512367,0.3003356984005854,0.33336940862608416,0.3127308600283794,0.2799524438943042,0.31625896005969634,0.26451177679373955,0.23725660409305588,0.22704665676214092,0.3226874817444832,0.26229907565364596,0.28529727035515157,0.29755145744289596,0.2972302041405399,0.2531708518872109,0.269844185836268,0.19143342000717176,0.25056769744550633,0.25353984300837035,0.22992471059257943,0.2916319632280784,0.25029014098834146,0.27571747100561195,0.2618305400488668,0.34936244736893324,0.27111358136940944,0.2905346642185605,0.2332747739586323,0.2618396593603053,0.24375876111210562,0.26564138090239947,0.20676621489924202,0.24558354999822735,0.2556192172071482,0.3091830462452329,0.23207760928792961,0.25635261006545224,0.3668615617218554,0.30858097716438276,0.298928880256326,0.2090552920427848,0.2181825246825547,0.3362926255254179,0.28693216482696116,0.22897693069406125,0.27396893109580084,0.26358211909172546,0.2701555778443544,0.3199675151732081,0.2954858425187498,0.32393798840664395,0.2707080148800634,0.2838354583385859,0.27042782658620534,0.2559797514908868,0.2602694078868044,0.24455548758625342,0.2697846418172065,0.23314413973578113,0.32951629074855193,0.29061943461388773,0.2454917636497225,0.2866917554485094,0.26798307850192954,0.22260165034299734],"yaxis":"y","type":"scattergl"},{"hoverinfo":"text","marker":{"color":"#54AC88","size":20,"symbol":"x"},"name":"Min Risk Portfolio","text":["Min. Risk Portfolio"],"x":[0.09611390439036353],"y":[0.21736789177589205],"type":"scatter"},{"hoverinfo":"text","marker":{"color":"#B07AA1","size":20,"symbol":"star"},"name":"Max Sharpe Portfolio","text":["Max. Sharpe Portfolio"],"x":[0.09611390439036353],"y":[0.21736789177589205],"type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Risk (Standard Deviation of the Portfolio)"},"gridcolor":"lightgray","tickformat":".2%"},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Expected Return"},"tickformat":".2%"},"coloraxis":{"colorbar":{"title":{"text":"Sharpe Ratio"}},"colorscale":[[0.0,"rgb(209, 238, 234)"],[0.16666666666666666,"rgb(168, 219, 217)"],[0.3333333333333333,"rgb(133, 196, 201)"],[0.5,"rgb(104, 171, 184)"],[0.6666666666666666,"rgb(79, 144, 166)"],[0.8333333333333334,"rgb(59, 115, 143)"],[1.0,"rgb(42, 86, 116)"]]},"legend":{"tracegroupgap":0,"yanchor":"top","y":0.95,"xanchor":"left","x":0.01},"font":{"size":16},"title":{"text":"Risk vs. Return of All Simulated Portfolios"},"autosize":true,"paper_bgcolor":"White","plot_bgcolor":"White"},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('70f13cab-4c42-4bcf-9b75-56ce433bec64');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+<hr>
+<p><br></p>
+</section>
+<section id="compare-optimal-portfolio-to-all-other-simulated-portfolios" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="compare-optimal-portfolio-to-all-other-simulated-portfolios"><span class="header-section-number">4.3</span> Compare Optimal Portfolio to All Other Simulated Portfolios</h2>
+<blockquote class="blockquote">
+<p>Benchmarked the optimal result against all simulations to validate consistency and uplift.</p>
+</blockquote>
+<p><a href="https://github.com/Daniel-Carpenter/Portfolio/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py" target="_blank">See full function here.</a></p>
+<div id="51a73615" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>View Code Here</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>simulationViewer.plotOptimalVsNonOptSimulations()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Note that the min risk portfolio is the same as the sharpe portfolio!</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-7-output-2.png" width="724" height="512" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<p><br></p>
+</section>
+<section id="compare-optimal-portfolio-to-all-investable-assets" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="compare-optimal-portfolio-to-all-investable-assets"><span class="header-section-number">4.4</span> Compare Optimal Portfolio to All Investable Assets</h2>
+<blockquote class="blockquote">
+<p>Showed diversification benefits versus single assets; improved return per unit of risk.</p>
+</blockquote>
+<p><a href="https://github.com/Daniel-Carpenter/Portfolio/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py" target="_blank">See full function here.</a></p>
+<div id="93295107" class="cell" data-execution_count="8">
+<details class="code-fold">
+<summary>View Code Here</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>simulationViewer.plotOptimalVsRealizedReturns()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Note that the min risk portfolio is the same as the sharpe portfolio!</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-8-output-2.png" width="845" height="512" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<p><br></p>
+</section>
+<section id="other-class-functions" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="other-class-functions"><span class="header-section-number">4.5</span> Other Class Functions</h2>
+<blockquote class="blockquote">
+<p>Exported data and plots; enabled quick checks and repeatable reporting.</p>
+</blockquote>
+<p><a href="https://github.com/Daniel-Carpenter/Portfolio/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py" target="_blank">See full function here.</a></p>
+<div id="cadc7f74" class="cell" data-execution_count="9">
+<details class="code-fold">
+<summary>View Code Here</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exports all Weights Data and Plots to dated folder</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>simulationViewer.exportSimulationData()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Input_Parameters saved to:       Output_Data/2025-09-07 09_50/Input_Parameters.csv
+All_Simulated_Weights saved to:      Output_Data/2025-09-07 09_50/All_Simulated_Weights.csv
+All_Simulated_Weights_Stats saved to:        Output_Data/2025-09-07 09_50/All_Simulated_Weights_Stats.csv
+Min_Risk_Portfolio saved to:         Output_Data/2025-09-07 09_50/Min_Risk_Portfolio.csv
+Max_Sharpe_Portfolio saved to:       Output_Data/2025-09-07 09_50/Max_Sharpe_Portfolio.csv
+Expected_Returns saved to:       Output_Data/2025-09-07 09_50/Expected_Returns.csv
+Expected_Returns_Stats saved to:         Output_Data/2025-09-07 09_50/Expected_Returns_Stats.csv</code></pre>
+</div>
+</div>
+<p><a href="https://github.com/Daniel-Carpenter/Portfolio/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py" target="_blank">See full function here.</a></p>
+<div id="2d978599" class="cell" data-execution_count="10">
+<details class="code-fold">
+<summary>View Code Here</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect that the sum of weights constraint is met (100%)</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>simulationViewer.checkSumOfWeights()</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Invested Variability among assets</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>simulationViewer.plotPortfolioVarianceStats(figHeight<span class="op">=</span><span class="dv">7</span>, figWidth<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Process all output at once</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>simulationViewer.processAllOutputAtOnce()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><br></p>
+<p><a href="../"><img src="../../../docs/img/go-back.png" height="50"></a></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Concept, design, and implementation by <a href="mailto:dbry1024@gmail.com">Daniel Carpenter, MS</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Daniel-Carpenter">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
