@@ -1,37 +1,218 @@
 [
   {
-    "objectID": "docs/index.html",
-    "href": "docs/index.html",
-    "title": "Projects",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Portfolio | Daniel Carpenter, MS",
     "section": "",
-    "text": "Note: Proprietary Information Withheld\n\n\n\nAll proprietary information has been removed to protect organizational confidentiality.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOptimization: Deterministic & Stochastic\n\n\nAdvanced operations research projects in python, AMPL, and gurobipy.\n\n\n\n2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVisual Analysis to Problem Solve\n\n\nExamples of my approach to business problem solving in R and SQL.\n\n\n\n2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPackage Development\n\n\nBuilding Tools for Consistent Branding in ggplot2\n\n\n\n2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDesigning Interactive Business Dashboards\n\n\nDashboards for executive and operator consumption in Tableau, Shiny + bslib, and Power BI.\n\n\n\n2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAutomating Data Pipelines for Data Science Applications\n\n\nDatabases uses for Data Science applications in Python, R, and SQL.\n\n\n\n2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nApplied Machine Learning\n\n\nProjects leveraging machine learning techniques with scikit-learn, keras, and tensorflow.\n\n\n\n2023\n\n\n\n\n\n\n\n\nNo matching items",
-    "crumbs": [
-      "Home",
-      "Projects"
-    ]
+    "text": "I studied at the University of Oklahoma (2020), double-majoring in Economics and Finance, then earned a Master’s in Data Science and Analytics from OU’s College of Engineering (2023)."
   },
   {
-    "objectID": "docs/04-Dashboards/index.html",
-    "href": "docs/04-Dashboards/index.html",
-    "title": "Designing Interactive Business Dashboards",
-    "section": "",
-    "text": "Note: Proprietary Information Withheld\n\n\n\nAll proprietary information has been removed to protect organizational confidentiality.\n\n\n\n\n\n \n\nDesigned in Canva by Daniel Carpenter, MS. Interact with slides by clicking slides.",
+    "objectID": "index.html#in-2021-i-became-an-operational-performance-analysis-advisor-helping-leaders-across-25-businesses-improve-efficiency-and-profitability.-two-years-later-2023-i-joined-the-office-of-investment-management-strategic-finance-as-a-senior-advisor-where-i-support-a-team-of-vps-through-analysis-of-capital-decisions-to-sustain-programs-and-services.",
+    "href": "index.html#in-2021-i-became-an-operational-performance-analysis-advisor-helping-leaders-across-25-businesses-improve-efficiency-and-profitability.-two-years-later-2023-i-joined-the-office-of-investment-management-strategic-finance-as-a-senior-advisor-where-i-support-a-team-of-vps-through-analysis-of-capital-decisions-to-sustain-programs-and-services.",
+    "title": "Portfolio | Daniel Carpenter, MS",
+    "section": "In 2021, I became an Operational Performance & Analysis Advisor, helping leaders across 25+ businesses improve efficiency and profitability. Two years later (2023), I joined the Office of Investment Management & Strategic Finance as a Senior Advisor, where I support a team of VP’s through analysis of capital decisions to sustain programs and services.",
+    "text": "In 2021, I became an Operational Performance & Analysis Advisor, helping leaders across 25+ businesses improve efficiency and profitability. Two years later (2023), I joined the Office of Investment Management & Strategic Finance as a Senior Advisor, where I support a team of VP’s through analysis of capital decisions to sustain programs and services.\n\nPersonal Interests\nYou’ll find me in the garden, in the kitchen, or out on a trail mountain biking, OneWheeling, or hiking with my wife and our two dogs."
+  },
+  {
+    "objectID": "docs/05-ETL/index.html#project-highlights",
+    "href": "docs/05-ETL/index.html#project-highlights",
+    "title": "Automating Data Pipelines for Data Science Applications",
+    "section": "1 Project Highlights",
+    "text": "1 Project Highlights\nInteract with slides by clicking a slide.\n\n \n\nDesigned in Canva by Daniel Carpenter, MS.",
     "crumbs": [
       "Home",
       "Projects",
-      "Designing Interactive Business Dashboards"
+      "Automating Data Pipelines for Data Science Applications"
     ]
   },
   {
-    "objectID": "docs/02-Optimization/index.html",
-    "href": "docs/02-Optimization/index.html",
-    "title": "Optimization: Deterministic & Stochastic",
-    "section": "",
-    "text": "Note: Proprietary Information Hidden\n\n\n\nAll projects are either personally developed in free time or at the College of Engineering at the University of Oklahoma.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPortfolio Optimization with Python Particle Swarm Optimizer\n\n\nParticle Swarm Optimization is applied to portfolio choice modeling.\n\n\n\n2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolving Resource Allocation with Deterministic and Stochastic Optimization\n\n\nProjects displaying advanced optimization techniques in finance and operations\n\n\n\n2023\n\n\n\n\n\n\n\n\nNo matching items",
+    "objectID": "docs/05-ETL/index.html#database-implementation-project",
+    "href": "docs/05-ETL/index.html#database-implementation-project",
+    "title": "Automating Data Pipelines for Data Science Applications",
+    "section": "2 Database Implementation Project",
+    "text": "2 Database Implementation Project\n\nCollege of Engineering at the University of Oklahoma",
     "crumbs": [
       "Home",
       "Projects",
-      "Optimization: Deterministic & Stochastic"
+      "Automating Data Pipelines for Data Science Applications"
+    ]
+  },
+  {
+    "objectID": "docs/01-Visual-Storytelling/03-Marketing-Effectiveness/index.html",
+    "href": "docs/01-Visual-Storytelling/03-Marketing-Effectiveness/index.html",
+    "title": "Evaluating Shifts in Marketing Strategy",
+    "section": "",
+    "text": "Note: Data is Randomly Generated\n\n\n\nFor demonstration only, the data are randomized and all naming is fictitious.\n\n\n\n\nView Code Here\n# Get the R files containing the functions with plots\npurrr::walk(list.files(\n  'docs//01-Visual-Storytelling//03-Marketing-Effectiveness//functions//', \n  pattern = \"\\\\.R$\", full.names = TRUE), \n  source\n)\n\n\n\n\n1 Rising Discounts with Limited Impact\n\nDiscounts increased sharply, but revenue and gross profit gains remained minimal.\n\nSee full function here.\n\n\nView Code Here\nplots_marketing_effectiveness &lt;- marketing_effectiveness()\n\nplots_marketing_effectiveness$plot_discount_trend # display\n\n\n\n\n\n\n\n\n\nView Code Here\nplots_marketing_effectiveness$plot_discount_per_gp # display\n\n\n\n\n\n\n\n\n\nView Code Here\nplots_marketing_effectiveness$plot_rev_per_gp # display\n\n\n\n\n\n\n\n\n\n\n\n\n\n2 Performance Shifts Parallel to Marketing Response\n\nMarket performance shifted at the same time as strategy changes, but results did not improve meaningfully.\n\n\n\nView Code Here\nplots_marketing_effectiveness$plot_scatter # display\n\n\n\n\n\n\n\n\n\nView Code Here\nplots_marketing_effectiveness$plot_density # display\n\n\n\n\n\n\n\n\n\n\n\n\n\n3 Patron Density Remains Steady Across Service Area\n\nPatron density remained steady across the service area; revenue pressure likely came from conversion and pricing, not coverage.\n\nOutput created with Tableau.",
+    "crumbs": [
+      "Home",
+      "Projects",
+      "Visual Analysis to Problem Solve",
+      "Evaluating Shifts in Marketing Strategy"
+    ]
+  },
+  {
+    "objectID": "docs/01-Visual-Storytelling/index.html",
+    "href": "docs/01-Visual-Storytelling/index.html",
+    "title": "Visual Analysis to Problem Solve",
+    "section": "",
+    "text": "Note: Data is Randomly Generated\n\n\n\nFor demonstration only, the data are randomized and all naming is fictitious.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAllocating Capital for Sustainable Operations\n\n\nReviews how past capital allocation decisions created financial pressure and unsustainable outcomes.\n\n\n\n2024\n\n\n\n\n\n\n\n\n\n\n\n\n\nEvaluating Shifts in Marketing Strategy\n\n\nDemonstrates how marketing adjustments did not offset the pressure from a competitor’s expansion.\n\n\n\n2023\n\n\n\n\n\n\n\n\n\n\n\n\n\nAssessing Impact of Competitor Market Entry\n\n\nAnalyzes the impact of a competitor entering an adjacent market.\n\n\n\n2022\n\n\n\n\n\n\nNo matching items",
+    "crumbs": [
+      "Home",
+      "Projects",
+      "Visual Analysis to Problem Solve"
+    ]
+  },
+  {
+    "objectID": "docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html",
+    "href": "docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html",
+    "title": "Sankey Diagram - Capital Allocation",
+    "section": "",
+    "text": "View Code Here\nimport pandas as pd\nimport plotly.graph_objects as go",
+    "crumbs": [
+      "Home",
+      "Projects",
+      "Visual Analysis to Problem Solve",
+      "Allocating Capital for Sustainable Operations",
+      "Functions",
+      "Sankey Diagram - Capital Allocation"
+    ]
+  },
+  {
+    "objectID": "docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html#packages",
+    "href": "docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html#packages",
+    "title": "Sankey Diagram - Capital Allocation",
+    "section": "",
+    "text": "View Code Here\nimport pandas as pd\nimport plotly.graph_objects as go",
+    "crumbs": [
+      "Home",
+      "Projects",
+      "Visual Analysis to Problem Solve",
+      "Allocating Capital for Sustainable Operations",
+      "Functions",
+      "Sankey Diagram - Capital Allocation"
+    ]
+  },
+  {
+    "objectID": "docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html#data-import",
+    "href": "docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html#data-import",
+    "title": "Sankey Diagram - Capital Allocation",
+    "section": "2 Data Import",
+    "text": "2 Data Import\n\n\nView Code Here\nfilePath = \"\"\nexcelFileName = \"../data/Sankey Diagram Data.xlsx\"\noutputFilename = '../../../output/Sankey.png'\n\nnodesSheetName = 'Nodes'\nlinksSheetName = 'Links'\n\n# Read in nodes data\nnode_df = pd.read_excel(filePath + excelFileName, sheet_name=nodesSheetName, engine='openpyxl')\n\n# Read in link data\nlink_df = pd.read_excel(filePath + excelFileName, sheet_name=linksSheetName, engine='openpyxl')",
+    "crumbs": [
+      "Home",
+      "Projects",
+      "Visual Analysis to Problem Solve",
+      "Allocating Capital for Sustainable Operations",
+      "Functions",
+      "Sankey Diagram - Capital Allocation"
+    ]
+  },
+  {
+    "objectID": "docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html#inputs-to-chart-aesthetics",
+    "href": "docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html#inputs-to-chart-aesthetics",
+    "title": "Sankey Diagram - Capital Allocation",
+    "section": "3 Inputs to Chart Aesthetics",
+    "text": "3 Inputs to Chart Aesthetics\n\n\nView Code Here\ntitleText       = \"FY 2026 Sources and Uses of Cash\"\n\n\n\n\nView Code Here\n# File name to and dimensions when exporting chart\noutHeight = 1400 \noutWidth  = 1700\nOUTPUT_SCALED_BY = 0.8\n\n# Node parameters\ntextFontSize  = 24\nnodePad       = 30\nnodeThickness = 17.5\nnodeLine      = dict(width=0)\n\n# Graph parameters\n\n## Title\ntitleFontSize   = 27\n\n## Caption\ncaptionText     = ''\ncaptionFontSize = 16\n\n## General Fonts\nfontFamily      = 'Arial'\nfontColor       = '#363636'\npaperBgcolor    = 'rgba(0, 0, 0, 0)' # change to 'white' if you want shadows on text \nplotBgcolor     = 'rgba(0, 0, 0, 0)' # \"\"\n\n## Tool tip\nnodeTextSize  = 12\nlinkHoverTemplate = '%{source.label} → %{target.label}&lt;br&gt;$%{value:,.2f} M'\nnodeHoverTemplate = f'&lt;span style=\"font-family:{fontFamily}; font-size:{nodeTextSize}px;\"&gt;%{{label}}&lt;br&gt;$%{{value:,.2f}} M&lt;/span&gt;'",
+    "crumbs": [
+      "Home",
+      "Projects",
+      "Visual Analysis to Problem Solve",
+      "Allocating Capital for Sustainable Operations",
+      "Functions",
+      "Sankey Diagram - Capital Allocation"
+    ]
+  },
+  {
+    "objectID": "docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html#createsave-the-graph",
+    "href": "docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html#createsave-the-graph",
+    "title": "Sankey Diagram - Capital Allocation",
+    "section": "4 Create/Save the Graph",
+    "text": "4 Create/Save the Graph\n\n\nView Code Here\n# NODES ----------------------------------------------------------------\n\n# Node Labels\nNodeLabel =  [f\"${value:.0f} MM | &lt;b&gt;{node}&lt;b&gt;\" for (node, value) in zip(node_df['Node'], node_df['Value']) ]\nnode_df['Label'] = NodeLabel\n\n\n# Create dictionary for nodes\nnodes = dict(\n    type='sankey',\n    orientation='h',\n    arrangement='snap',\n    node=dict(\n        pad=nodePad,\n        thickness=nodeThickness,\n        line=nodeLine,\n        label=node_df['Label'],\n        color=node_df['Color'],\n        x=node_df['node_position_x'],\n        y=node_df['node_position_y'],\n        hovertemplate=nodeHoverTemplate\n    )\n)\n\n\n\n# LINKS ---------------------------------------------------------------------\n\n# Convert node labels to node indices\nsource_indices = [node_df[node_df['Node'] == source].index[0] for source in link_df['Source']]\ntarget_indices = [node_df[node_df['Node'] == target].index[0] for target in link_df['Target']]\n\n# Create dictionary for links\nlink_dict = dict(\n    source=source_indices,\n    target=target_indices,\n    value=link_df['Value'],\n    color=link_df['Color'],\n    hovertemplate=linkHoverTemplate,\n    hoverlabel=dict(font=dict(family=fontFamily))\n)\n\n# Define nodes and links\nnodes['link'] = link_dict\n\n\n\n# CHART LAYOUT ------------------------------------------------------------\n\n# Define layout\nlayout = dict(\n    height=outHeight*OUTPUT_SCALED_BY,\n    width=outWidth*OUTPUT_SCALED_BY,\n    title=dict(\n        text=titleText,\n        font=dict(size=titleFontSize, family=fontFamily, color=fontColor),\n        xanchor='left',\n        yanchor='top'\n    ),\n    annotations=[\n        dict(\n            text=captionText,\n            showarrow=False,\n            font=dict(size=captionFontSize, family=fontFamily, color=fontColor),\n            xref='paper',\n            yref='paper',\n            x=0,\n            y=-0.1,\n            xanchor='left',\n            yanchor='bottom'\n        )\n    ],\n    paper_bgcolor=paperBgcolor,\n    plot_bgcolor=plotBgcolor,\n    font=dict(size=textFontSize, family=fontFamily, color=fontColor)\n)\n\n# Create figure\nfig = go.Figure(data=[nodes], layout=layout)\n\n# Show figure\nfig.show()\n\n# Export to PNG\nfig.write_image(outputFilename, \n                height=outHeight*OUTPUT_SCALED_BY, width=outWidth*OUTPUT_SCALED_BY)\n\n\nUnable to display output for mime type(s): application/vnd.plotly.v1+json",
+    "crumbs": [
+      "Home",
+      "Projects",
+      "Visual Analysis to Problem Solve",
+      "Allocating Capital for Sustainable Operations",
+      "Functions",
+      "Sankey Diagram - Capital Allocation"
+    ]
+  },
+  {
+    "objectID": "docs/02-Optimization/02-Opt-DSA/index.html#particle-swarm-optimization-on-schwefel-benchmark-function",
+    "href": "docs/02-Optimization/02-Opt-DSA/index.html#particle-swarm-optimization-on-schwefel-benchmark-function",
+    "title": "Solving Resource Allocation with Deterministic and Stochastic Optimization",
+    "section": "0.1 Particle Swarm Optimization on Schwefel Benchmark Function",
+    "text": "0.1 Particle Swarm Optimization on Schwefel Benchmark Function\nProblem Instructions: (View problem context)\n\n\nSimulates swarm intelligence to explore a complex search space efficiently.\nParticle Swarm Optimization on GitHub",
+    "crumbs": [
+      "Home",
+      "Projects",
+      "Optimization: Deterministic & Stochastic",
+      "Solving Resource Allocation with Deterministic and Stochastic Optimization"
+    ]
+  },
+  {
+    "objectID": "docs/02-Optimization/02-Opt-DSA/index.html#simulated-annealing",
+    "href": "docs/02-Optimization/02-Opt-DSA/index.html#simulated-annealing",
+    "title": "Solving Resource Allocation with Deterministic and Stochastic Optimization",
+    "section": "1.1 Simulated Annealing",
+    "text": "1.1 Simulated Annealing\n\n\nUses iterative improvement with probabilistic acceptance of worse solutions.\nSimulated Annealing on GitHub",
+    "crumbs": [
+      "Home",
+      "Projects",
+      "Optimization: Deterministic & Stochastic",
+      "Solving Resource Allocation with Deterministic and Stochastic Optimization"
+    ]
+  },
+  {
+    "objectID": "docs/02-Optimization/02-Opt-DSA/index.html#genetic-algorithm",
+    "href": "docs/02-Optimization/02-Opt-DSA/index.html#genetic-algorithm",
+    "title": "Solving Resource Allocation with Deterministic and Stochastic Optimization",
+    "section": "1.2 Genetic Algorithm",
+    "text": "1.2 Genetic Algorithm\n\n\nApplies crossover and mutation to evolve stronger solutions over generations.\nGenetic Algorithm on GitHub",
+    "crumbs": [
+      "Home",
+      "Projects",
+      "Optimization: Deterministic & Stochastic",
+      "Solving Resource Allocation with Deterministic and Stochastic Optimization"
+    ]
+  },
+  {
+    "objectID": "docs/02-Optimization/02-Opt-DSA/index.html#linear-optimization",
+    "href": "docs/02-Optimization/02-Opt-DSA/index.html#linear-optimization",
+    "title": "Solving Resource Allocation with Deterministic and Stochastic Optimization",
+    "section": "2.1 Linear Optimization",
+    "text": "2.1 Linear Optimization\n\n\nApplies linear programming to optimize resource allocation under constraints.\nLinear Optimization Example on GitHub\n(View problem instructions)",
+    "crumbs": [
+      "Home",
+      "Projects",
+      "Optimization: Deterministic & Stochastic",
+      "Solving Resource Allocation with Deterministic and Stochastic Optimization"
+    ]
+  },
+  {
+    "objectID": "docs/02-Optimization/02-Opt-DSA/index.html#generalized-network-flows-modeling-decay",
+    "href": "docs/02-Optimization/02-Opt-DSA/index.html#generalized-network-flows-modeling-decay",
+    "title": "Solving Resource Allocation with Deterministic and Stochastic Optimization",
+    "section": "2.2 Generalized Network Flows: Modeling Decay",
+    "text": "2.2 Generalized Network Flows: Modeling Decay\n\n\nExtends flow optimization to capture diminishing effects over a network.\nGeneralized Network Flows: Modeling Decay on GitHub",
+    "crumbs": [
+      "Home",
+      "Projects",
+      "Optimization: Deterministic & Stochastic",
+      "Solving Resource Allocation with Deterministic and Stochastic Optimization"
+    ]
+  },
+  {
+    "objectID": "docs/02-Optimization/02-Opt-DSA/index.html#mixed-binary-linear-optimization",
+    "href": "docs/02-Optimization/02-Opt-DSA/index.html#mixed-binary-linear-optimization",
+    "title": "Solving Resource Allocation with Deterministic and Stochastic Optimization",
+    "section": "2.3 Mixed-Binary-Linear Optimization",
+    "text": "2.3 Mixed-Binary-Linear Optimization\nProblem Instructions: (View problem context)\n\n\nCombines integer and binary decision variables for complex allocation problems.\nMixed-Binary-Linear Optimization on GitHub",
+    "crumbs": [
+      "Home",
+      "Projects",
+      "Optimization: Deterministic & Stochastic",
+      "Solving Resource Allocation with Deterministic and Stochastic Optimization"
     ]
   },
   {
@@ -119,155 +300,27 @@
     ]
   },
   {
-    "objectID": "docs/01-Visual-Storytelling/index.html",
-    "href": "docs/01-Visual-Storytelling/index.html",
-    "title": "Visual Analysis to Problem Solve",
-    "section": "",
-    "text": "Note: Data is Randomly Generated\n\n\n\nFor demonstration only, the data are randomized and all naming is fictitious.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAllocating Capital for Sustainable Operations\n\n\nReviews how past capital allocation decisions created financial pressure and unsustainable outcomes.\n\n\n\n2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEvaluating Shifts in Marketing Strategy\n\n\nDemonstrates how marketing adjustments did not offset the pressure from a competitor’s expansion.\n\n\n\n2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAssessing Impact of Competitor Market Entry\n\n\nAnalyzes the impact of a competitor entering an adjacent market.\n\n\n\n2022\n\n\n\n\n\n\n\n\nNo matching items",
+    "objectID": "docs/03-ML/index.html#forecasting-expected-financial-returns",
+    "href": "docs/03-ML/index.html#forecasting-expected-financial-returns",
+    "title": "Applied Machine Learning",
+    "section": "1 Forecasting Expected Financial Returns",
+    "text": "1 Forecasting Expected Financial Returns\n\nPracticum Project, College of Engineering at the University of Oklahoma\n\n\n\nThis practicum applied machine learning to forecast a key economic indicator for investment strategy. Using LSTM, Elastic Net, and Prophet, LSTM delivered the strongest results, cutting out-of-sample error by ~10%. The workflow used vintage data, time-based validation, and feature engineering to reflect real-world constraints.\n\n\n\n\n\n\nProprietary; details cannot be shared.",
     "crumbs": [
       "Home",
       "Projects",
-      "Visual Analysis to Problem Solve"
+      "Applied Machine Learning"
     ]
   },
   {
-    "objectID": "docs/01-Visual-Storytelling/02-Post-Mortem/index.html",
-    "href": "docs/01-Visual-Storytelling/02-Post-Mortem/index.html",
-    "title": "Assessing Impact of Competitor Market Entry",
-    "section": "",
-    "text": "View Code Here\n# Load packages and functions\nsource('docs//00-Reused-Code/Read-Library-and-Functions.R')\n\nset.seed(1024) # All data is randomized! Seed set for reproducibility\n\nthis_dir &lt;- 'docs//01-Visual-Storytelling//02-Post-Mortem//'\n\n# Date of the Competitor Entry:\ndate_competition_enters = Sys.Date() - 120\nselected_stores = c('Flagship Store' )\n\n# Read in a reference file for drive times destinations\ndrivetimeRef &lt;- fread(paste0(this_dir, 'data//drivetime_ref.csv'))\n\n# Get the R files containing the functions with plots --------------------------\npurrr::walk(list.files(paste0(this_dir, 'functions//'), pattern = \"\\\\.R$\", full.names = TRUE), source)",
+    "objectID": "docs/03-ML/index.html#predicting-operational-delivery-times",
+    "href": "docs/03-ML/index.html#predicting-operational-delivery-times",
+    "title": "Applied Machine Learning",
+    "section": "2 Predicting Operational Delivery Times",
+    "text": "2 Predicting Operational Delivery Times\n\nCollege of Engineering at the University of Oklahoma\n\n\n\nThis project built models to improve food delivery time estimates by integrating traffic, accidents, and weather with historical data. The approach reduced variance in arrival predictions versus baseline methods, creating a more reliable framework to support delivery services with better planning accuracy and operational consistency.\nView on GitHub:\n\nPresentation Slides\nPDF Report\nR Code\n\n\n\n\n\n  \n\nClick image to watch presentation",
     "crumbs": [
       "Home",
       "Projects",
-      "Visual Analysis to Problem Solve",
-      "Assessing Impact of Competitor Market Entry"
-    ]
-  },
-  {
-    "objectID": "docs/01-Visual-Storytelling/02-Post-Mortem/index.html#shrinking-new-subscribers",
-    "href": "docs/01-Visual-Storytelling/02-Post-Mortem/index.html#shrinking-new-subscribers",
-    "title": "Assessing Impact of Competitor Market Entry",
-    "section": "4.1 Shrinking New Subscribers",
-    "text": "4.1 Shrinking New Subscribers\n\nProspect pools thinned around the Flagship after entry; conversion windows narrowed and acquisition costs rose.\n\n\n4.1.1 Reference of Current Drivetimes to Flagship Store\n\n\nView Code Here\nlibrary(knitr)\nknitr::kable(drivetimeRef)\n\n\n\n\n\nDestination\nHours\n\n\n\n\nFayetteville\n0.50\n\n\nSpringdale\n0.75\n\n\nTulsa\n1.50\n\n\nFort Smith\n1.75\n\n\n\n\n\n\n\n\n4.1.2 Shrinking New Subscribers in Key Markets\nSee full function here.\n\n\nView Code Here\n# Average Drivetime Analysis\nplots_subscriber_drivetime_analysis &lt;- subscriber_drivetime_analysis(\n  comparison_date1 = date_competition_enters,\n)\n\nplots_subscriber_drivetime_analysis$plots$overview\n\n\n\n\n\n\n\n\n\n\n\nView Code Here\nplots_subscriber_drivetime_analysis$plots$drive_distributions_market",
-    "crumbs": [
-      "Home",
-      "Projects",
-      "Visual Analysis to Problem Solve",
-      "Assessing Impact of Competitor Market Entry"
-    ]
-  },
-  {
-    "objectID": "docs/01-Visual-Storytelling/02-Post-Mortem/index.html#appendix-subscriber-base-distributed-evenly-across-united-states",
-    "href": "docs/01-Visual-Storytelling/02-Post-Mortem/index.html#appendix-subscriber-base-distributed-evenly-across-united-states",
-    "title": "Assessing Impact of Competitor Market Entry",
-    "section": "4.2 Appendix: Subscriber-Base Distributed Evenly Across United States",
-    "text": "4.2 Appendix: Subscriber-Base Distributed Evenly Across United States\nSee full function here.\n\n\nView Code Here\nsubscriber_geography_analysis()",
-    "crumbs": [
-      "Home",
-      "Projects",
-      "Visual Analysis to Problem Solve",
-      "Assessing Impact of Competitor Market Entry"
-    ]
-  },
-  {
-    "objectID": "docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html",
-    "href": "docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html",
-    "title": "Sankey Diagram - Capital Allocation",
-    "section": "",
-    "text": "View Code Here\nimport pandas as pd\nimport plotly.graph_objects as go",
-    "crumbs": [
-      "Home",
-      "Projects",
-      "Visual Analysis to Problem Solve",
-      "Allocating Capital for Sustainable Operations",
-      "Functions",
-      "Sankey Diagram - Capital Allocation"
-    ]
-  },
-  {
-    "objectID": "docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html#packages",
-    "href": "docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html#packages",
-    "title": "Sankey Diagram - Capital Allocation",
-    "section": "",
-    "text": "View Code Here\nimport pandas as pd\nimport plotly.graph_objects as go",
-    "crumbs": [
-      "Home",
-      "Projects",
-      "Visual Analysis to Problem Solve",
-      "Allocating Capital for Sustainable Operations",
-      "Functions",
-      "Sankey Diagram - Capital Allocation"
-    ]
-  },
-  {
-    "objectID": "docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html#data-import",
-    "href": "docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html#data-import",
-    "title": "Sankey Diagram - Capital Allocation",
-    "section": "2 Data Import",
-    "text": "2 Data Import\n\n\nView Code Here\nfilePath = \"\"\nexcelFileName = \"../data/Sankey Diagram Data.xlsx\"\noutputFilename = '../../../output/Sankey.png'\n\nnodesSheetName = 'Nodes'\nlinksSheetName = 'Links'\n\n# Read in nodes data\nnode_df = pd.read_excel(filePath + excelFileName, sheet_name=nodesSheetName, engine='openpyxl')\n\n# Read in link data\nlink_df = pd.read_excel(filePath + excelFileName, sheet_name=linksSheetName, engine='openpyxl')",
-    "crumbs": [
-      "Home",
-      "Projects",
-      "Visual Analysis to Problem Solve",
-      "Allocating Capital for Sustainable Operations",
-      "Functions",
-      "Sankey Diagram - Capital Allocation"
-    ]
-  },
-  {
-    "objectID": "docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html#inputs-to-chart-aesthetics",
-    "href": "docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html#inputs-to-chart-aesthetics",
-    "title": "Sankey Diagram - Capital Allocation",
-    "section": "3 Inputs to Chart Aesthetics",
-    "text": "3 Inputs to Chart Aesthetics\n\n\nView Code Here\ntitleText       = \"FY 2026 Sources and Uses of Cash\"\n\n\n\n\nView Code Here\n# File name to and dimensions when exporting chart\noutHeight = 1400 \noutWidth  = 1700\nOUTPUT_SCALED_BY = 0.8\n\n# Node parameters\ntextFontSize  = 24\nnodePad       = 30\nnodeThickness = 17.5\nnodeLine      = dict(width=0)\n\n# Graph parameters\n\n## Title\ntitleFontSize   = 27\n\n## Caption\ncaptionText     = ''\ncaptionFontSize = 16\n\n## General Fonts\nfontFamily      = 'Arial'\nfontColor       = '#363636'\npaperBgcolor    = 'rgba(0, 0, 0, 0)' # change to 'white' if you want shadows on text \nplotBgcolor     = 'rgba(0, 0, 0, 0)' # \"\"\n\n## Tool tip\nnodeTextSize  = 12\nlinkHoverTemplate = '%{source.label} → %{target.label}&lt;br&gt;$%{value:,.2f} M'\nnodeHoverTemplate = f'&lt;span style=\"font-family:{fontFamily}; font-size:{nodeTextSize}px;\"&gt;%{{label}}&lt;br&gt;$%{{value:,.2f}} M&lt;/span&gt;'",
-    "crumbs": [
-      "Home",
-      "Projects",
-      "Visual Analysis to Problem Solve",
-      "Allocating Capital for Sustainable Operations",
-      "Functions",
-      "Sankey Diagram - Capital Allocation"
-    ]
-  },
-  {
-    "objectID": "docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html#createsave-the-graph",
-    "href": "docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html#createsave-the-graph",
-    "title": "Sankey Diagram - Capital Allocation",
-    "section": "4 Create/Save the Graph",
-    "text": "4 Create/Save the Graph\n\n\nView Code Here\n# NODES ----------------------------------------------------------------\n\n# Node Labels\nNodeLabel =  [f\"${value:.0f} MM | &lt;b&gt;{node}&lt;b&gt;\" for (node, value) in zip(node_df['Node'], node_df['Value']) ]\nnode_df['Label'] = NodeLabel\n\n\n# Create dictionary for nodes\nnodes = dict(\n    type='sankey',\n    orientation='h',\n    arrangement='snap',\n    node=dict(\n        pad=nodePad,\n        thickness=nodeThickness,\n        line=nodeLine,\n        label=node_df['Label'],\n        color=node_df['Color'],\n        x=node_df['node_position_x'],\n        y=node_df['node_position_y'],\n        hovertemplate=nodeHoverTemplate\n    )\n)\n\n\n\n# LINKS ---------------------------------------------------------------------\n\n# Convert node labels to node indices\nsource_indices = [node_df[node_df['Node'] == source].index[0] for source in link_df['Source']]\ntarget_indices = [node_df[node_df['Node'] == target].index[0] for target in link_df['Target']]\n\n# Create dictionary for links\nlink_dict = dict(\n    source=source_indices,\n    target=target_indices,\n    value=link_df['Value'],\n    color=link_df['Color'],\n    hovertemplate=linkHoverTemplate,\n    hoverlabel=dict(font=dict(family=fontFamily))\n)\n\n# Define nodes and links\nnodes['link'] = link_dict\n\n\n\n# CHART LAYOUT ------------------------------------------------------------\n\n# Define layout\nlayout = dict(\n    height=outHeight*OUTPUT_SCALED_BY,\n    width=outWidth*OUTPUT_SCALED_BY,\n    title=dict(\n        text=titleText,\n        font=dict(size=titleFontSize, family=fontFamily, color=fontColor),\n        xanchor='left',\n        yanchor='top'\n    ),\n    annotations=[\n        dict(\n            text=captionText,\n            showarrow=False,\n            font=dict(size=captionFontSize, family=fontFamily, color=fontColor),\n            xref='paper',\n            yref='paper',\n            x=0,\n            y=-0.1,\n            xanchor='left',\n            yanchor='bottom'\n        )\n    ],\n    paper_bgcolor=paperBgcolor,\n    plot_bgcolor=plotBgcolor,\n    font=dict(size=textFontSize, family=fontFamily, color=fontColor)\n)\n\n# Create figure\nfig = go.Figure(data=[nodes], layout=layout)\n\n# Show figure\nfig.show()\n\n# Export to PNG\nfig.write_image(outputFilename, \n                height=outHeight*OUTPUT_SCALED_BY, width=outWidth*OUTPUT_SCALED_BY)\n\n\nUnable to display output for mime type(s): application/vnd.plotly.v1+json",
-    "crumbs": [
-      "Home",
-      "Projects",
-      "Visual Analysis to Problem Solve",
-      "Allocating Capital for Sustainable Operations",
-      "Functions",
-      "Sankey Diagram - Capital Allocation"
-    ]
-  },
-  {
-    "objectID": "docs/01-Visual-Storytelling/01-Capital-Allocation/index.html",
-    "href": "docs/01-Visual-Storytelling/01-Capital-Allocation/index.html",
-    "title": "Allocating Capital for Sustainable Operations",
-    "section": "",
-    "text": "Note: Data is Randomly Generated\n\n\n\nFor demonstration only, the data are randomized and all naming is fictitious.\n\n\n\n\nView Code Here\n# Get the R files containing the functions with plots\npurrr::walk(list.files(\n  'docs//01-Visual-Storytelling//01-Capital-Allocation//functions//', \n  pattern = \"\\\\.R$\", full.names = TRUE), \n  source\n)\n\n\n\n\n1 Nearly All Sources of Cash used by Operations\n\nCash from multiple sources was consumed by day-to-day operations, leaving little for investment or growth.\n\nSee full function here.\n\n\nView Code Here\nallocation_history()\n\n\n\n\n\n\n\n\n\n\n\n\n\n2 Expected Allocations Predict Debt Financing to Support Uses of Cash\n\nForecasts show anticipated reliance on debt to cover operating cash needs, raising future financial risk.\n\nSee full function here.\n\n\n\n\n\n3 Allocations Fall Outside the Acceptable Ranges\n\nActual allocations drifted outside targeted ranges, signaling opportunity for enhanced controls and capital framework implementation.\n\nSee full function here.\n\n\nView Code Here\nallocation_ranges()\n\n\n\n\n\n\n\n\n\n\n\n\n\n4 High Realized Growth Relative to Expected Growth\n\nRealized growth outpaced planned levels, but capital use did not align with a sustainable model.\n\nSee full function here.\n\n\nView Code Here\n# Call funtion\nplots_anticipated_allocation &lt;- anticipated_allocation()\n\nplots_anticipated_allocation$index_growth # display\n\n\n\n\n\n\n\n\n\n\n\nView Code Here\nplots_anticipated_allocation$ranges # display\n\n\n\n\n\n\n\n\n\n\n\n\n\n5 Opportunity Cost of Perpetual Investment Returns Rise\n\nBy redirecting more cash into investments, the business could have built a steady, recurring income stream.\n\nSee full function here.\n\n\nView Code Here\ninvestment_opportunity()",
-    "crumbs": [
-      "Home",
-      "Projects",
-      "Visual Analysis to Problem Solve",
-      "Allocating Capital for Sustainable Operations"
-    ]
-  },
-  {
-    "objectID": "docs/01-Visual-Storytelling/03-Marketing-Effectiveness/index.html",
-    "href": "docs/01-Visual-Storytelling/03-Marketing-Effectiveness/index.html",
-    "title": "Evaluating Shifts in Marketing Strategy",
-    "section": "",
-    "text": "Note: Data is Randomly Generated\n\n\n\nFor demonstration only, the data are randomized and all naming is fictitious.\n\n\n\n\nView Code Here\n# Get the R files containing the functions with plots\npurrr::walk(list.files(\n  'docs//01-Visual-Storytelling//03-Marketing-Effectiveness//functions//', \n  pattern = \"\\\\.R$\", full.names = TRUE), \n  source\n)\n\n\n\n\n1 Rising Discounts with Limited Impact\n\nDiscounts increased sharply, but revenue and gross profit gains remained minimal.\n\nSee full function here.\n\n\nView Code Here\nplots_marketing_effectiveness &lt;- marketing_effectiveness()\n\nplots_marketing_effectiveness$plot_discount_trend # display\n\n\n\n\n\n\n\n\n\nView Code Here\nplots_marketing_effectiveness$plot_discount_per_gp # display\n\n\n\n\n\n\n\n\n\nView Code Here\nplots_marketing_effectiveness$plot_rev_per_gp # display\n\n\n\n\n\n\n\n\n\n\n\n\n\n2 Performance Shifts Parallel to Marketing Response\n\nMarket performance shifted at the same time as strategy changes, but results did not improve meaningfully.\n\n\n\nView Code Here\nplots_marketing_effectiveness$plot_scatter # display\n\n\n\n\n\n\n\n\n\nView Code Here\nplots_marketing_effectiveness$plot_density # display\n\n\n\n\n\n\n\n\n\n\n\n\n\n3 Patron Density Remains Steady Across Service Area\n\nPatron density remained steady across the service area; revenue pressure likely came from conversion and pricing, not coverage.\n\nOutput created with Tableau.",
-    "crumbs": [
-      "Home",
-      "Projects",
-      "Visual Analysis to Problem Solve",
-      "Evaluating Shifts in Marketing Strategy"
+      "Applied Machine Learning"
     ]
   },
   {
@@ -375,136 +428,90 @@
     ]
   },
   {
-    "objectID": "docs/02-Optimization/02-Opt-DSA/index.html#particle-swarm-optimization-on-schwefel-benchmark-function",
-    "href": "docs/02-Optimization/02-Opt-DSA/index.html#particle-swarm-optimization-on-schwefel-benchmark-function",
-    "title": "Solving Resource Allocation with Deterministic and Stochastic Optimization",
-    "section": "0.1 Particle Swarm Optimization on Schwefel Benchmark Function",
-    "text": "0.1 Particle Swarm Optimization on Schwefel Benchmark Function\nProblem Instructions: (View problem context)\n\n\nSimulates swarm intelligence to explore a complex search space efficiently.\nParticle Swarm Optimization on GitHub",
-    "crumbs": [
-      "Home",
-      "Projects",
-      "Optimization: Deterministic & Stochastic",
-      "Solving Resource Allocation with Deterministic and Stochastic Optimization"
-    ]
-  },
-  {
-    "objectID": "docs/02-Optimization/02-Opt-DSA/index.html#simulated-annealing",
-    "href": "docs/02-Optimization/02-Opt-DSA/index.html#simulated-annealing",
-    "title": "Solving Resource Allocation with Deterministic and Stochastic Optimization",
-    "section": "1.1 Simulated Annealing",
-    "text": "1.1 Simulated Annealing\n\n\nUses iterative improvement with probabilistic acceptance of worse solutions.\nSimulated Annealing on GitHub",
-    "crumbs": [
-      "Home",
-      "Projects",
-      "Optimization: Deterministic & Stochastic",
-      "Solving Resource Allocation with Deterministic and Stochastic Optimization"
-    ]
-  },
-  {
-    "objectID": "docs/02-Optimization/02-Opt-DSA/index.html#genetic-algorithm",
-    "href": "docs/02-Optimization/02-Opt-DSA/index.html#genetic-algorithm",
-    "title": "Solving Resource Allocation with Deterministic and Stochastic Optimization",
-    "section": "1.2 Genetic Algorithm",
-    "text": "1.2 Genetic Algorithm\n\n\nApplies crossover and mutation to evolve stronger solutions over generations.\nGenetic Algorithm on GitHub",
-    "crumbs": [
-      "Home",
-      "Projects",
-      "Optimization: Deterministic & Stochastic",
-      "Solving Resource Allocation with Deterministic and Stochastic Optimization"
-    ]
-  },
-  {
-    "objectID": "docs/02-Optimization/02-Opt-DSA/index.html#linear-optimization",
-    "href": "docs/02-Optimization/02-Opt-DSA/index.html#linear-optimization",
-    "title": "Solving Resource Allocation with Deterministic and Stochastic Optimization",
-    "section": "2.1 Linear Optimization",
-    "text": "2.1 Linear Optimization\n\n\nApplies linear programming to optimize resource allocation under constraints.\nLinear Optimization Example on GitHub\n(View problem instructions)",
-    "crumbs": [
-      "Home",
-      "Projects",
-      "Optimization: Deterministic & Stochastic",
-      "Solving Resource Allocation with Deterministic and Stochastic Optimization"
-    ]
-  },
-  {
-    "objectID": "docs/02-Optimization/02-Opt-DSA/index.html#generalized-network-flows-modeling-decay",
-    "href": "docs/02-Optimization/02-Opt-DSA/index.html#generalized-network-flows-modeling-decay",
-    "title": "Solving Resource Allocation with Deterministic and Stochastic Optimization",
-    "section": "2.2 Generalized Network Flows: Modeling Decay",
-    "text": "2.2 Generalized Network Flows: Modeling Decay\n\n\nExtends flow optimization to capture diminishing effects over a network.\nGeneralized Network Flows: Modeling Decay on GitHub",
-    "crumbs": [
-      "Home",
-      "Projects",
-      "Optimization: Deterministic & Stochastic",
-      "Solving Resource Allocation with Deterministic and Stochastic Optimization"
-    ]
-  },
-  {
-    "objectID": "docs/02-Optimization/02-Opt-DSA/index.html#mixed-binary-linear-optimization",
-    "href": "docs/02-Optimization/02-Opt-DSA/index.html#mixed-binary-linear-optimization",
-    "title": "Solving Resource Allocation with Deterministic and Stochastic Optimization",
-    "section": "2.3 Mixed-Binary-Linear Optimization",
-    "text": "2.3 Mixed-Binary-Linear Optimization\nProblem Instructions: (View problem context)\n\n\nCombines integer and binary decision variables for complex allocation problems.\nMixed-Binary-Linear Optimization on GitHub",
-    "crumbs": [
-      "Home",
-      "Projects",
-      "Optimization: Deterministic & Stochastic",
-      "Solving Resource Allocation with Deterministic and Stochastic Optimization"
-    ]
-  },
-  {
-    "objectID": "docs/03-ML/index.html#forecasting-expected-financial-returns",
-    "href": "docs/03-ML/index.html#forecasting-expected-financial-returns",
-    "title": "Applied Machine Learning",
-    "section": "1 Forecasting Expected Financial Returns",
-    "text": "1 Forecasting Expected Financial Returns\n\nPracticum Project, College of Engineering at the University of Oklahoma\n\n\n\nThis practicum applied machine learning to forecast a key economic indicator for investment strategy. Using LSTM, Elastic Net, and Prophet, LSTM delivered the strongest results, cutting out-of-sample error by ~10%. The workflow used vintage data, time-based validation, and feature engineering to reflect real-world constraints.\n\n\n\n\n\n\nProprietary; details cannot be shared.",
-    "crumbs": [
-      "Home",
-      "Projects",
-      "Applied Machine Learning"
-    ]
-  },
-  {
-    "objectID": "docs/03-ML/index.html#predicting-operational-delivery-times",
-    "href": "docs/03-ML/index.html#predicting-operational-delivery-times",
-    "title": "Applied Machine Learning",
-    "section": "2 Predicting Operational Delivery Times",
-    "text": "2 Predicting Operational Delivery Times\n\nCollege of Engineering at the University of Oklahoma\n\n\n\nThis project built models to improve food delivery time estimates by integrating traffic, accidents, and weather with historical data. The approach reduced variance in arrival predictions versus baseline methods, creating a more reliable framework to support delivery services with better planning accuracy and operational consistency.\nView on GitHub:\n\nPresentation Slides\nPDF Report\nR Code\n\n\n\n\n\n  \n\nClick image to watch presentation",
-    "crumbs": [
-      "Home",
-      "Projects",
-      "Applied Machine Learning"
-    ]
-  },
-  {
-    "objectID": "docs/05-ETL/index.html#project-highlights",
-    "href": "docs/05-ETL/index.html#project-highlights",
-    "title": "Automating Data Pipelines for Data Science Applications",
-    "section": "1 Project Highlights",
-    "text": "1 Project Highlights\nInteract with slides by clicking a slide.\n\n \n\nDesigned in Canva by Daniel Carpenter, MS.",
-    "crumbs": [
-      "Home",
-      "Projects",
-      "Automating Data Pipelines for Data Science Applications"
-    ]
-  },
-  {
-    "objectID": "docs/05-ETL/index.html#database-implementation-project",
-    "href": "docs/05-ETL/index.html#database-implementation-project",
-    "title": "Automating Data Pipelines for Data Science Applications",
-    "section": "2 Database Implementation Project",
-    "text": "2 Database Implementation Project\n\nCollege of Engineering at the University of Oklahoma",
-    "crumbs": [
-      "Home",
-      "Projects",
-      "Automating Data Pipelines for Data Science Applications"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Portfolio | Daniel Carpenter, MS",
+    "objectID": "docs/02-Optimization/index.html",
+    "href": "docs/02-Optimization/index.html",
+    "title": "Optimization: Deterministic & Stochastic",
     "section": "",
-    "text": "Education\nI studied at the University of Oklahoma (2020), double-majoring in Economics and Finance, then earned a Master’s in Data Science and Analytics from OU’s College of Engineering (2023).\n\n\n\nProfessional Experience\nIn 2021, I became an Operational Performance & Analysis Advisor, helping leaders across 25+ businesses improve efficiency and profitability. Two years later (2023), I joined the Office of Investment Management & Strategic Finance as a Senior Advisor, where I support a team of VP’s through analysis of capital decisions to sustain programs and services.\n\n\n\nPersonal Interests\nYou’ll find me in the garden, in the kitchen, or out on a trail mountain biking, OneWheeling, or hiking with my wife and our two dogs."
+    "text": "Note: Proprietary Information Hidden\n\n\n\nAll projects are either personally developed in free time or at the College of Engineering at the University of Oklahoma.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPortfolio Optimization with Python Particle Swarm Optimizer\n\n\nParticle Swarm Optimization is applied to portfolio choice modeling.\n\n\n\n2023\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolving Resource Allocation with Deterministic and Stochastic Optimization\n\n\nProjects displaying advanced optimization techniques in finance and operations\n\n\n\n2023\n\n\n\n\n\n\nNo matching items",
+    "crumbs": [
+      "Home",
+      "Projects",
+      "Optimization: Deterministic & Stochastic"
+    ]
+  },
+  {
+    "objectID": "docs/04-Dashboards/index.html",
+    "href": "docs/04-Dashboards/index.html",
+    "title": "Designing Interactive Business Dashboards",
+    "section": "",
+    "text": "Note: Proprietary Information Withheld\n\n\n\nAll proprietary information has been removed to protect organizational confidentiality.\n\n\n\n\n\n \n\nDesigned in Canva by Daniel Carpenter, MS. Interact with slides by clicking slides.",
+    "crumbs": [
+      "Home",
+      "Projects",
+      "Designing Interactive Business Dashboards"
+    ]
+  },
+  {
+    "objectID": "docs/01-Visual-Storytelling/01-Capital-Allocation/index.html",
+    "href": "docs/01-Visual-Storytelling/01-Capital-Allocation/index.html",
+    "title": "Allocating Capital for Sustainable Operations",
+    "section": "",
+    "text": "Note: Data is Randomly Generated\n\n\n\nFor demonstration only, the data are randomized and all naming is fictitious.\n\n\n\n\nView Code Here\n# Get the R files containing the functions with plots\npurrr::walk(list.files(\n  'docs//01-Visual-Storytelling//01-Capital-Allocation//functions//', \n  pattern = \"\\\\.R$\", full.names = TRUE), \n  source\n)\n\n\n\n\n1 Nearly All Sources of Cash used by Operations\n\nCash from multiple sources was consumed by day-to-day operations, leaving little for investment or growth.\n\nSee full function here.\n\n\nView Code Here\nallocation_history()\n\n\n\n\n\n\n\n\n\n\n\n\n\n2 Expected Allocations Predict Debt Financing to Support Uses of Cash\n\nForecasts show anticipated reliance on debt to cover operating cash needs, raising future financial risk.\n\nSee full function here.\n\n\n\n\n\n3 Allocations Fall Outside the Acceptable Ranges\n\nActual allocations drifted outside targeted ranges, signaling opportunity for enhanced controls and capital framework implementation.\n\nSee full function here.\n\n\nView Code Here\nallocation_ranges()\n\n\n\n\n\n\n\n\n\n\n\n\n\n4 High Realized Growth Relative to Expected Growth\n\nRealized growth outpaced planned levels, but capital use did not align with a sustainable model.\n\nSee full function here.\n\n\nView Code Here\n# Call funtion\nplots_anticipated_allocation &lt;- anticipated_allocation()\n\nplots_anticipated_allocation$index_growth # display\n\n\n\n\n\n\n\n\n\n\n\nView Code Here\nplots_anticipated_allocation$ranges # display\n\n\n\n\n\n\n\n\n\n\n\n\n\n5 Opportunity Cost of Perpetual Investment Returns Rise\n\nBy redirecting more cash into investments, the business could have built a steady, recurring income stream.\n\nSee full function here.\n\n\nView Code Here\ninvestment_opportunity()",
+    "crumbs": [
+      "Home",
+      "Projects",
+      "Visual Analysis to Problem Solve",
+      "Allocating Capital for Sustainable Operations"
+    ]
+  },
+  {
+    "objectID": "docs/01-Visual-Storytelling/02-Post-Mortem/index.html",
+    "href": "docs/01-Visual-Storytelling/02-Post-Mortem/index.html",
+    "title": "Assessing Impact of Competitor Market Entry",
+    "section": "",
+    "text": "View Code Here\n# Load packages and functions\nsource('docs//00-Reused-Code/Read-Library-and-Functions.R')\n\nset.seed(1024) # All data is randomized! Seed set for reproducibility\n\nthis_dir &lt;- 'docs//01-Visual-Storytelling//02-Post-Mortem//'\n\n# Date of the Competitor Entry:\ndate_competition_enters = Sys.Date() - 120\nselected_stores = c('Flagship Store' )\n\n# Read in a reference file for drive times destinations\ndrivetimeRef &lt;- fread(paste0(this_dir, 'data//drivetime_ref.csv'))\n\n# Get the R files containing the functions with plots --------------------------\npurrr::walk(list.files(paste0(this_dir, 'functions//'), pattern = \"\\\\.R$\", full.names = TRUE), source)",
+    "crumbs": [
+      "Home",
+      "Projects",
+      "Visual Analysis to Problem Solve",
+      "Assessing Impact of Competitor Market Entry"
+    ]
+  },
+  {
+    "objectID": "docs/01-Visual-Storytelling/02-Post-Mortem/index.html#shrinking-new-subscribers",
+    "href": "docs/01-Visual-Storytelling/02-Post-Mortem/index.html#shrinking-new-subscribers",
+    "title": "Assessing Impact of Competitor Market Entry",
+    "section": "4.1 Shrinking New Subscribers",
+    "text": "4.1 Shrinking New Subscribers\n\nProspect pools thinned around the Flagship after entry; conversion windows narrowed and acquisition costs rose.\n\n\n4.1.1 Reference of Current Drivetimes to Flagship Store\n\n\nView Code Here\nlibrary(knitr)\nknitr::kable(drivetimeRef)\n\n\n\n\n\nDestination\nHours\n\n\n\n\nFayetteville\n0.50\n\n\nSpringdale\n0.75\n\n\nTulsa\n1.50\n\n\nFort Smith\n1.75\n\n\n\n\n\n\n\n\n4.1.2 Shrinking New Subscribers in Key Markets\nSee full function here.\n\n\nView Code Here\n# Average Drivetime Analysis\nplots_subscriber_drivetime_analysis &lt;- subscriber_drivetime_analysis(\n  comparison_date1 = date_competition_enters,\n)\n\nplots_subscriber_drivetime_analysis$plots$overview\n\n\n\n\n\n\n\n\n\n\n\nView Code Here\nplots_subscriber_drivetime_analysis$plots$drive_distributions_market",
+    "crumbs": [
+      "Home",
+      "Projects",
+      "Visual Analysis to Problem Solve",
+      "Assessing Impact of Competitor Market Entry"
+    ]
+  },
+  {
+    "objectID": "docs/01-Visual-Storytelling/02-Post-Mortem/index.html#appendix-subscriber-base-distributed-evenly-across-united-states",
+    "href": "docs/01-Visual-Storytelling/02-Post-Mortem/index.html#appendix-subscriber-base-distributed-evenly-across-united-states",
+    "title": "Assessing Impact of Competitor Market Entry",
+    "section": "4.2 Appendix: Subscriber-Base Distributed Evenly Across United States",
+    "text": "4.2 Appendix: Subscriber-Base Distributed Evenly Across United States\nSee full function here.\n\n\nView Code Here\nsubscriber_geography_analysis()",
+    "crumbs": [
+      "Home",
+      "Projects",
+      "Visual Analysis to Problem Solve",
+      "Assessing Impact of Competitor Market Entry"
+    ]
+  },
+  {
+    "objectID": "docs/index.html",
+    "href": "docs/index.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Note: Proprietary Information Withheld\n\n\n\nAll proprietary information has been removed to protect organizational confidentiality.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOptimization: Deterministic & Stochastic\n\n\nAdvanced operations research projects in python, AMPL, and gurobipy.\n\n\n\n2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nVisual Analysis to Problem Solve\n\n\nExamples of my approach to business problem solving in R and SQL.\n\n\n\n2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nPackage Development\n\n\nBuilding Tools for Consistent Branding in ggplot2\n\n\n\n2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nDesigning Interactive Business Dashboards\n\n\nDashboards for executive and operator consumption in Tableau, Shiny + bslib, and Power BI.\n\n\n\n2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nAutomating Data Pipelines for Data Science Applications\n\n\nDatabases uses for Data Science applications in Python, R, and SQL.\n\n\n\n2024\n\n\n\n\n\n\n\n\n\n\n\n\n\nApplied Machine Learning\n\n\nProjects leveraging machine learning techniques with scikit-learn, keras, and tensorflow.\n\n\n\n2023\n\n\n\n\n\n\nNo matching items",
+    "crumbs": [
+      "Home",
+      "Projects"
+    ]
   }
 ]
