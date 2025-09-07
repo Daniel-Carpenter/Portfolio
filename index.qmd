@@ -14,7 +14,7 @@ about:
       href: Portfolio/docs/
     - icon: file-pdf-fill
       text: My Resume
-      href: Portfolio/resume.qmd
+      href: Portfolio/resume.html
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/dbry1024
