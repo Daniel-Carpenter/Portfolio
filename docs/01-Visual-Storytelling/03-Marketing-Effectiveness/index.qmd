@@ -1,0 +1,76 @@
+---
+title:  Evaluating Shifts in Marketing Strategy
+date:   "2023-01-01"
+image: "img/thumbnail.png"
+description: Demonstrates how marketing adjustments did not offset the pressure from a competitor’s expansion.
+
+format:
+  html:
+    fig-width: 8.5
+    fig-height: 5.5
+    
+execute:
+  cache: true
+---
+
+---
+
+::: {.callout-note title="Note: Data is Randomly Generated"}
+
+For demonstration only, the data are randomized and all naming is fictitious.
+
+:::
+
+```{r load_functions}
+# Get the R files containing the functions with plots
+purrr::walk(list.files(
+  'docs//01-Visual-Storytelling//03-Marketing-Effectiveness//functions//', 
+  pattern = "\\.R$", full.names = TRUE), 
+  source
+)
+```
+
+<br>
+
+# Rising Discounts with Limited Impact
+
+> Discounts increased sharply, but revenue and gross profit gains remained minimal.
+
+<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/01-Visual-Storytelling/03-Marketing-Effectiveness/functions/" target="_blank">See full function here.</a>
+
+```{r marketing_effectiveness_1}
+plots_marketing_effectiveness <- marketing_effectiveness()
+
+plots_marketing_effectiveness$plot_discount_trend # display
+plots_marketing_effectiveness$plot_discount_per_gp # display
+plots_marketing_effectiveness$plot_rev_per_gp # display
+```
+
+---
+
+<br>
+
+# Performance Shifts Parallel to Marketing Response
+
+> Market performance shifted at the same time as strategy changes, but results did not improve meaningfully.
+
+```{r marketing_effectiveness_2}
+plots_marketing_effectiveness$plot_scatter # display
+plots_marketing_effectiveness$plot_density # display
+```
+
+---
+
+<br>
+
+# Patron Density Remains Steady Across Service Area
+
+> Patron density remained steady across the service area; revenue pressure likely came from conversion and pricing, not coverage.
+
+[Output created with Tableau.](/docs/01-Visual-Storytelling/03-Marketing-Effectiveness/functions/02-Map/Patron-Changes-Tableau-Workbook.twb)
+
+![](/docs/output/Tableau.png)
+
+<br>
+
+[<img src = '/docs/img/go-back.png' height=50 >](../)

@@ -1,0 +1,11 @@
+# Recommended to install via terminal/pip:
+# pip install --force-reinstall --upgrade -r requirements.txt  
+
+numpy
+pyarrow
+pandas
+yfinance # https://pypi.org/project/yfinance/
+matplotlib
+datetime
+seaborn
+plotly

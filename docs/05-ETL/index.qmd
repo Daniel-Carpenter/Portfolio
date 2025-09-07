@@ -1,0 +1,50 @@
+---
+title:  "Automating Data Pipelines for Data Science Applications"
+date:   "2024-01-01"
+image: "img/thumbnail.png"
+description: Databases uses for Data Science applications in `Python`, `R`, and `SQL`.
+---
+
+---
+
+::: {.callout-note title="Note: Proprietary Information Withheld"}
+
+All proprietary information has been removed to protect organizational confidentiality.
+
+:::
+
+<!-- > This repository showcases shareable projects displaying advanced **database usage techniques** for data science applications.   -->
+
+---
+
+## Project Highlights
+
+*Interact with slides by **clicking*** a slide.
+
+<div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
+ padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+ border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+    src="https://www.canva.com/design/DAGCCB2pTgs/vT_E_p0BSE6Go8RwwrEr8w/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+  </iframe>
+</div>
+Designed in <a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGCCB2pTgs&#x2F;vT_E_p0BSE6Go8RwwrEr8w&#x2F;view?utm_content=DAGCCB2pTgs&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">Canva</a> by Daniel Carpenter, MS.
+
+---
+
+<br>
+
+## Database Implementation Project
+
+> College of Engineering at the University of Oklahoma 
+
+<iframe
+  width = "725"
+  height = "825"
+  src = "/docs/05-ETL/assets/Report.pdf">
+</iframe>
+
+
+<br>
+
+[<img src = '/docs/img/go-back.png' height=50 >](../)

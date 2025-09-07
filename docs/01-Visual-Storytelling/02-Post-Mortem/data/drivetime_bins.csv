@@ -1,0 +1,8 @@
+﻿drivetime_bin_id,DRIVETIME_BIN_NAME
+0,Unknown
+1,< 20 mins.
+2,< 1 hr.
+3,< 1.5 hrs.
+4,< 2 hrs.
+6,< 3 hrs.
+7,> 3 hrs.

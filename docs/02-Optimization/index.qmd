@@ -1,0 +1,40 @@
+---
+title:  "Optimization: Deterministic & Stochastic"
+date:   today
+image: "img/thumbnail.png"
+description: Advanced operations research projects in `python`, `AMPL`, and `gurobipy`.
+
+listing:
+  id: main-listing
+  contents: 
+    - 01-PSO-Portfolio/index.qmd
+    - 02-Opt-DSA/index.qmd
+    
+  # Style
+  type: grid
+  fields: [title, description, image, date]
+  field-display-names: 
+    title: Project
+---
+
+---
+
+::: {.callout-note title="Note: Proprietary Information Hidden"}
+
+All projects are either personally developed in free time or at the College of Engineering at the University of Oklahoma.
+
+:::
+
+---
+
+
+<!-- Listing here -->
+
+:::{#main-listing}
+:::
+
+
+[<img src = '/docs/img/go-back.png' height=50 >](../)
+
+
+

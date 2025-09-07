@@ -1,0 +1,99 @@
+# Daniel Carpenter, MS Portfolio
+
+# Headers for all pages
+author: Daniel Carpenter, MS
+date-format: "YYYY"
+
+# Default code execution stype
+execute:
+  code-fold: true
+  message:   false
+  warning:   false
+  dpi:       80
+
+# Default formatting for individual pages
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    toc-title: "Contents"
+    toc-location: right
+    number-sections: true
+    code-fold: true
+    code-summary: "View Code Here"
+    df-print: paged
+    code-block-bg: true
+    code-block-border-left: "#eaeaea"
+
+# Website project
+project:
+  type:       website
+  execute-dir: project # enables dev on individual quarto files
+  output-dir: public # name of the root directory for website
+
+
+  # Copy all assets to public to ensure link access
+  # resources:
+    # - '/dir/'
+
+
+  # When devoping the preview:
+  preview:
+    port: 1024
+
+website:
+
+  # Title and main icon
+  title:   "Portfolio | Daniel Carpenter, MS"
+  image:   docs/img/headshot-only.png
+  favicon: docs/img/headshot-only.png
+  page-navigation: false # next and previous page buttons
+
+  # Top Navigation Bar
+  navbar:
+
+    # Right side of nav bar
+    left:
+
+      # Home Quick Navigation
+      - text: 'Home'
+        file: index.qmd
+
+      # Projects
+      - text: 'Projects'
+        file: docs/
+
+      # Projects
+      - text: 'Resume'
+        file: resume.qmd
+
+    tools:
+      - icon: linkedin
+        text: LinkedIn
+        href: https://www.linkedin.com/in/dbry1024
+      - icon: github
+        text: GitHub
+        href: https://github.com/Daniel-Carpenter
+      - icon: envelope
+        text: Contact Me
+        href: mailto:dbry1024@gmail.com
+
+
+  # Sidebar navigation
+  sidebar:
+    style: floating
+    collapse-level: 2
+    align: left
+
+    contents:
+      - auto: docs/
+
+  # Page Footer
+  page-footer:
+    border: false
+    left: |
+      Concept, design, and implementation by <a href="mailto:dbry1024@gmail.com">Daniel Carpenter, MS</a>
+    right:
+      - icon: github
+        href: https://github.com/Daniel-Carpenter
+        # aria-label: GitHub

@@ -1,0 +1,174 @@
+---
+title:  Assessing Impact of Competitor Market Entry
+date:   "2022-01-01"
+image: "img/thumbnail.png"
+description: Analyzes the impact of a competitor entering an adjacent market.
+
+format:
+  html:
+    fig-width: 10
+    fig-height: 10
+    
+execute:
+  cache: true
+---
+
+---
+
+::: {.callout-note title="Note: Data is Randomly Generated"}
+
+For demonstration purposes, the data are randomized and all naming is fictitious.
+
+:::
+
+```{r load_functions}
+# Load packages and functions
+source('docs//00-Reused-Code/Read-Library-and-Functions.R')
+
+set.seed(1024) # All data is randomized! Seed set for reproducibility
+
+this_dir <- 'docs//01-Visual-Storytelling//02-Post-Mortem//'
+
+# Date of the Competitor Entry:
+date_competition_enters = Sys.Date() - 120
+selected_stores = c('Flagship Store' )
+
+# Read in a reference file for drive times destinations
+drivetimeRef <- fread(paste0(this_dir, 'data//drivetime_ref.csv'))
+
+# Get the R files containing the functions with plots --------------------------
+purrr::walk(list.files(paste0(this_dir, 'functions//'), pattern = "\\.R$", full.names = TRUE), source)
+```
+
+> Within the deliverable, this analysis shows that core KPIs soften across stores, suppliers, in-store sections, and subscribers.
+
+<br>
+
+# Enterprise Operating Income per Store per Day Declines After Competitor Entry
+
+> Daily performance lagged the 6–12 month trend after entry.
+
+<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/01-Visual-Storytelling/02-Post-Mortem/functions/Store-Analysis.R" target="_blank">See full function here.</a>
+
+```{r store_analysis}
+## Individual Store Trends
+plots_store_analysis <- store_analysis(
+  selected_stores = c('Flagship Store', 'Other Stores'),
+  comparison_date = date_competition_enters
+)
+
+# plots_store_analysis$plots$overview
+plots_store_analysis$plots$operating_income_per_store_per_day
+```
+
+---
+
+<br>
+
+# Within the Flagship Store, Section Performance has Uniformly Decreased
+
+> High-traffic sections lost share post-entry.
+
+<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/01-Visual-Storytelling/02-Post-Mortem/functions/Section-of-Store-Analysis.R" target="_blank">See full function here.</a>
+
+```{r section_of_store_analysis, fig.width=12, fig.height=12, dpi=720}
+
+# Specific Zone vs. Nearby Zones vs. Broader Floor
+plots_section_of_store_analysis <- section_of_store_analysis(
+  comparison_date = date_competition_enters
+)
+
+plots_section_of_store_analysis$plots$overview
+```
+
+---
+
+<br>
+
+# Supplier Performance has Dropped Proportionally
+
+> Key suppliers lost volume in line with subscriber erosion; supplier mix remained steady.
+
+<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/01-Visual-Storytelling/02-Post-Mortem/functions/Supplier-Analysis.R" target="_blank">See full function here.</a>
+
+```{r supplier_analysis}
+plots_supplier_analysis <- supplier_analysis(
+  selected_stores = selected_stores,
+  comparison_date = date_competition_enters
+)
+
+plots_supplier_analysis$plots$overview
+```
+
+---
+
+<br>
+
+# Subscribers Trend Lowers since New Competitor Entry
+
+> New subscriptions slowed and churn accelerated; cumulative subscribers underperformed the 12-month baseline.
+
+<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/01-Visual-Storytelling/02-Post-Mortem/functions/Subscriber-Demographic-Analysis.R" target="_blank">See full function here.</a>
+
+```{r subscribers_1, fig.height=6}
+## Patron subscribers
+subscribers <- subscriber_demographic_analysis(
+  comparison_date = date_competition_enters
+)
+
+subscribers$plots$overview
+```
+
+<br>
+
+### Subscriber Comparison
+
+* Since expanding, daily subscribers have been *less than* on average than in the past 12-months.
+* The cumulative actual subscribers since expanding drifts *far below* the historical baseline. "Baseline" refers to the 12-month average subscribers.
+
+```{r subscribers_2, fig.height=6}
+subscribers$plots$cumulativeVariance
+subscribers$plots$detail
+```
+
+## Shrinking New Subscribers
+
+> Prospect pools thinned around the Flagship after entry; conversion windows narrowed and acquisition costs rose.
+
+### Reference of Current Drivetimes to Flagship Store
+
+```{r drivetime_ref}
+library(knitr)
+knitr::kable(drivetimeRef)
+```
+
+<br>
+
+### Shrinking New Subscribers in Key Markets
+
+<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/01-Visual-Storytelling/02-Post-Mortem/functions/Subscriber-Drivetimes.R" target="_blank">See full function here.</a>
+
+```{r subscriber_drivetime_analysis_1, fig.height=7}
+# Average Drivetime Analysis
+plots_subscriber_drivetime_analysis <- subscriber_drivetime_analysis(
+  comparison_date1 = date_competition_enters,
+)
+
+plots_subscriber_drivetime_analysis$plots$overview
+```
+
+```{r subscriber_drivetime_analysis_2, fig.height=11, fig.width=8.2}
+plots_subscriber_drivetime_analysis$plots$drive_distributions_market
+```
+
+## Appendix: Subscriber-Base Distributed Evenly Across United States
+
+<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/01-Visual-Storytelling/02-Post-Mortem/functions/Subscriber-Geography-Analysis.R" target="_blank">See full function here.</a>
+
+```{r subscriber_geography_analysis, fig.height=8}
+subscriber_geography_analysis()
+```
+
+<br> 
+
+[<img src = '/docs/img/go-back.png' height=50 >](../)

@@ -1,0 +1,81 @@
+---
+title:  "Applied Machine Learning"
+date:   "2023-01-01"
+image: "img/thumbnail.png"
+description: Projects leveraging machine learning techniques with `scikit-learn`, `keras`, and `tensorflow`.
+---
+
+---
+
+
+::: {.callout-note title="Note: Proprietary Information Withheld"}
+
+All proprietary information has been removed to protect organizational confidentiality.
+
+:::
+
+> This repository showcases shareable projects displaying advanced **machine learning techniques** in finance and operations.  
+
+---
+
+## Forecasting Expected Financial Returns
+
+> Practicum Project, College of Engineering at the University of Oklahoma 
+
+::: columns 
+::: {.column width="55%"} 
+
+This practicum applied machine learning to forecast a key economic indicator for investment strategy. Using LSTM, Elastic Net, and Prophet, LSTM delivered the strongest results, cutting out-of-sample error by ~10%. The workflow used vintage data, time-based validation, and feature engineering to reflect real-world constraints.
+ 
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%"}
+![Proprietary; details cannot be shared.](/docs/03-ML/img/dsa-practicum-daniel-carpenter.png)
+:::
+:::
+
+---
+
+## Predicting Operational Delivery Times
+
+> College of Engineering at the University of Oklahoma 
+
+::: columns 
+::: {.column width="55%"} 
+
+This project built models to improve food delivery time estimates by integrating traffic, accidents, and weather with historical data. The approach reduced variance in arrival predictions versus baseline methods, creating a more reliable framework to support delivery services with better planning accuracy and operational consistency.
+ 
+View on GitHub:
+
+1. <a href="https://github.com/Daniel-Carpenter/Delivery-Service-ETA-Prediction/blob/main/1%20-%20Presentation%20Slides/IDA-Final-Presentation%20-%20Submission.pdf" target="_blank">Presentation Slides</a>  
+
+2. <a href="https://github.com/Daniel-Carpenter/Delivery-Service-ETA-Prediction/blob/main/2%20-%20Final%20Report/Carpenter_Mohanty_Knepp_FinalReport.pdf" target="_blank">PDF Report</a>  
+
+3. <a href="https://github.com/Daniel-Carpenter/Delivery-Service-ETA-Prediction/blob/main/2%20-%20Final%20Report/FinalModel.Rmd" target="_blank">`R` Code</a>  
+
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%"}
+<figure>
+  <a href="https://vimeo.com/784619959" target="_blank">
+    <img src="/docs/03-ML/img/video.png" alt="Click to watch Presentation of Project" style="width:100%;">
+  </a>
+  <figcaption style="text-align:left; margin-top:8px;">
+    Click image to watch presentation
+  </figcaption>
+</figure>
+
+
+:::
+:::
+
+---
+
+
+[<img src = '/docs/img/go-back.png' height=50 >](../)

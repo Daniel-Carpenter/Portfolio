@@ -1,0 +1,15 @@
+---
+title: Resume | Daniel Carpenter, MS
+date: today
+---
+
+---
+
+<iframe
+  width = "725"
+  height = "825"
+  src = "assets/Daniel Carpenter Resume (Dec-2023).pdf">
+</iframe>
+
+
+[<img src = '/docs/img/go-back.png' height=50 >](index.qmd)

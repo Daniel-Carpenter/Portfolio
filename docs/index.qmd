@@ -1,0 +1,51 @@
+---
+title:  "Projects"
+date:   today
+description: This repository showcases shareable projects.
+
+listing:
+  
+  # Tile contents
+  id: main-listing
+  contents: 
+    - 01-Visual-Storytelling/index.qmd
+    - 02-Optimization/index.qmd
+    - 03-ML/index.qmd
+    - 04-Dashboards/index.qmd
+    - 05-ETL/index.qmd
+    
+    # Package link
+    - path: https://daniel-carpenter.github.io/styles/
+      image: 06-Package-Dev/img/thumbnail.png
+      title: Package Development
+      description: Building Tools for Consistent Branding in `ggplot2`
+      date: "2025-08-01"
+      
+  # Setup
+  type: grid
+  fields: [title, description, image, date]
+  field-display-names: 
+    title: Project
+  sort: 
+    - "date desc"
+    - 'title'
+---
+
+---
+
+::: {.callout-note title="Note: Proprietary Information Withheld"}
+
+All proprietary information has been removed to protect organizational confidentiality.
+
+:::
+
+---
+
+
+<!-- Listing here -->
+
+:::{#main-listing}
+:::
+
+
+[<img src = '/docs/img/go-back.png' height=50 >](../index.qmd)

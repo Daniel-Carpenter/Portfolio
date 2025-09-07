@@ -1,0 +1,11 @@
+.Rproj.user
+.Rhistory
+.Rdata
+.httr-oauth
+.DS_Store
+.quarto
+01-Visual-Storytelling/06-Retail-Map/EGM_Distance_Matrix.csv
+01-Visual-Storytelling/03-Marketing-Effectiveness/02-Map/Patron-Map-Data.csv
+04-Dashboards/03-Power-BI/Marketing Dataset V3.pbix
+/.quarto/
+/public/

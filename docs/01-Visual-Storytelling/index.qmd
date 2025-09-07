@@ -1,0 +1,41 @@
+---
+title:  "Visual Analysis to Problem Solve"
+date:   today
+image: "img/thumbnail.png"
+description: Examples of my approach to business problem solving in `R` and `SQL`.
+listing:
+  
+  # Listings
+  id: main-listing
+  contents: 
+    - 01-Capital-Allocation/index.qmd
+    - 02-Post-Mortem/index.qmd
+    - 03-Marketing-Effectiveness/index.qmd
+    
+  # Aesthetis
+  type: grid
+  fields: [title, description, image, date]
+  field-display-names: 
+    title: Project
+  sort: 
+    - "date desc"
+    - 'title'
+---
+
+---
+
+::: {.callout-note title="Note: Data is Randomly Generated"}
+
+For demonstration only, the data are randomized and all naming is fictitious.
+
+:::
+
+---
+
+<!-- Listing here -->
+
+:::{#main-listing}
+:::
+
+
+[<img src = '/docs/img/go-back.png' height=50 >](../)

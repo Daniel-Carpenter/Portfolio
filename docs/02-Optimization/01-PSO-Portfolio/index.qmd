@@ -1,0 +1,237 @@
+---
+title:  Portfolio Optimization with Python Particle Swarm Optimizer
+date:   "2023-01-01"
+image:  'img/thumbnail.png'
+description: Particle Swarm Optimization is applied to portfolio choice modeling.
+
+format:
+  html:
+    fig-width: 8.5
+    fig-height: 5.5
+    code-fold: true
+
+execute:
+  cache: true
+  
+jupyter: python3
+
+---
+
+---
+
+::: {.callout-note title="Note: Tickers are randomly selected"}
+
+For demonstration only, the tickers are randomly chosen.
+
+:::
+
+
+# Presentation of Process and Research
+<a href="https://vimeo.com/manage/videos/724082009?embedded=false&source=video_title&owner=179170794" target="_blank">
+  <img src="/docs/02-Optimization/01-PSO-Portfolio/img/video.png" alt="Presentation of Project" style="width:100%;">
+</a>
+
+
+---
+
+<br>
+
+
+# Documentation of Process and Research
+
+<ul>
+  <li><a href="/docs/02-Optimization/01-PSO-Portfolio/documentation/Presentation.PDF" target="_blank">Presentation Slides</a></li>
+  <li><a href="/docs/02-Optimization/01-PSO-Portfolio/documentation/Paper.PDF" target="_blank">Research Paper</a></li>
+  <li><a href="/docs/02-Optimization/01-PSO-Portfolio/documentation/Literature.PDF" target="_blank">Literature Review</a></li>
+</ul>
+
+---
+
+<br>
+
+
+# Executed Code
+
+## Overview of Code
+> Class-based Python approach minimized portfolio risk and selected the max-Sharpe portfolio across simulations.
+
+1. Inputs for model:
+    * Stock tickers from publically traded companies, investment funds, etc. available on Yahoo Finance  
+    * Date range of Stocks to include in sample (Default last 10 years)  
+    * Minimum desired return on portfolio as a soft constraint  
+    * Some Metaheuristic inputs  
+    
+2. `StockFinanceMPT.py`: Calls `PullStockData.py` to pull stock data, then prepares stock data to get excess returns, variance-covariance matrix, etc. for **Modern Porfolio Theory**. *Must be in working directory*
+
+3. `SimulateOptimalPortfolios.py`: 
+    * Runs individual Particle Swarm Optimization routine, searching for the global minimum risk. Specifically, it creates many `OptimizePortfolioPSO` class objects.  
+    * Repeatedly simulate PSO modeling as desired.  
+    * Returns optimal allocation of weights to invest into stocks and associated investment weights.  
+
+    
+4.  `ViewSimulatedPortfolios.py`: Class that processes results of the simulations, which yields the following performance plots:  
+    * Displays variance characteristics across all simulations.  
+    * Across all simulations, plots:  
+        * Global minimum risk portfolio and maximum Sharpe portfolios against all non-optimal portfolios.  
+        * Global minimum risk portfolio and maximum Sharpe portfolios against all investable tickers, or funds.  
+    * Frontier of all simulated portfolios. I.e., risk vs. return of all simulated portfolios.  
+
+6. Exports CSVs of inputs, performance data, weights, etc.
+
+---
+
+<br>
+
+
+```{python wd}
+#| code-fold: true
+# Set working directory to the R project directory
+import sys
+import os
+
+sys.path.append(os.getcwd() + "//docs//02-Optimization//01-PSO-Portfolio//")
+
+# Import custom classes
+import datetime                  as dt  # For dates
+import StockFinanceMPT           as mpt # Stock pull from yfinance in current wrkdir
+import SimulateOptimalPortfolios as sop # Run simulations of global best portfolios
+import ViewSimulatedPortfolios   as vsp # Wrapper class to plot, export, etc., simulations
+```
+
+## Pull and Prepare Stock Data
+
+> Pulled price history and T-bill rates; built returns and covariance to power risk/return modeling.
+
+<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/02-Optimization/01-PSO-Portfolio/StockFinanceMPT.py" target="_blank">See full function here.</a>
+
+```{python pull_data}
+# List of stock tickers to pull data
+StockTickers = ['NVDA', 'MSFT', 'AAPL', 'AMZN', 'META', 
+                'AVGO', 'GOOGL', 'GOOG', 'TSLA','JPM', 
+                'WMT', 'V', 'LLY', 'ORCL', 'MA', 'NFLX', 
+                'XOM', 'JNJ', 'COST', 'HD', 'BAC'
+]
+
+# Date range for stock & t-bill data pull - default last 10 years
+maxDate = dt.datetime.today()                    # Max date to pull from
+minDate = maxDate - dt.timedelta(days = 15*365) # Min date to pull from
+
+# Pull stock data
+PulledStockData = mpt.StockFinanceMPT(StockTickers, minDate, maxDate)
+```
+
+---
+
+<br>
+
+## Run Particle Swarm Optimization
+
+> Simple Interpretation of Code: Start with 15 random portfolios, let each adjust 25 times while sharing results, and repeat 1,500 runs to identify both the minimum-risk and maximum-Sharpe portfolios.
+
+<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/02-Optimization/01-PSO-Portfolio/SimulateOptimalPortfolios.py" target="_blank">See full function here.</a>
+
+```{python optimize}
+# Create the simulation
+simulatedPortfolios = sop.SimulateOptimalPortfolios(    
+    PulledStockData,               # Using the pulled stock data above
+    totalSimulations    = 1500,    # Number of min risk portfolio's to simulate
+    totalIterations     = 25,      # Total number of iterations (or movements within one simulation)
+    numPorfolios        = 15,      # Total number of portfolios in a swarm. 
+    minDesiredReturn    = 0.07     # Targeted expected return, soft constraint
+    )
+
+simulatedPortfolios.runSimulation() # Run the simulation given parameters above
+```
+
+---
+
+<br>
+
+# View Results
+
+## Review Minimum Risk Portfolio
+
+> Identified the minimum-risk mix as the baseline; quantified risk reduction versus the starting set.
+
+<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py" target="_blank">See full function here.</a>
+
+```{python view_min_risk}
+# Create the viewer wrapper class
+simulationViewer = vsp.ViewSimulatedPortfolios(simulatedPortfolios, displayResults = False)
+```
+
+---
+
+<br>
+
+## Compare Optimal Portfolio to the Efficient Frontier
+
+> Placed the chosen portfolio on the frontier to confirm its risk/return position.
+
+<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py" target="_blank">See full function here.</a>
+
+```{python plot_3}
+simulationViewer.plotRiskVsReturnVsSharpe(TRANSPARENCY_LEVEL=0.33)
+```
+
+---
+
+<br>
+
+## Compare Optimal Portfolio to All Other Simulated Portfolios
+
+> Benchmarked the optimal result against all simulations to validate consistency and uplift.
+
+<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py" target="_blank">See full function here.</a>
+
+```{python plot_1}
+simulationViewer.plotOptimalVsNonOptSimulations()
+```
+
+---
+
+<br>
+
+## Compare Optimal Portfolio to All Investable Assets
+
+> Showed diversification benefits versus single assets; improved return per unit of risk.
+
+<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py" target="_blank">See full function here.</a>
+
+```{python plot_2}
+simulationViewer.plotOptimalVsRealizedReturns()
+```
+
+---
+
+<br>
+
+## Other Class Functions
+
+> Exported data and plots; enabled quick checks and repeatable reporting.
+
+<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py" target="_blank">See full function here.</a>
+
+```{python exports}
+# Exports all Weights Data and Plots to dated folder
+simulationViewer.exportSimulationData()
+```
+
+<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py" target="_blank">See full function here.</a>
+
+```{python other_fun eval=false}
+#| eval: false # NOT RUN
+
+# Inspect that the sum of weights constraint is met (100%)
+simulationViewer.checkSumOfWeights()
+
+# Invested Variability among assets
+simulationViewer.plotPortfolioVarianceStats(figHeight=7, figWidth=5)
+
+# Process all output at once
+simulationViewer.processAllOutputAtOnce()
+```
+
+<br>
+
+[<img src = '/docs/img/go-back.png' height=50 >](../)

@@ -1,0 +1,141 @@
+---
+title:  "Solving Resource Allocation with Deterministic and Stochastic Optimization"
+date:   "2023-01-01"
+image:  'img/pso.png'
+description: Projects displaying advanced **optimization techniques** in finance and operations
+---
+
+---
+
+> This repository highlights projects using deterministic models (linear, integer, and mixed programming) and stochastic/metaheuristic methods (simulated annealing, genetic algorithms, particle swarm optimization).  
+
+---
+
+## Particle Swarm Optimization on Schwefel Benchmark Function  
+Problem Instructions: (<a href="https://github.com/Daniel-Carpenter/Metaheuristics/blob/main/03%20-%20Projects/6%20-%20Particle%20Swarm%20Optimization/Assignment%20Instructions.pdf" target="_blank">View problem context</a>)  
+
+::: columns 
+::: {.column width="55%"} 
+*Simulates swarm intelligence to explore a complex search space efficiently.*  
+
+<a href="https://github.com/Daniel-Carpenter/Metaheuristics/tree/main/03%20-%20Projects/6%20-%20Particle%20Swarm%20Optimization#1-question-1-particle-swarm-optimization" target="_blank">Particle Swarm Optimization on GitHub</a>  
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%"}
+![](/docs/02-Optimization/02-Opt-DSA/img/pso.png)
+:::
+:::
+
+---
+
+# Heuristic & Metaheuristic Approaches for Neighborhood & Population Heuristics  
+Problem Instructions: (<a href="https://github.com/Daniel-Carpenter/Metaheuristics/blob/main/03%20-%20Projects/5%20-%20Neighborhood%20Metaheuristics/Assignment%20Instructions.pdf" target="_blank">View problem context</a>)  
+
+---
+
+## Simulated Annealing
+
+::: columns 
+::: {.column width="55%"} 
+*Uses iterative improvement with probabilistic acceptance of worse solutions.*  
+
+<a href="https://github.com/Daniel-Carpenter/Metaheuristics/tree/main/03%20-%20Projects/5%20-%20Neighborhood%20Metaheuristics#1-question-1-simulated-annealing" target="_blank">Simulated Annealing on GitHub</a>  
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%"}
+![](/docs/02-Optimization/02-Opt-DSA/img/sa.png)
+:::
+:::
+
+---
+
+## Genetic Algorithm
+
+::: columns 
+::: {.column width="55%"} 
+*Applies crossover and mutation to evolve stronger solutions over generations.*  
+
+<a href="https://github.com/Daniel-Carpenter/Metaheuristics/tree/main/03%20-%20Projects/5%20-%20Neighborhood%20Metaheuristics#2-question-2-genetic-algorithm" target="_blank">Genetic Algorithm on GitHub</a>  
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%"}
+![](/docs/02-Optimization/02-Opt-DSA/img/ga.png)
+:::
+:::
+
+---
+
+<br> 
+
+# Deterministic Approaches
+
+## Linear Optimization
+
+::: columns 
+::: {.column width="55%"} 
+*Applies linear programming to optimize resource allocation under constraints.*  
+
+<a href="https://github.com/Daniel-Carpenter/Metaheuristics/tree/main/03%20-%20Projects/2%20-%20Adv.%20LP%20and%20Network%20Flows#1---problem-1" target="_blank">Linear Optimization Example on GitHub</a>  
+(<a href="https://github.com/Daniel-Carpenter/Metaheuristics/blob/main/03%20-%20Projects/2%20-%20Adv.%20LP%20and%20Network%20Flows/Assignment%20Instructions.pdf" target="_blank">View problem instructions</a>)  
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%"}
+![](/docs/02-Optimization/02-Opt-DSA/img/1.png)
+:::
+:::
+
+---
+
+## Generalized Network Flows: Modeling Decay
+
+::: columns 
+::: {.column width="55%"} 
+*Extends flow optimization to capture diminishing effects over a network.*  
+
+<a href="https://github.com/Daniel-Carpenter/Metaheuristics/tree/main/04%20-%20Exams/Exam%201#31-model-overview" target="_blank">Generalized Network Flows: Modeling Decay on GitHub</a>  
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%"}
+![](/docs/02-Optimization/02-Opt-DSA/img/2.png)
+:::
+:::
+
+---
+
+## Mixed-Binary-Linear Optimization  
+Problem Instructions: (<a href="https://github.com/Daniel-Carpenter/Metaheuristics/blob/main/03%20-%20Projects/3%20-%20Adv.%20Integer%20Programming/Assignment%20Instructions.pdf" target="_blank">View problem context</a>)  
+
+::: columns 
+::: {.column width="55%"} 
+*Combines integer and binary decision variables for complex allocation problems.*  
+
+<a href="https://github.com/Daniel-Carpenter/Metaheuristics/tree/main/03%20-%20Projects/3%20-%20Adv.%20Integer%20Programming#1---problem-1" target="_blank">Mixed-Binary-Linear Optimization on GitHub</a>  
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%"}
+![](/docs/02-Optimization/02-Opt-DSA/img/binary.png)
+:::
+:::
+
+
+<br>
+
+[<img src = '/docs/img/go-back.png' height=50 >](../)

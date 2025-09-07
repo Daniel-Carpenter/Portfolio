@@ -1,0 +1,32 @@
+---
+title:  "Designing Interactive Business Dashboards"
+date:   "2025-01-01"
+image: "img/thumbnail.png"
+description: Dashboards for executive and operator consumption in `Tableau`, `Shiny + bslib`, and `Power BI`.
+---
+
+---
+
+::: {.callout-note title="Note: Proprietary Information Withheld"}
+
+All proprietary information has been removed to protect organizational confidentiality.
+
+:::
+
+<!-- > This repository showcases shareable projects displaying advanced **dashboarding techniques** in finance and operations.   -->
+
+---
+
+<div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
+ padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+ border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+    src="https://www.canva.com/design/DAGxfKm-hEA/1X2LtUPdYETjPNHAdjITrA/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+  </iframe>
+</div>
+Designed in <a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGxfKm-hEA&#x2F;1X2LtUPdYETjPNHAdjITrA&#x2F;view?utm_content=DAGxfKm-hEA&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">Canva</a> by Daniel Carpenter, MS. *Interact with slides by **clicking slides.*** 
+
+
+<br>
+
+[<img src = '/docs/img/go-back.png' height=50 >](../)
