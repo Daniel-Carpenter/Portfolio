@@ -11,10 +11,10 @@ about:
   links: 
     - icon: bar-chart-fill
       text: My Projects
-      href: docs/
+      href: Portfolio/docs/
     - icon: file-pdf-fill
       text: My Resume
-      href: resume.qmd
+      href: Portfolio/resume.qmd
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/dbry1024
