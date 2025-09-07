@@ -1,0 +1,19 @@
+{
+  "hash": "853749d0f323525fb3324c77eed5ba6a",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle:  Evaluating Shifts in Marketing Strategy\ndate:   \"2023-01-01\"\nimage: \"img/thumbnail.png\"\ndescription: Demonstrates how marketing adjustments did not offset the pressure from a competitor’s expansion.\n\nformat:\n  html:\n    fig-width: 8.5\n    fig-height: 5.5\n    \nexecute:\n  cache: true\n---\n\n\n\n\n---\n\n::: {.callout-note title=\"Note: Data is Randomly Generated\"}\n\nFor demonstration only, the data are randomized and all naming is fictitious.\n\n:::\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# Get the R files containing the functions with plots\npurrr::walk(list.files(\n  'docs//01-Visual-Storytelling//03-Marketing-Effectiveness//functions//', \n  pattern = \"\\\\.R$\", full.names = TRUE), \n  source\n)\n```\n:::\n\n\n\n\n<br>\n\n# Rising Discounts with Limited Impact\n\n> Discounts increased sharply, but revenue and gross profit gains remained minimal.\n\n<a href=\"https://github.com/Daniel-Carpenter/Portfolio/docs/01-Visual-Storytelling/03-Marketing-Effectiveness/functions/\" target=\"_blank\">See full function here.</a>\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nplots_marketing_effectiveness <- marketing_effectiveness()\n\nplots_marketing_effectiveness$plot_discount_trend # display\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/marketing_effectiveness_1-1.png){width=816}\n:::\n\n```{.r .cell-code}\nplots_marketing_effectiveness$plot_discount_per_gp # display\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/marketing_effectiveness_1-2.png){width=816}\n:::\n\n```{.r .cell-code}\nplots_marketing_effectiveness$plot_rev_per_gp # display\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/marketing_effectiveness_1-3.png){width=816}\n:::\n:::\n\n\n\n\n---\n\n<br>\n\n# Performance Shifts Parallel to Marketing Response\n\n> Market performance shifted at the same time as strategy changes, but results did not improve meaningfully.\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nplots_marketing_effectiveness$plot_scatter # display\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/marketing_effectiveness_2-1.png){width=816}\n:::\n\n```{.r .cell-code}\nplots_marketing_effectiveness$plot_density # display\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/marketing_effectiveness_2-2.png){width=816}\n:::\n:::\n\n\n\n\n---\n\n<br>\n\n# Patron Density Remains Steady Across Service Area\n\n> Patron density remained steady across the service area; revenue pressure likely came from conversion and pricing, not coverage.\n\n[Output created with Tableau.](/docs/01-Visual-Storytelling/03-Marketing-Effectiveness/functions/02-Map/Patron-Changes-Tableau-Workbook.twb)\n\n![](/docs/output/Tableau.png)\n\n<br>\n\n[<img src = '/docs/img/go-back.png' height=50 >](../)\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-in-header": [
+        "<link href=\"../../../site_libs/pagedtable-1.1/css/pagedtable.css\" rel=\"stylesheet\" />\n<script src=\"../../../site_libs/pagedtable-1.1/js/pagedtable.js\"></script>\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

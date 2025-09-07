@@ -10,6 +10,7 @@ execute:
   message:   false
   warning:   false
   dpi:       80
+  freeze: auto # for github pages (https://quarto.org/docs/publishing/github-pages.html#freezing-computations)
 
 # Default formatting for individual pages
 format:
