@@ -99,7 +99,7 @@ store_analysis <- function(
 
     # Calculate avg transaction amt, revenue_per_store_per_day, and operating_income_per_store_per_day
     mutate(avg_transactions_amt = sum(revenue) / sum(transactions),    # avg transaction amt
-           revenue_per_store_per_day      = sum(revenue) / sum(num_days_store_was_open), # Coin in per unit per day
+           revenue_per_store_per_day      = sum(revenue) / sum(num_days_store_was_open), # per unit per day
            operating_income_per_store_per_day      = sum(operating_income) / sum(num_days_store_was_open)) # operating_income_per_store_per_day per unit per day
 
 
@@ -130,8 +130,8 @@ store_analysis <- function(
 
   # Avg. Revenue & operating_income_per_store_per_day Summary Data ===========================================
 
-  # Post Expansion operating_income_per_store_per_day Dataset --------------------------------------------
-  df_plot_post_expansion <- df_StoreDaily |>
+  # Post entry operating_income_per_store_per_day Dataset --------------------------------------------
+  df_plot_post_entry <- df_StoreDaily |>
 
     # Filter to date range
     filter(date_of_trx >= comparison_date) |>
@@ -167,7 +167,7 @@ store_analysis <- function(
   roundToNearest = 5
 
   # Join the 3 operating_income_per_store_per_day datasets together then put in single col for plots -----
-  df_plot_summary <- df_plot_post_expansion |>
+  df_plot_summary <- df_plot_post_entry |>
 
     # Join the R6 mo-avg operating_income_per_store_per_day dataset
     left_join(df_plot_prior_6_mo_summary,
@@ -207,7 +207,7 @@ store_analysis <- function(
                                                    "Prior12", "Prior6", "Post" )
   ## Now Rename the levels
   renamedLabels.Summary <- c('36-mo. Avg.',  '12-mo. Avg.', 'Post Entry')
-  renamedLabels.Legend <- c('Prior 36-mo. Avg.',  'Prior 12-mo. Avg.',   'Post-Expansion')
+  renamedLabels.Legend <- c('Prior 36-mo. Avg.',  'Prior 12-mo. Avg.',   'Post-entry')
 
 
   # Plot Colors used in summary and store class chart
@@ -250,7 +250,7 @@ store_analysis <- function(
                            '\noperating_income_per_store_per_day Calculation: operating_income_per_store_per_day divided by count of all Active Entities; then divided by sum of days that each store was open.',
                            '\nPrior 12-mo. avg.: ', format(weekday_avg_r12,DATE_FORMAT), ' - ', format(as.Date(comparison_date), DATE_FORMAT),
                            '\nPrior 6-mo. avg.: ', format(weekday_avg_r6, DATE_FORMAT), ' - ', format(as.Date(comparison_date), DATE_FORMAT),
-                           '\nPost-Expansion Period: '  ,  format(as.Date(comparison_date),    DATE_FORMAT), ' - ', format(date_max - days(1),     DATE_FORMAT),
+                           '\nPost-entry Period: '  ,  format(as.Date(comparison_date),    DATE_FORMAT), ' - ', format(date_max - days(1),     DATE_FORMAT),
                            if (date_omit_min != date_omit_max) { paste('\nDates exluded due to noise in data:', format(date_omit_min, DATE_FORMAT), '-', format(date_omit_max - days(1), DATE_FORMAT))}
          )
     ) +
@@ -269,8 +269,8 @@ store_analysis <- function(
 
   # operating_income_per_store_per_day by store Store Data ===============================================
 
-  # Post Expansion operating_income_per_store_per_day Dataset --------------------------------------------
-  df_plotPostExpansionoperating_income_per_store_per_day <- df_StoreDaily |>
+  # Post entry operating_income_per_store_per_day Dataset --------------------------------------------
+  df_plotPostentryoperating_income_per_store_per_day <- df_StoreDaily |>
 
     # Filter to date range
     filter(date_of_trx >= comparison_date) |>
@@ -303,7 +303,7 @@ store_analysis <- function(
   roundToNearest = 5
 
   # Join the 3 operating_income_per_store_per_day datasets together then put in single col for plots -----
-  df_plotoperating_income_per_store_per_day <- df_plotPostExpansionoperating_income_per_store_per_day |>
+  df_plotoperating_income_per_store_per_day <- df_plotPostentryoperating_income_per_store_per_day |>
 
     # Join the R6 mo-avg operating_income_per_store_per_day dataset
     left_join(df_plot_prior_6_op_income_per_day,
@@ -356,13 +356,13 @@ store_analysis <- function(
     # Title, Axis's, etc.
     labs(x        = '\nComparison Periods',
          y        = 'Average Operating Income\nper Store per Day over Period\n',
-         title    = 'Post-Expansion Decrease in Average Operating Income per Store per Day\n',
+         title    = 'Post-entry Decrease in Average Operating Income per Store per Day\n',
          subtitle = 'Comparison from Historical Averages\n',
          caption  = paste0('\nPlease note potential for high volaitility until increased accumulation of days since exansion.',
                            '\nAverage Operating Income per Store per Day calculation:\nAverage Operating Income divided by count of all Active Stores; then divided by sum of days that each store was open.',
                            '\nPrior 12-mo. avg.: ', format(weekday_avg_r12,DATE_FORMAT), ' - ', format(as.Date(comparison_date), DATE_FORMAT),
                            '\nPrior 6-mo. avg.: ', format(weekday_avg_r6, DATE_FORMAT), ' - ', format(as.Date(comparison_date), DATE_FORMAT),
-                           '\nPost-Expansion Period: '  ,  format(as.Date(comparison_date),    DATE_FORMAT), ' - ', format(date_max - days(1),     DATE_FORMAT),
+                           '\nPost-entry Period: '  ,  format(as.Date(comparison_date),    DATE_FORMAT), ' - ', format(date_max - days(1),     DATE_FORMAT),
                            if (date_omit_min != date_omit_max) { paste('\nDates exluded due to noise in data:', format(date_omit_min, DATE_FORMAT), '-', format(date_omit_max, DATE_FORMAT))}
          )
     ) +

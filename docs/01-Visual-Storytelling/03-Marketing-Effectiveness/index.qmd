@@ -67,7 +67,7 @@ plots_marketing_effectiveness$plot_density # display
 
 > Patron density remained steady across the service area; revenue pressure likely came from conversion and pricing, not coverage.
 
-[Output created with Tableau.](/docs/01-Visual-Storytelling/03-Marketing-Effectiveness/functions/02-Map/Patron-Changes-Tableau-Workbook.twb)
+*Output created with Tableau. File withheld.*
 
 ![](/docs/output/Tableau.png)
 

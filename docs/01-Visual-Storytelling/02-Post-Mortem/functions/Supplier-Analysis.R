@@ -104,7 +104,7 @@ supplier_analysis <- function(
     # Flag is the supplier is one of the larger suppliers
     left_join(df_largerSuppliers,
               by = 'supplier_id') |>
-    mutate(VENDOR_grouping = if_else(is.na(isLargeSupplier),
+    mutate(supplier_grouping = if_else(is.na(isLargeSupplier),
                                      'Other',        # Group as other if not defined as a larger supplier
                                      supplier_id)) |> # Use the larget supplier as it's own group
     select(-isLargeSupplier) # get rid of since now using supplier grouping col
@@ -132,16 +132,16 @@ supplier_analysis <- function(
                             origin="1970-01-01" # need to supply origin date
   )
 
-  # Avg. Bet & operating_income_per_store_per_day Summary Data ===========================================
+  # operating_income_per_store_per_day Summary Data =====================================================
 
   # Post Expansion operating_income_per_store_per_day Dataset --------------------------------------------
-  df_plot_post_expansion <- df_SupplierDaily |>
+  df_plot_post_entry <- df_SupplierDaily |>
 
     # Filter to date range
     filter(date_of_trx >= comparison_date) |>
 
     # Group by property and store class to get avg operating_income_per_store_per_day
-    group_by(store_id, VENDOR_grouping) |>
+    group_by(store_id, supplier_grouping) |>
     summarise(post_operating_income_per_store_per_day  = sum(operating_income) / sum(num_days_store_was_open),
               post_AvgBet  = sum(revenue) / sum(transactions))
 
@@ -152,7 +152,7 @@ supplier_analysis <- function(
     filter(date_of_trx >= weekday_avg_r6 & date_of_trx <= date_max_to_avg) |>
 
     # Group by property and store class to get avg operating_income_per_store_per_day
-    group_by(store_id, VENDOR_grouping) |>
+    group_by(store_id, supplier_grouping) |>
     summarise(Prior6_operating_income_per_store_per_day = sum(operating_income) / sum(num_days_store_was_open),
               Prior6_AvgBet = sum(revenue) / sum(transactions))
 
@@ -163,7 +163,7 @@ supplier_analysis <- function(
     filter(date_of_trx >= weekday_avg_r12 & date_of_trx <= date_max_to_avg) |>
 
     # Group by property and store class to get avg operating_income_per_store_per_day
-    group_by(store_id, VENDOR_grouping) |>
+    group_by(store_id, supplier_grouping) |>
     summarise(Prior12_operating_income_per_store_per_day = sum(operating_income) / sum(num_days_store_was_open),
               Prior12_AvgBet = sum(revenue) / sum(transactions))
 
@@ -171,15 +171,15 @@ supplier_analysis <- function(
   roundToNearest = 5
 
   # Join the 3 operating_income_per_store_per_day datasets together then put in single col for plots -----
-  df_plot_summary <- df_plot_post_expansion |>
+  df_plot_summary <- df_plot_post_entry |>
 
     # Join the R6 mo-avg operating_income_per_store_per_day dataset
     left_join(df_plot_prior_6_mo_summary,
-              by = c('store_id', 'VENDOR_grouping')) |>
+              by = c('store_id', 'supplier_grouping')) |>
 
     # Join the R12 mo-avg operating_income_per_store_per_day dataset
     left_join(df_plotPrior12MoSummary,
-              by = c('store_id', 'VENDOR_grouping')) |>
+              by = c('store_id', 'supplier_grouping')) |>
 
     # For operating_income_per_store_per_day variables, round up to the nearest 5
     mutate_at(vars(ends_with('operating_income_per_store_per_day')),
@@ -192,7 +192,7 @@ supplier_analysis <- function(
     # Put operating_income_per_store_per_day and AvgBet Values into single col
     # Add 2 cols that contain the comparison period and the metric.
     # Key is that Prior12 and MetricName are separated by '_'. See data
-    pivot_longer(cols      = !c(store_id, VENDOR_grouping),
+    pivot_longer(cols      = !c(store_id, supplier_grouping),
                  names_to  = c('comparison_period', 'METRIC'),
                  names_sep = '_',
                  values_to = 'VALUE') |>
@@ -226,7 +226,7 @@ supplier_analysis <- function(
   )
   # Sort and rename the legend values
   renamedLabels.Legend <- c(largerSuppliers, 'Other')
-  df_plot_summary$VENDOR_grouping    <- factor(df_plot_summary$VENDOR_grouping  ,
+  df_plot_summary$supplier_grouping    <- factor(df_plot_summary$supplier_grouping  ,
                                                levels = renamedLabels.Legend, # Old Names
                                                labels = renamedLabels.Legend  # New Names
   )
@@ -241,7 +241,7 @@ supplier_analysis <- function(
   DATE_FORMAT = '%b %d, %Y' # Date format for the plot caption
 
   # Unique number of supplier groupings (for coloring)
-  uniqueNumVendGroupings = length(unique(df_plot_summary$VENDOR_grouping))
+  uniqueNumVendGroupings = length(unique(df_plot_summary$supplier_grouping))
 
   df_plot_summary <- df_plot_summary |> filter(METRIC != 'avg transaction amt')
 
@@ -249,7 +249,7 @@ supplier_analysis <- function(
   plot.Summary <- df_plot_summary |>
     ggplot(aes(x    = comparison_period,
                y    = VALUE,
-               fill = VENDOR_grouping)) +
+               fill = supplier_grouping)) +
     geom_bar(position="fill", stat="identity",
              alpha = 0.75) +
 

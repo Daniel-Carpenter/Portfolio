@@ -84,7 +84,7 @@ section_of_store_analysis <- function(
   # ==============================================================================
 
 
-  # Pull in Vendor Performance (Daily) ---------------------------------
+  # Pull in Supplier Performance (Daily) ---------------------------------
   df_section_of_store_daily.base <- conn.section_of_store_daily |>
 
     # Filter the data to date ranges
@@ -108,7 +108,7 @@ section_of_store_analysis <- function(
     # Convert to date
     mutate(date_of_trx = date(date_of_trx),
 
-           # Remove Whitespace on the Vendor Data
+           # Remove Whitespace on the Supplier Data
            section_of_store_id = str_trim(section_of_store_id)) |>
 
     # Group section_of_stores by the highlighted comparison section_of_stores, as defined in the inputs
@@ -120,7 +120,7 @@ section_of_store_analysis <- function(
                                                   )
     ) ) |>
 
-    # Do not want data before expansion with section_of_stores, since there is unwanted noise
+    # Do not want data before entry with section_of_stores, since there is unwanted noise
     # E.g., coin testing going on
     filter(!(date_of_trx < comparison_date & section_of_store_id %in% highlightedsection_of_stores))
 
@@ -148,7 +148,7 @@ section_of_store_analysis <- function(
   # Avg. Bet & operating_income_per_store_per_day Summary Data ===========================================
 
   # Post Entry operating_income_per_store_per_day Dataset --------------------------------------------
-  df_plot_post_expansion <- df_section_of_store_daily |>
+  df_plot_post_entry <- df_section_of_store_daily |>
 
     # Filter to date range
     filter(date_of_trx >= comparison_date) |>
@@ -187,7 +187,7 @@ section_of_store_analysis <- function(
   roundToNearest = 5
 
   # Join the 3 operating_income_per_store_per_day datasets together then put in single col for plots -----
-  df_plot_summary <- df_plot_post_expansion |>
+  df_plot_summary <- df_plot_post_entry |>
 
     # Join the R6 mo-avg operating_income_per_store_per_day dataset
     left_join(df_plot_prior_6_mo_summary,
@@ -232,7 +232,7 @@ section_of_store_analysis <- function(
   # Now Rename the levels
   renamedLabels.Legend <- c('Prior 36-mo. Avg.',  'Prior 12-mo. Avg.',   'Post-Entry')
 
-  # Rename Values for Average bet and NWPUPD
+  # Rename Values
   renamedLabels.SummaryFacets <- c("Op. Income per Store", "Discounts per Store", "Revenue per Store")
   df_plot_summary$METRIC    <- factor(df_plot_summary$METRIC  ,
                                      levels = unique(df_plot_summary$METRIC), # Old Names

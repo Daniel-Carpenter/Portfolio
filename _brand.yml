@@ -3,9 +3,6 @@ meta:
     short: Daniel Carpenter's Brand
     full: Daniel Carpenter's Portfolio Brand
 
-# Logo used in navbar header (top-left)
-# logo: "www/img/logo-treasury.png"
-
 color:
   palette:
 
