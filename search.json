@@ -462,7 +462,7 @@
     "href": "docs/01-Visual-Storytelling/02-Post-Mortem/index.html",
     "title": "Assessing Impact of Competitor Market Entry",
     "section": "",
-    "text": "View Code Here\n# Load packages and functions\nsource('docs//00-Reused-Code/Read-Library-and-Functions.R')\n\nset.seed(1024) # All data is randomized! Seed set for reproducibility\n\nthis_dir &lt;- 'docs//01-Visual-Storytelling//02-Post-Mortem//'\n\n# Date of the Competitor Entry:\ndate_competition_enters = Sys.Date() - 120\nselected_stores = c('Flagship Store' )\n\n# Read in a reference file for drive times destinations\ndrivetimeRef &lt;- fread(paste0(this_dir, 'data//drivetime_ref.csv'))\n\n# Get the R files containing the functions with plots --------------------------\npurrr::walk(list.files(paste0(this_dir, 'functions//'), pattern = \"\\\\.R$\", full.names = TRUE), source)",
+    "text": "View Code Here\n# Load packages and functions\nsource('docs//00-Reused-Code/Read-Library-and-Functions.R')\n\nset.seed(1024) # All data is randomized! Seed set for reproducibility\n\nthis_dir &lt;- 'docs//01-Visual-Storytelling//02-Post-Mortem//'\n\n# Date of the Competitor Entry:\ndate_competition_enters = Sys.Date() - 120\nselected_stores = c('Flagship Store' )\n\n# Read in a reference file for drive times destinations\ndt_ref &lt;- fread(paste0(this_dir, 'data//drivetime_ref.csv'))\n\n# Get the R files containing the functions with plots --------------------------\npurrr::walk(list.files(paste0(this_dir, 'functions//'), pattern = \"\\\\.R$\", full.names = TRUE), source)",
     "crumbs": [
       "Home",
       "Projects",
@@ -475,7 +475,7 @@
     "href": "docs/01-Visual-Storytelling/02-Post-Mortem/index.html#shrinking-new-subscribers",
     "title": "Assessing Impact of Competitor Market Entry",
     "section": "4.1 Shrinking New Subscribers",
-    "text": "4.1 Shrinking New Subscribers\n\nProspect pools thinned around the Flagship after entry; conversion windows narrowed and acquisition costs rose.\n\n\n4.1.1 Reference of Current Drivetimes to Flagship Store\n\n\nView Code Here\nlibrary(knitr)\nknitr::kable(drivetimeRef)\n\n\n\n\n\nDestination\nHours\n\n\n\n\nFayetteville\n0.50\n\n\nSpringdale\n0.75\n\n\nTulsa\n1.50\n\n\nFort Smith\n1.75\n\n\n\n\n\n\n\n\n4.1.2 Shrinking New Subscribers in Key Markets\nSee full function here.\n\n\nView Code Here\n# Average Drivetime Analysis\nplots_subscriber_drivetime_analysis &lt;- subscriber_drivetime_analysis(\n  comparison_date1 = date_competition_enters,\n)\n\nplots_subscriber_drivetime_analysis$plots$overview\n\n\n\n\n\n\n\n\n\n\n\nView Code Here\nplots_subscriber_drivetime_analysis$plots$drive_distributions_market",
+    "text": "4.1 Shrinking New Subscribers\n\nProspect pools thinned around the Flagship after entry; conversion windows narrowed and acquisition costs rose.\n\n\n4.1.1 Reference of Current Drivetimes to Flagship Store\n\n\nView Code Here\nlibrary(knitr)\nknitr::kable(dt_ref)\n\n\n\n\n\nDestination\nHours\n\n\n\n\nFayetteville\n0.50\n\n\nSpringdale\n0.75\n\n\nTulsa\n1.50\n\n\nFort Smith\n1.75\n\n\n\n\n\n\n\n\n4.1.2 Shrinking New Subscribers in Key Markets\nSee full function here.\n\n\nView Code Here\n# Average Drivetime Analysis\nplots_subscriber_drivetime_analysis &lt;- subscriber_drivetime_analysis(\n  comparison_date1 = date_competition_enters,\n)\n\nplots_subscriber_drivetime_analysis$plots$overview\n\n\n\n\n\n\n\n\n\n\n\nView Code Here\nplots_subscriber_drivetime_analysis$plots$drive_distributions_market",
     "crumbs": [
       "Home",
       "Projects",
