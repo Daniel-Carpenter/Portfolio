@@ -36,7 +36,7 @@ purrr::walk(list.files(
 
 > Discounts increased sharply, but revenue and gross profit gains remained minimal.
 
-<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/01-Visual-Storytelling/03-Marketing-Effectiveness/functions/" target="_blank">See full function here.</a>
+<a href="https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/01-Visual-Storytelling/03-Marketing-Effectiveness/functions/01-Reg-Density.R" target="_blank">See full function here.</a>
 
 ```{r marketing_effectiveness_1}
 plots_marketing_effectiveness <- marketing_effectiveness()

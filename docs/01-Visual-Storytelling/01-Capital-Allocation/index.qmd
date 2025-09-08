@@ -36,7 +36,7 @@ purrr::walk(list.files(
 
 > Cash from multiple sources was consumed by day-to-day operations, leaving little for investment or growth.
 
-<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/01-Visual-Storytelling/01-Capital-Allocation/functions/01-Allocation-History.R" target="_blank">See full function here.</a>
+<a href="https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/01-Visual-Storytelling/01-Capital-Allocation/functions/01-Allocation-History.R" target="_blank">See full function here.</a>
 
 ```{r allocation_history, fig.width=9}
 allocation_history()
@@ -50,7 +50,7 @@ allocation_history()
 
 > Forecasts show anticipated reliance on debt to cover operating cash needs, raising future financial risk.
 
-<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.ipynb" target="_blank">See full function here.</a>
+<a href="https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.ipynb" target="_blank">See full function here.</a>
 
 ![](/docs/output/Sankey.png)
 
@@ -62,7 +62,7 @@ allocation_history()
 
 > Actual allocations drifted outside targeted ranges, signaling opportunity for enhanced controls and capital framework implementation.
 
-<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/01-Visual-Storytelling/01-Capital-Allocation/functions/03-Allocation-Ranges.R" target="_blank">See full function here.</a>
+<a href="https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/01-Visual-Storytelling/01-Capital-Allocation/functions/03-Allocation-Ranges.R" target="_blank">See full function here.</a>
 
 ```{r allocation_ranges, fig.height=6.5}
 allocation_ranges()
@@ -76,7 +76,7 @@ allocation_ranges()
 
 > Realized growth outpaced planned levels, but capital use did not align with a sustainable model.
 
-<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/01-Visual-Storytelling/01-Capital-Allocation/functions/04-Anticipated-Allocation.R" target="_blank">See full function here.</a>
+<a href="https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/01-Visual-Storytelling/01-Capital-Allocation/functions/04-Anticipated-Allocation.R" target="_blank">See full function here.</a>
 
 ```{r anticipated_allocation_1}
 # Call funtion
@@ -97,7 +97,7 @@ plots_anticipated_allocation$ranges # display
 
 > By redirecting more cash into investments, the business could have built a steady, recurring income stream.
 
-<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/01-Visual-Storytelling/01-Capital-Allocation/functions/05-Investment-Opportunity.R" target="_blank">See full function here.</a>
+<a href="https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/01-Visual-Storytelling/01-Capital-Allocation/functions/05-Investment-Opportunity.R" target="_blank">See full function here.</a>
 
 ```{r investment_opportunity, fig.height=8}
 investment_opportunity()

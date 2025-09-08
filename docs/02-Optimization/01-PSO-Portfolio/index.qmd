@@ -102,7 +102,7 @@ import ViewSimulatedPortfolios   as vsp # Wrapper class to plot, export, etc., s
 
 > Pulled price history and T-bill rates; built returns and covariance to power risk/return modeling.
 
-<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/02-Optimization/01-PSO-Portfolio/StockFinanceMPT.py" target="_blank">See full function here.</a>
+<a href="https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/02-Optimization/01-PSO-Portfolio/StockFinanceMPT.py" target="_blank">See full function here.</a>
 
 ```{python pull_data}
 # List of stock tickers to pull data
@@ -128,7 +128,7 @@ PulledStockData = mpt.StockFinanceMPT(StockTickers, minDate, maxDate)
 
 > Simple Interpretation of Code: Start with 15 random portfolios, let each adjust 25 times while sharing results, and repeat 1,500 runs to identify both the minimum-risk and maximum-Sharpe portfolios.
 
-<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/02-Optimization/01-PSO-Portfolio/SimulateOptimalPortfolios.py" target="_blank">See full function here.</a>
+<a href="https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/02-Optimization/01-PSO-Portfolio/SimulateOptimalPortfolios.py" target="_blank">See full function here.</a>
 
 ```{python optimize}
 # Create the simulation
@@ -153,7 +153,7 @@ simulatedPortfolios.runSimulation() # Run the simulation given parameters above
 
 > Identified the minimum-risk mix as the baseline; quantified risk reduction versus the starting set.
 
-<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py" target="_blank">See full function here.</a>
+<a href="https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py" target="_blank">See full function here.</a>
 
 ```{python view_min_risk}
 # Create the viewer wrapper class
@@ -168,7 +168,7 @@ simulationViewer = vsp.ViewSimulatedPortfolios(simulatedPortfolios, displayResul
 
 > Placed the chosen portfolio on the frontier to confirm its risk/return position.
 
-<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py" target="_blank">See full function here.</a>
+<a href="https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py" target="_blank">See full function here.</a>
 
 ```{python plot_3}
 simulationViewer.plotRiskVsReturnVsSharpe(TRANSPARENCY_LEVEL=0.33)
@@ -182,7 +182,7 @@ simulationViewer.plotRiskVsReturnVsSharpe(TRANSPARENCY_LEVEL=0.33)
 
 > Benchmarked the optimal result against all simulations to validate consistency and uplift.
 
-<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py" target="_blank">See full function here.</a>
+<a href="https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py" target="_blank">See full function here.</a>
 
 ```{python plot_1}
 simulationViewer.plotOptimalVsNonOptSimulations()
@@ -196,7 +196,7 @@ simulationViewer.plotOptimalVsNonOptSimulations()
 
 > Showed diversification benefits versus single assets; improved return per unit of risk.
 
-<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py" target="_blank">See full function here.</a>
+<a href="https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py" target="_blank">See full function here.</a>
 
 ```{python plot_2}
 simulationViewer.plotOptimalVsRealizedReturns()
@@ -210,14 +210,14 @@ simulationViewer.plotOptimalVsRealizedReturns()
 
 > Exported data and plots; enabled quick checks and repeatable reporting.
 
-<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py" target="_blank">See full function here.</a>
+<a href="https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py" target="_blank">See full function here.</a>
 
 ```{python exports}
 # Exports all Weights Data and Plots to dated folder
 simulationViewer.exportSimulationData()
 ```
 
-<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py" target="_blank">See full function here.</a>
+<a href="https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py" target="_blank">See full function here.</a>
 
 ```{python other_fun eval=false}
 #| eval: false # NOT RUN

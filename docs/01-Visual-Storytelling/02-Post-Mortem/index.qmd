@@ -48,7 +48,7 @@ purrr::walk(list.files(paste0(this_dir, 'functions//'), pattern = "\\.R$", full.
 
 > Daily performance lagged the 6–12 month trend after entry.
 
-<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/01-Visual-Storytelling/02-Post-Mortem/functions/Store-Analysis.R" target="_blank">See full function here.</a>
+<a href="https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/01-Visual-Storytelling/02-Post-Mortem/functions/Store-Analysis.R" target="_blank">See full function here.</a>
 
 ```{r store_analysis}
 ## Individual Store Trends
@@ -69,7 +69,7 @@ plots_store_analysis$plots$operating_income_per_store_per_day
 
 > High-traffic sections lost share post-entry.
 
-<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/01-Visual-Storytelling/02-Post-Mortem/functions/Section-of-Store-Analysis.R" target="_blank">See full function here.</a>
+<a href="https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/01-Visual-Storytelling/02-Post-Mortem/functions/Section-of-Store-Analysis.R" target="_blank">See full function here.</a>
 
 ```{r section_of_store_analysis, fig.width=12, fig.height=12, dpi=720}
 
@@ -89,7 +89,7 @@ plots_section_of_store_analysis$plots$overview
 
 > Key suppliers lost volume in line with subscriber erosion; supplier mix remained steady.
 
-<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/01-Visual-Storytelling/02-Post-Mortem/functions/Supplier-Analysis.R" target="_blank">See full function here.</a>
+<a href="https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/01-Visual-Storytelling/02-Post-Mortem/functions/Supplier-Analysis.R" target="_blank">See full function here.</a>
 
 ```{r supplier_analysis}
 plots_supplier_analysis <- supplier_analysis(
@@ -108,7 +108,7 @@ plots_supplier_analysis$plots$overview
 
 > New subscriptions slowed and churn accelerated; cumulative subscribers underperformed the 12-month baseline.
 
-<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/01-Visual-Storytelling/02-Post-Mortem/functions/Subscriber-Demographic-Analysis.R" target="_blank">See full function here.</a>
+<a href="https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/01-Visual-Storytelling/02-Post-Mortem/functions/Subscriber-Demographic-Analysis.R" target="_blank">See full function here.</a>
 
 ```{r subscribers_1, fig.height=6}
 ## Patron subscribers
@@ -146,7 +146,7 @@ knitr::kable(drivetimeRef)
 
 ### Shrinking New Subscribers in Key Markets
 
-<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/01-Visual-Storytelling/02-Post-Mortem/functions/Subscriber-Drivetimes.R" target="_blank">See full function here.</a>
+<a href="https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/01-Visual-Storytelling/02-Post-Mortem/functions/Subscriber-Drivetimes.R" target="_blank">See full function here.</a>
 
 ```{r subscriber_drivetime_analysis_1, fig.height=7}
 # Average Drivetime Analysis
@@ -163,7 +163,7 @@ plots_subscriber_drivetime_analysis$plots$drive_distributions_market
 
 ## Appendix: Subscriber-Base Distributed Evenly Across United States
 
-<a href="https://github.com/Daniel-Carpenter/Portfolio/docs/01-Visual-Storytelling/02-Post-Mortem/functions/Subscriber-Geography-Analysis.R" target="_blank">See full function here.</a>
+<a href="https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/01-Visual-Storytelling/02-Post-Mortem/functions/Subscriber-Geography-Analysis.R" target="_blank">See full function here.</a>
 
 ```{r subscriber_geography_analysis, fig.height=8}
 subscriber_geography_analysis()
