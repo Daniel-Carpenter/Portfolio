@@ -22,6 +22,7 @@ listing:
       date: "2025-08-01"
       
   # Setup
+  image-height: 10em
   type: grid
   fields: [title, description, image, date]
   field-display-names: 

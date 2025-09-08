@@ -11,6 +11,7 @@ listing:
     - 02-Opt-DSA/index.qmd
     
   # Style
+  image-height: 10em
   type: grid
   fields: [title, description, image, date]
   field-display-names: 

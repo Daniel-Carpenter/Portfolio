@@ -13,6 +13,7 @@ listing:
     - 03-Marketing-Effectiveness/index.qmd
     
   # Aesthetis
+  image-height: 10em
   type: grid
   fields: [title, description, image, date]
   field-display-names: 
