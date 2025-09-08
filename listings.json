@@ -1,10 +1,61 @@
 [
   {
+    "listing": "/index.html",
+    "items": [
+      "/docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html",
+      "/docs/02-Optimization/01-PSO-Portfolio/Optimal_Portfolio.html",
+      "/docs/02-Optimization/index.html",
+      "/docs/index.html",
+      "/resume.html",
+      "/docs/01-Visual-Storytelling/index.html",
+      "/docs/04-Dashboards/index.html",
+      "/docs/01-Visual-Storytelling/01-Capital-Allocation/index.html",
+      "/docs/05-ETL/index.html",
+      "/docs/03-ML/index.html",
+      "/docs/01-Visual-Storytelling/03-Marketing-Effectiveness/index.html",
+      "/docs/02-Optimization/01-PSO-Portfolio/index.html",
+      "/docs/02-Optimization/02-Opt-DSA/index.html",
+      "/docs/01-Visual-Storytelling/02-Post-Mortem/index.html"
+    ]
+  },
+  {
+    "listing": "/docs/05-ETL/index.html",
+    "items": []
+  },
+  {
+    "listing": "/docs/01-Visual-Storytelling/03-Marketing-Effectiveness/index.html",
+    "items": []
+  },
+  {
     "listing": "/docs/01-Visual-Storytelling/index.html",
     "items": [
       "/docs/01-Visual-Storytelling/01-Capital-Allocation/index.html",
       "/docs/01-Visual-Storytelling/03-Marketing-Effectiveness/index.html",
       "/docs/01-Visual-Storytelling/02-Post-Mortem/index.html"
+    ]
+  },
+  {
+    "listing": "/docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html",
+    "items": []
+  },
+  {
+    "listing": "/docs/02-Optimization/02-Opt-DSA/index.html",
+    "items": []
+  },
+  {
+    "listing": "/docs/02-Optimization/01-PSO-Portfolio/Optimal_Portfolio.html",
+    "items": [
+      "/docs/02-Optimization/01-PSO-Portfolio/index.html"
+    ]
+  },
+  {
+    "listing": "/docs/03-ML/index.html",
+    "items": []
+  },
+  {
+    "listing": "/docs/02-Optimization/01-PSO-Portfolio/index.html",
+    "items": [
+      "/docs/02-Optimization/01-PSO-Portfolio/Optimal_Portfolio.html"
     ]
   },
   {
@@ -15,6 +66,20 @@
     ]
   },
   {
+    "listing": "/docs/04-Dashboards/index.html",
+    "items": []
+  },
+  {
+    "listing": "/docs/01-Visual-Storytelling/01-Capital-Allocation/index.html",
+    "items": [
+      "/docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html"
+    ]
+  },
+  {
+    "listing": "/docs/01-Visual-Storytelling/02-Post-Mortem/index.html",
+    "items": []
+  },
+  {
     "listing": "/docs/index.html",
     "items": [
       "/docs/02-Optimization/index.html",
@@ -22,6 +87,25 @@
       "/docs/04-Dashboards/index.html",
       "/docs/05-ETL/index.html",
       "/docs/03-ML/index.html"
+    ]
+  },
+  {
+    "listing": "/resume.html",
+    "items": [
+      "/index.html",
+      "/docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html",
+      "/docs/02-Optimization/01-PSO-Portfolio/Optimal_Portfolio.html",
+      "/docs/02-Optimization/index.html",
+      "/docs/index.html",
+      "/docs/01-Visual-Storytelling/index.html",
+      "/docs/04-Dashboards/index.html",
+      "/docs/01-Visual-Storytelling/01-Capital-Allocation/index.html",
+      "/docs/05-ETL/index.html",
+      "/docs/03-ML/index.html",
+      "/docs/01-Visual-Storytelling/03-Marketing-Effectiveness/index.html",
+      "/docs/02-Optimization/01-PSO-Portfolio/index.html",
+      "/docs/02-Optimization/02-Opt-DSA/index.html",
+      "/docs/01-Visual-Storytelling/02-Post-Mortem/index.html"
     ]
   }
 ]
