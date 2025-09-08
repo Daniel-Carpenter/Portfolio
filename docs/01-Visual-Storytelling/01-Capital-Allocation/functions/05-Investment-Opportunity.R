@@ -25,7 +25,7 @@ investment_opportunity <- function(
     Ending_Portfolio_Value = BEG_PORTFOLIO_VALUE * (1 + ANNUAL_PERCENT_INCREASE)^(0:NUM_YEARS) # Start at 1000 and increase by 5% each year,
   ) |>
     mutate(
-      Sustainable_Annual_Distribution = Ending_Portfolio_Value * DISTRIBUTION_RATE
+      Perpetual_Annual_Distribution = Ending_Portfolio_Value * DISTRIBUTION_RATE
     )
 
 
@@ -78,7 +78,7 @@ investment_opportunity <- function(
 
 
   ## ________________----
-  ## BUBBLE PLOT - SUS. DISTRIBUTION --------------------------------------------------
+  ## BUBBLE PLOT - PERP. DISTRIBUTION --------------------------------------------------
 
   df_plot_sus_distr <- df_base |>
 
@@ -93,7 +93,7 @@ investment_opportunity <- function(
 
   #### Points ----
   geom_point(data = df_points,
-             aes(size = Sustainable_Annual_Distribution),
+             aes(size = Perpetual_Annual_Distribution),
              color  = color_accent_focal,
              fill   = color_fill_focal,
              pch    = 21, # Type of point that allows us to have both color (border) and fill.
@@ -105,7 +105,7 @@ investment_opportunity <- function(
 
     #### Text Label ----
   geom_label(data = df_points,
-             aes(label = kDollarsFormat(Sustainable_Annual_Distribution, roundToDigit = 0)),
+             aes(label = kDollarsFormat(Perpetual_Annual_Distribution, roundToDigit = 0)),
              color         = color_text,
              fill          = alpha(color_white, 0.65),
              size          = 3.5,
@@ -229,7 +229,7 @@ investment_opportunity <- function(
     ### Labels - (Titles, Axis, Captions) ------------------------------------------
   labs(
     x        = '\nFiscal Year',
-    y        = 'Net Asset\nValue (NAV)\n',
+    y        = 'Fund Balance\n',
     caption  = '\nData is adjusted for inflation.'
 
   ) +

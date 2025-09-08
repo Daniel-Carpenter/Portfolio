@@ -187,6 +187,8 @@ allocation_history <- function(
     scale_y_continuous(labels = scales::percent, limits = c(0, 1)) +
     styles::theme_dc(legend.position = 'none')
 
+
+
   # BOX PLOT CREATION ============================================================
   # Box plot of nominal allocations per entity over time with outlier annotation
   min_fiscal_year <- min(df_allocations_nominal_distribution$fiscal_year)

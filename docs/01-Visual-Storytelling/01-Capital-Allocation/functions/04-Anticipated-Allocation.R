@@ -11,7 +11,7 @@ anticipated_allocation <- function(
     SHOW_N_YEARS_REALIZED = 5, # Number of realized or budgeted years to show (will always show forecast)
     xlFileName                         = 'docs//01-Visual-Storytelling//01-Capital-Allocation//data/Allocations Database.xlsx',
     xlSheetName_Database               = 'Database',
-    xlSheetName_genAllocationFramework = 'Allocation Ranges'
+    xlSheetName_ranges = 'Allocation Ranges'
 ) {
 
   # READ AND CLEAN RAW FILES =====================================================
@@ -23,14 +23,14 @@ anticipated_allocation <- function(
 
 
 
-    # Read in data frxlSheetName_allocationsom excel sheet =======================
+    # Read in data from excel sheet =======================
 
     ## 1 - Realized and anticipated allocations ---------------------------------------
     df_allocations_base <- read_excel(path  = paste0(xlFileName), sheet = xlSheetName_Database) |> drop_na()
 
 
     ## 2 - Expected Growth Formula - percentage allocations for Uses of Cash ----
-    df_genAllocationFramework_base <- read_excel(path  = paste0(xlFileName), sheet = xlSheetName_genAllocationFramework)
+    df_ranges_base <- read_excel(path  = paste0(xlFileName), sheet = xlSheetName_ranges)
 
 
 
@@ -41,9 +41,9 @@ anticipated_allocation <- function(
     numFiscalYearsInData   = SHOW_N_YEARS_REALIZED + numYearsOfForecast
 
     # Consolidate colors, text for within or outside of general allocation bounds
-    genAllocationRangesColors = c(WITHIN_BOUNDS_COLOR  = 'green',
+    anticipated_rangesColors = c(WITHIN_BOUNDS_COLOR  = 'green',
                                   OUTSIDE_BOUNDS_COLOR = 'red')
-    genAllocationRangesText   = c(WITHIN_BOUNDS_TEXT   = 'Within Expected Growth Formula',
+    anticipated_rangesText   = c(WITHIN_BOUNDS_TEXT   = 'Within Expected Growth Formula',
                                   OUTSIDE_BOUNDS_TEXT  = 'Outside Expected Growth Formula')
 
     # Indices of above
@@ -51,7 +51,7 @@ anticipated_allocation <- function(
     OUTSIDE_BOUNDS_IDX = 2
 
     # Consolidate ranges into single vector
-    genAllocationRanges = unique(df_genAllocationFramework_base$Percent_Allocation)
+    anticipated_ranges = unique(df_ranges_base$Percent_Allocation)
 
     # Indices to reference of the allocation framework
     LOWER_BOUND_IDX = 3
@@ -85,16 +85,16 @@ anticipated_allocation <- function(
         # Add description whether realized was within, above, or below range
         # If within the upper and lower bound of Uses of Cash allocation
         boundsDescription = if_else(
-          Percent_Allocation_to_Use <  genAllocationRanges[UPPER_BOUND_IDX]
+          Percent_Allocation_to_Use <  anticipated_ranges[UPPER_BOUND_IDX]
           &
-            Percent_Allocation_to_Use >= genAllocationRanges[LOWER_BOUND_IDX] ,
-          genAllocationRangesText[WITHIN_BOUNDS_IDX],
+            Percent_Allocation_to_Use >= anticipated_ranges[LOWER_BOUND_IDX] ,
+          anticipated_rangesText[WITHIN_BOUNDS_IDX],
           # then label as outside bounds
-          genAllocationRangesText[OUTSIDE_BOUNDS_IDX]   # else label as within bounds
+          anticipated_rangesText[OUTSIDE_BOUNDS_IDX]   # else label as within bounds
         ),
 
         # Convert the bounds text description to a sorted factor for plotting
-        boundsDescription = factor(boundsDescription, levels = genAllocationRangesText, labels = genAllocationRangesText)
+        boundsDescription = factor(boundsDescription, levels = anticipated_rangesText, labels = anticipated_rangesText)
       ) |>
 
       # Pivot such that all numeric columns are in a single column
@@ -239,12 +239,12 @@ anticipated_allocation <- function(
       #### Get the description and the percentage for the bounds -------------------
 
       # Filter to the correct range
-      df_genAllocationFramework <- df_genAllocationFramework_base |>
+      df_ranges <- df_ranges_base |>
         filter(str_detect(Range, RangeName))
 
       # Get the values
-      percentBound      = as.numeric(paste0(df_genAllocationFramework[['Percent_Allocation']]))
-      percentBoundTitle = paste0(df_genAllocationFramework[['Range']])
+      percentBound      = as.numeric(paste0(df_ranges[['Percent_Allocation']]))
+      percentBoundTitle = paste0(df_ranges[['Range']])
 
 
       #### Create the text and line objects for the bound --------------------------
@@ -313,7 +313,7 @@ anticipated_allocation <- function(
     # Function to add the ranges and text
     # The reason for making this is to be able to omit these elements when creating another plot
     # Without the allocation ranges (for simplicity)
-    add_generalAllocationRangesAndText <- function(includeRangesAndText = TRUE) {
+    add_anticipatedRangesAndText <- function(includeRangesAndText = TRUE) {
       if (includeRangesAndText) {
         return(list(
           # The Nominal Growth Ranges (Min and Max Brackets)
@@ -410,7 +410,7 @@ anticipated_allocation <- function(
       ggplot(aes(x = Fiscal_Year)) +
 
       # 2 - Add the Expected Growth Formula growth ranges
-      add_generalAllocationRangesAndText(includeRangesAndText = TRUE) +
+      add_anticipatedRangesAndText(includeRangesAndText = TRUE) +
 
       # 3 - Anticipated vs. realized points, and
       #     Aesthetics like labels, shared layers, scales, etc.
@@ -421,14 +421,14 @@ anticipated_allocation <- function(
         growthTextPosition = -2,
         captionVar = paste0(
           '\n\n* "',
-          str_flatten(genAllocationRangesText, '" and "'),
+          str_flatten(anticipated_rangesText, '" and "'),
           '" coloring is based only on realized allocations, not anticipated allocations.'
         )
       ) +
 
       # Color scale
-      scale_color_manual(values = styles::scale_dc('fill', paste0(genAllocationRangesColors)),
-                         labels = genAllocationRangesText)
+      scale_color_manual(values = styles::scale_dc('fill', paste0(anticipated_rangesColors)),
+                         labels = anticipated_rangesText)
 
 
     plot_allocationsNomGrowthRanges # display
