@@ -3,9 +3,8 @@ title:  "Projects"
 date:   today
 description: This repository showcases shareable projects.
 
+# Tile contents
 listing:
-  
-  # Tile contents
   id: main-listing
   contents: 
     - 01-Visual-Storytelling/index.qmd
@@ -20,15 +19,6 @@ listing:
       title: Package Development
       description: Building Tools for Consistent Branding in `ggplot2`
       date: "2025-08-01"
-      
-  # Setup
-  type: grid
-  fields: [title, description, image, date]
-  field-display-names: 
-    title: Project
-  sort: 
-    - "date desc"
-    - 'title'
 ---
 
 ---

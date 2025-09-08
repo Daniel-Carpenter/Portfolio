@@ -4,17 +4,12 @@ date:   today
 image: "img/thumbnail.png"
 description: Advanced operations research projects in `python`, `AMPL`, and `gurobipy`.
 
+# Tile contents
 listing:
   id: main-listing
   contents: 
     - 01-PSO-Portfolio/index.qmd
     - 02-Opt-DSA/index.qmd
-    
-  # Style
-  type: grid
-  fields: [title, description, image, date]
-  field-display-names: 
-    title: Project
 ---
 
 ---

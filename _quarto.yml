@@ -15,6 +15,7 @@ execute:
 # Default formatting for individual pages
 format:
   html:
+    theme: [styles.scss]
     toc: true
     toc-depth: 2
     toc-title: "Contents"
@@ -25,6 +26,18 @@ format:
     df-print: paged
     code-block-bg: true
     code-block-border-left: "#eaeaea"
+
+    # Listing setup
+    listing:
+      image-height: 10em
+      type: grid
+      fields: [title, description, image, date]
+      field-display-names:
+        title: Project
+      sort:
+        - "date desc"
+        - 'title'
+
 
 # Website project
 project:
