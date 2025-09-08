@@ -210,8 +210,8 @@ subscriber_drivetime_analysis      <- function(
     labs(title    = paste0('Average Drive Time to Flagship Location Rises, but Trend Misleads\n'),
          subtitle = paste0('New Subscriber Signups',
                            '\nMonthly Average Hours Traveled from Subscriber Residency to Flagship Store\n'),
-         x='Month of Year',
-         y='Monthly Average Drive Time (Hours)',
+         x='\nMonth of Year',
+         y='Monthly Average Drive Time (Hours)\n',
          caption = paste0('\nData shown through ', format(last_full_mo, DATE_FORMAT))) +
     scale_y_continuous(labels = scales::comma) +
 

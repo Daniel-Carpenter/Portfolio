@@ -34,7 +34,7 @@ date_competition_enters = Sys.Date() - 120
 selected_stores = c('Flagship Store' )
 
 # Read in a reference file for drive times destinations
-drivetimeRef <- fread(paste0(this_dir, 'data//drivetime_ref.csv'))
+dt_ref <- fread(paste0(this_dir, 'data//drivetime_ref.csv'))
 
 # Get the R files containing the functions with plots --------------------------
 purrr::walk(list.files(paste0(this_dir, 'functions//'), pattern = "\\.R$", full.names = TRUE), source)
@@ -121,6 +121,14 @@ subscribers$plots$overview
 
 <br>
 
+### Subscriber Breakdown by Drivetime
+
+```{r subscribers_1.1, fig.height=10}
+subscribers$plots$demographics
+```
+
+<br>
+
 ### Subscriber Comparison
 
 * Since expanding, daily subscribers have been *less than* on average than in the past 12-months.
@@ -139,7 +147,7 @@ subscribers$plots$detail
 
 ```{r drivetime_ref}
 library(knitr)
-knitr::kable(drivetimeRef)
+knitr::kable(dt_ref)
 ```
 
 <br>
