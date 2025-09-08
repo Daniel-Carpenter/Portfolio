@@ -124,6 +124,35 @@ typography:
     decoration: underline
 
 defaults:
+  quarto:
+    format:
+      html:
+        rules: |
+          #title-block-header.quarto-title-block.default .quarto-title .title {
+            font-family: $font-family-sans-serif, $headings-font-family;
+            font-size: $h1-font-size;
+          }
+          .navbar-dark .navbar-brand {
+            font-family: $font-family-sans-serif, $headings-font-family;
+            font-size: $nav-title-font-size;
+          }
+          h1, h2, h3, h4 { font-weight: $h-font-weight; }
+          h1 { font-size: $h1-font-size; }
+          h2 { font-size: $h2-font-size; }
+          h3 { font-size: $h3-font-size; }
+          h4 { font-size: $h4-font-size; }
+
+          /* Callout Note -> use $brand-blue_accent */
+          div.callout-note {
+            border-left-color: $brand-base3 !important;
+          }
+
+          div.callout-note.callout-style-default .callout-title {
+            /* soft header tint from brand blue accent */
+            background-color: $brand-base1;
+          }
+
+
 
   shiny:
     theme:

@@ -1,0 +1,365 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title:  Portfolio Optimization with Python Particle Swarm Optimizer\n",
+        "date:   \"2023-01-01\"\n",
+        "image:  'img/thumbnail.png'\n",
+        "description: Particle Swarm Optimization is applied to portfolio choice modeling.\n",
+        "\n",
+        "format:\n",
+        "  html:\n",
+        "    fig-width: 8.5\n",
+        "    fig-height: 5.5\n",
+        "    code-fold: true\n",
+        "\n",
+        "execute:\n",
+        "  cache: true\n",
+        "  \n",
+        "jupyter: python3\n",
+        "\n",
+        "---\n",
+        "\n",
+        "\n",
+        "---\n",
+        "\n",
+        "::: {.callout-note title=\"Note: Tickers are randomly selected\"}\n",
+        "\n",
+        "For demonstration only, the tickers are randomly chosen.\n",
+        "\n",
+        ":::\n",
+        "\n",
+        "\n",
+        "# Presentation of Process and Research\n",
+        "<a href=\"https://vimeo.com/manage/videos/724082009?embedded=false&source=video_title&owner=179170794\" target=\"_blank\">\n",
+        "  <img src=\"/docs/02-Optimization/01-PSO-Portfolio/img/video.png\" alt=\"Presentation of Project\" style=\"width:100%;\">\n",
+        "</a>\n",
+        "\n",
+        "\n",
+        "---\n",
+        "\n",
+        "<br>\n",
+        "\n",
+        "\n",
+        "# Documentation of Process and Research\n",
+        "\n",
+        "<ul>\n",
+        "  <li><a href=\"/docs/02-Optimization/01-PSO-Portfolio/documentation/Presentation.PDF\" target=\"_blank\">Presentation Slides</a></li>\n",
+        "  <li><a href=\"/docs/02-Optimization/01-PSO-Portfolio/documentation/Paper.PDF\" target=\"_blank\">Research Paper</a></li>\n",
+        "  <li><a href=\"/docs/02-Optimization/01-PSO-Portfolio/documentation/Literature.PDF\" target=\"_blank\">Literature Review</a></li>\n",
+        "</ul>\n",
+        "\n",
+        "---\n",
+        "\n",
+        "<br>\n",
+        "\n",
+        "\n",
+        "# Executed Code\n",
+        "\n",
+        "## Overview of Code\n",
+        "> Class-based Python approach minimized portfolio risk and selected the max-Sharpe portfolio across simulations.\n",
+        "\n",
+        "1. Inputs for model:\n",
+        "    * Stock tickers from publically traded companies, investment funds, etc. available on Yahoo Finance  \n",
+        "    * Date range of Stocks to include in sample (Default last 10 years)  \n",
+        "    * Minimum desired return on portfolio as a soft constraint  \n",
+        "    * Some Metaheuristic inputs  \n",
+        "    \n",
+        "2. `StockFinanceMPT.py`: Calls `PullStockData.py` to pull stock data, then prepares stock data to get excess returns, variance-covariance matrix, etc. for **Modern Porfolio Theory**. *Must be in working directory*\n",
+        "\n",
+        "3. `SimulateOptimalPortfolios.py`: \n",
+        "    * Runs individual Particle Swarm Optimization routine, searching for the global minimum risk. Specifically, it creates many `OptimizePortfolioPSO` class objects.  \n",
+        "    * Repeatedly simulate PSO modeling as desired.  \n",
+        "    * Returns optimal allocation of weights to invest into stocks and associated investment weights.  \n",
+        "\n",
+        "    \n",
+        "4.  `ViewSimulatedPortfolios.py`: Class that processes results of the simulations, which yields the following performance plots:  \n",
+        "    * Displays variance characteristics across all simulations.  \n",
+        "    * Across all simulations, plots:  \n",
+        "        * Global minimum risk portfolio and maximum Sharpe portfolios against all non-optimal portfolios.  \n",
+        "        * Global minimum risk portfolio and maximum Sharpe portfolios against all investable tickers, or funds.  \n",
+        "    * Frontier of all simulated portfolios. I.e., risk vs. return of all simulated portfolios.  \n",
+        "\n",
+        "6. Exports CSVs of inputs, performance data, weights, etc.\n",
+        "\n",
+        "---\n",
+        "\n",
+        "<br>\n"
+      ],
+      "id": "d46c8dd3"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| code-fold: true\n",
+        "# Set working directory to the R project directory\n",
+        "import sys\n",
+        "import os\n",
+        "\n",
+        "sys.path.append(os.getcwd() + \"//docs//02-Optimization//01-PSO-Portfolio//\")\n",
+        "\n",
+        "# Import custom classes\n",
+        "import datetime                  as dt  # For dates\n",
+        "import StockFinanceMPT           as mpt # Stock pull from yfinance in current wrkdir\n",
+        "import SimulateOptimalPortfolios as sop # Run simulations of global best portfolios\n",
+        "import ViewSimulatedPortfolios   as vsp # Wrapper class to plot, export, etc., simulations"
+      ],
+      "id": "30c87ed2",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Pull and Prepare Stock Data\n",
+        "\n",
+        "> Pulled price history and T-bill rates; built returns and covariance to power risk/return modeling.\n",
+        "\n",
+        "<a href=\"https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/02-Optimization/01-PSO-Portfolio/StockFinanceMPT.py\" target=\"_blank\">See full function here.</a>\n"
+      ],
+      "id": "3ca3b6f7"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# List of stock tickers to pull data\n",
+        "StockTickers = ['NVDA', 'MSFT', 'AAPL', 'AMZN', 'META', \n",
+        "                'AVGO', 'GOOGL', 'GOOG', 'TSLA','JPM', \n",
+        "                'WMT', 'V', 'LLY', 'ORCL', 'MA', 'NFLX', \n",
+        "                'XOM', 'JNJ', 'COST', 'HD', 'BAC'\n",
+        "]\n",
+        "\n",
+        "# Date range for stock & t-bill data pull - default last 10 years\n",
+        "maxDate = dt.datetime.today()                    # Max date to pull from\n",
+        "minDate = maxDate - dt.timedelta(days = 15*365) # Min date to pull from\n",
+        "\n",
+        "# Pull stock data\n",
+        "PulledStockData = mpt.StockFinanceMPT(StockTickers, minDate, maxDate)"
+      ],
+      "id": "042378b8",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "\n",
+        "<br>\n",
+        "\n",
+        "## Run Particle Swarm Optimization\n",
+        "\n",
+        "> Simple Interpretation of Code: Start with 15 random portfolios, let each adjust 25 times while sharing results, and repeat 1,500 runs to identify both the minimum-risk and maximum-Sharpe portfolios.\n",
+        "\n",
+        "<a href=\"https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/02-Optimization/01-PSO-Portfolio/SimulateOptimalPortfolios.py\" target=\"_blank\">See full function here.</a>\n"
+      ],
+      "id": "4986f426"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Create the simulation\n",
+        "simulatedPortfolios = sop.SimulateOptimalPortfolios(    \n",
+        "    PulledStockData,               # Using the pulled stock data above\n",
+        "    totalSimulations    = 1500,    # Number of min risk portfolio's to simulate\n",
+        "    totalIterations     = 25,      # Total number of iterations (or movements within one simulation)\n",
+        "    numPorfolios        = 15,      # Total number of portfolios in a swarm. \n",
+        "    minDesiredReturn    = 0.07     # Targeted expected return, soft constraint\n",
+        "    )\n",
+        "\n",
+        "simulatedPortfolios.runSimulation() # Run the simulation given parameters above"
+      ],
+      "id": "dea70791",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "\n",
+        "<br>\n",
+        "\n",
+        "# View Results\n",
+        "\n",
+        "## Review Minimum Risk Portfolio\n",
+        "\n",
+        "> Identified the minimum-risk mix as the baseline; quantified risk reduction versus the starting set.\n",
+        "\n",
+        "<a href=\"https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py\" target=\"_blank\">See full function here.</a>\n"
+      ],
+      "id": "590e55fe"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Create the viewer wrapper class\n",
+        "simulationViewer = vsp.ViewSimulatedPortfolios(simulatedPortfolios, displayResults = False)"
+      ],
+      "id": "b1029fc3",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "\n",
+        "<br>\n",
+        "\n",
+        "## Compare Optimal Portfolio to the Efficient Frontier\n",
+        "\n",
+        "> Placed the chosen portfolio on the frontier to confirm its risk/return position.\n",
+        "\n",
+        "<a href=\"https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py\" target=\"_blank\">See full function here.</a>\n"
+      ],
+      "id": "1b093271"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "simulationViewer.plotRiskVsReturnVsSharpe(TRANSPARENCY_LEVEL=0.33)"
+      ],
+      "id": "0ad118c0",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "\n",
+        "<br>\n",
+        "\n",
+        "## Compare Optimal Portfolio to All Other Simulated Portfolios\n",
+        "\n",
+        "> Benchmarked the optimal result against all simulations to validate consistency and uplift.\n",
+        "\n",
+        "<a href=\"https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py\" target=\"_blank\">See full function here.</a>\n"
+      ],
+      "id": "dfbd89a1"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "simulationViewer.plotOptimalVsNonOptSimulations()"
+      ],
+      "id": "223fb43b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "\n",
+        "<br>\n",
+        "\n",
+        "## Compare Optimal Portfolio to All Investable Assets\n",
+        "\n",
+        "> Showed diversification benefits versus single assets; improved return per unit of risk.\n",
+        "\n",
+        "<a href=\"https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py\" target=\"_blank\">See full function here.</a>\n"
+      ],
+      "id": "deca1127"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "simulationViewer.plotOptimalVsRealizedReturns()"
+      ],
+      "id": "12e990c1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "\n",
+        "<br>\n",
+        "\n",
+        "## Other Class Functions\n",
+        "\n",
+        "> Exported data and plots; enabled quick checks and repeatable reporting.\n",
+        "\n",
+        "<a href=\"https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py\" target=\"_blank\">See full function here.</a>\n"
+      ],
+      "id": "5b53b008"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Exports all Weights Data and Plots to dated folder\n",
+        "simulationViewer.exportSimulationData()"
+      ],
+      "id": "a40d6fa2",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "<a href=\"https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/02-Optimization/01-PSO-Portfolio/ViewSimulatedPortfolios.py\" target=\"_blank\">See full function here.</a>\n"
+      ],
+      "id": "9b442c89"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false # NOT RUN\n",
+        "\n",
+        "# Inspect that the sum of weights constraint is met (100%)\n",
+        "simulationViewer.checkSumOfWeights()\n",
+        "\n",
+        "# Invested Variability among assets\n",
+        "simulationViewer.plotPortfolioVarianceStats(figHeight=7, figWidth=5)\n",
+        "\n",
+        "# Process all output at once\n",
+        "simulationViewer.processAllOutputAtOnce()"
+      ],
+      "id": "83d5189b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "<br>\n",
+        "\n",
+        "[<img src = '/docs/img/go-back.png' height=50 >](../)"
+      ],
+      "id": "26b46000"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3",
+      "language": "python",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

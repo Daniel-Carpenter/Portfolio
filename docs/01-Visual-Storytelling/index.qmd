@@ -3,14 +3,23 @@ title:  "Visual Analysis to Problem Solve"
 date:   today
 image: "img/thumbnail.png"
 description: Examples of my approach to business problem solving in `R` and `SQL`.
-
-# Tile contents
 listing:
+  
+  # Listings
   id: main-listing
   contents: 
     - 01-Capital-Allocation/index.qmd
     - 02-Post-Mortem/index.qmd
     - 03-Marketing-Effectiveness/index.qmd
+    
+  # Aesthetis
+  type: grid
+  fields: [title, description, image, date]
+  field-display-names: 
+    title: Project
+  sort: 
+    - "date desc"
+    - 'title'
 ---
 
 ---
