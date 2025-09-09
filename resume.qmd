@@ -8,7 +8,7 @@ date: today
 <iframe
   width = "725"
   height = "825"
-  src = "assets/Daniel Carpenter Resume (Dec-2023).pdf">
+  src = "assets/Daniel Carpenter Resume.pdf">
 </iframe>
 
 
