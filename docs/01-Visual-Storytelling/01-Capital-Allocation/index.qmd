@@ -93,13 +93,28 @@ plots_anticipated_allocation$ranges # display
 
 <br>
 
+# Recommending Budget Growth Range
+
+> Provide leadership with a range of growth scenarios to guide decisions in the upcoming budget cycle.
+
+<a href="https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/01-Visual-Storytelling/01-Capital-Allocation/functions/06-Recommended-Range.R" target="_blank">See full function here.</a>
+
+```{r anticipated_allocation_3, fig.height=5}
+recommended_range()
+```
+
+
+---
+
+<br>
+
 # Opportunity Cost of Perpetual Investment Returns Rise
 
 > By redirecting more cash into investments, the business could have built a steady, recurring income stream.
 
 <a href="https://github.com/Daniel-Carpenter/Portfolio/blob/main/docs/01-Visual-Storytelling/01-Capital-Allocation/functions/05-Investment-Opportunity.R" target="_blank">See full function here.</a>
 
-```{r investment_opportunity, fig.height=8}
+```{r investment_opportunity, fig.height=7}
 investment_opportunity()
 ```
 
