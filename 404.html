@@ -7,10 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Daniel Carpenter, MS">
-<meta name="dcterms.date" content="2025-01-01">
-<meta name="description" content="Advanced operations research projects in python, AMPL, and gurobipy.">
 
-<title>Optimization: Deterministic &amp; Stochastic – Portfolio | Daniel Carpenter, MS</title>
+<title>quarto-inputc54cd709cd59c0ec – Portfolio | Daniel Carpenter, MS</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -26,31 +24,29 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../docs/img/headshot-only.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-listing/list.min.js"></script>
-<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-51ed2b7efba85c808986edec323c5e71.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-6efe224236f7e5a1615e5d2b42852a6b.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-51ed2b7efba85c808986edec323c5e71.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-6daa9f4d15c5cb40346a4c33dafded18.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-6daa9f4d15c5cb40346a4c33dafded18.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-6daa9f4d15c5cb40346a4c33dafded18.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="/Portfolio/site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="/Portfolio/site_libs/quarto-nav/headroom.min.js"></script>
+<script src="/Portfolio/site_libs/clipboard/clipboard.min.js"></script>
+<script src="/Portfolio/site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="/Portfolio/site_libs/quarto-search/fuse.min.js"></script>
+<script src="/Portfolio/site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="/Portfolio/">
+<link href="/Portfolio/./docs/img/headshot-only.png" rel="icon" type="image/png">
+<script src="/Portfolio/site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="/Portfolio/site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="/Portfolio/site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="/Portfolio/site_libs/quarto-html/popper.min.js"></script>
+<script src="/Portfolio/site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="/Portfolio/site_libs/quarto-html/anchor.min.js"></script>
+<link href="/Portfolio/site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="/Portfolio/site_libs/quarto-html/quarto-syntax-highlighting-51ed2b7efba85c808986edec323c5e71.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="/Portfolio/site_libs/quarto-html/quarto-syntax-highlighting-dark-6efe224236f7e5a1615e5d2b42852a6b.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="/Portfolio/site_libs/quarto-html/quarto-syntax-highlighting-51ed2b7efba85c808986edec323c5e71.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="/Portfolio/site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="/Portfolio/site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="/Portfolio/site_libs/bootstrap/bootstrap-6daa9f4d15c5cb40346a4c33dafded18.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="/Portfolio/site_libs/bootstrap/bootstrap-dark-6daa9f4d15c5cb40346a4c33dafded18.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="/Portfolio/site_libs/bootstrap/bootstrap-6daa9f4d15c5cb40346a4c33dafded18.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -78,65 +74,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-main-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-description','listing-image','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-main-listing'] = new List('listing-main-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -147,9 +85,9 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <a href="/Portfolio/index.html" class="navbar-brand navbar-brand-logo">
     </a>
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="/Portfolio/index.html">
     <span class="navbar-title">Portfolio | Daniel Carpenter, MS</span>
     </a>
   </div>
@@ -160,15 +98,15 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../../index.html" aria-current="page"> 
+    <a class="nav-link active" href="/Portfolio/index.html" aria-current="page"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../docs/"> 
+    <a class="nav-link" href="/Portfolio/docs/"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../resume.html"> 
+    <a class="nav-link" href="/Portfolio/resume.html"> 
 <span class="menu-text">Resume</span></a>
   </li>  
 </ul>
@@ -185,7 +123,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../docs/index.html">Projects</a></li><li class="breadcrumb-item"><a href="../../docs/02-Optimization/index.html">Optimization: Deterministic &amp; Stochastic</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -196,14 +134,14 @@ window.Quarto = {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
-      <a href="../../index.html" class="sidebar-logo-link">
+      <a href="/Portfolio/index.html" class="sidebar-logo-link">
       </a>
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../docs/index.html" class="sidebar-item-text sidebar-link">
+            <a href="/Portfolio/docs/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Projects</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -212,40 +150,40 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../docs/03-ML/index.html" class="sidebar-item-text sidebar-link">
+  <a href="/Portfolio/docs/03-ML/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Applied Machine Learning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../docs/04-Dashboards/index.html" class="sidebar-item-text sidebar-link">
+  <a href="/Portfolio/docs/04-Dashboards/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Designing Interactive Business Dashboards</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../docs/05-ETL/index.html" class="sidebar-item-text sidebar-link">
+  <a href="/Portfolio/docs/05-ETL/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Automating Data Pipelines for Data Science Applications</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../docs/02-Optimization/index.html" class="sidebar-item-text sidebar-link active">
+            <a href="/Portfolio/docs/02-Optimization/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Optimization: Deterministic &amp; Stochastic</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../docs/02-Optimization/02-Opt-DSA/index.html" class="sidebar-item-text sidebar-link">
+  <a href="/Portfolio/docs/02-Optimization/02-Opt-DSA/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Solving Resource Allocation with Deterministic and Stochastic Optimization</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../docs/02-Optimization/01-PSO-Portfolio/index.html" class="sidebar-item-text sidebar-link">
+            <a href="/Portfolio/docs/02-Optimization/01-PSO-Portfolio/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Portfolio Optimization with Python Particle Swarm Optimizer</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -254,7 +192,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../docs/02-Optimization/01-PSO-Portfolio/Optimal_Portfolio.html" class="sidebar-item-text sidebar-link">
+  <a href="/Portfolio/docs/02-Optimization/01-PSO-Portfolio/Optimal_Portfolio.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Stock Portfolio Optimization with Particle Swarm Optimizer</span></a>
   </div>
 </li>
@@ -264,7 +202,7 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../docs/01-Visual-Storytelling/index.html" class="sidebar-item-text sidebar-link">
+            <a href="/Portfolio/docs/01-Visual-Storytelling/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Visual Analysis to Problem Solve</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -273,19 +211,19 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../docs/01-Visual-Storytelling/02-Post-Mortem/index.html" class="sidebar-item-text sidebar-link">
+  <a href="/Portfolio/docs/01-Visual-Storytelling/02-Post-Mortem/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Assessing Impact of Competitor Market Entry</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../docs/01-Visual-Storytelling/03-Marketing-Effectiveness/index.html" class="sidebar-item-text sidebar-link">
+  <a href="/Portfolio/docs/01-Visual-Storytelling/03-Marketing-Effectiveness/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Evaluating Shifts in Marketing Strategy</span></a>
   </div>
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../docs/01-Visual-Storytelling/01-Capital-Allocation/index.html" class="sidebar-item-text sidebar-link">
+            <a href="/Portfolio/docs/01-Visual-Storytelling/01-Capital-Allocation/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Allocating Capital for Sustainable Operations</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -303,7 +241,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth4 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html" class="sidebar-item-text sidebar-link">
+  <a href="/Portfolio/docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sankey Diagram - Capital Allocation</span></a>
   </div>
 </li>
@@ -326,16 +264,10 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../docs/index.html">Projects</a></li><li class="breadcrumb-item"><a href="../../docs/02-Optimization/index.html">Optimization: Deterministic &amp; Stochastic</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Optimization: Deterministic &amp; Stochastic</h1>
 </div>
 
-<div>
-  <div class="description">
-    Advanced operations research projects in <code>python</code>, <code>AMPL</code>, and <code>gurobipy</code>.
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -347,12 +279,6 @@ window.Quarto = {
           </div>
   </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -362,70 +288,21 @@ window.Quarto = {
 </header>
 
 
-<hr>
-<div class="callout callout-style-default callout-note callout-titled" title="Note: Proprietary Information Hidden">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Note: Proprietary Information Hidden
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>All projects are either personally developed in free time or at the College of Engineering at the University of Oklahoma.</p>
-</div>
-</div>
-<hr>
-<!-- Listing here -->
-<div id="listing-main-listing" class="quarto-listing quarto-listing-container-grid">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1672531200000" data-listing-file-modified-sort="1757712693519" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="928">
-<a href="../../docs/02-Optimization/01-PSO-Portfolio/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../../docs/02-Optimization/01-PSO-Portfolio/img/thumbnail.png" class="thumbnail-image card-img" style="height: 10em;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Portfolio Optimization with Python Particle Swarm Optimizer
-</h5>
-<div class="card-text listing-description delink">
-<p>Particle Swarm Optimization is applied to portfolio choice modeling.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-2023
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-listing-date-sort="1672531200000" data-listing-file-modified-sort="1757712693520" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="254">
-<a href="../../docs/02-Optimization/02-Opt-DSA/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../../docs/02-Optimization/02-Opt-DSA/img/pso.png" class="thumbnail-image card-img" style="height: 10em;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Solving Resource Allocation with Deterministic and Stochastic Optimization
-</h5>
-<div class="card-text listing-description delink">
-<p>Projects displaying advanced <strong>optimization techniques</strong> in finance and operations</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-2023
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
-<p><a href="../"><img src="../../docs/img/go-back.png" height="50"></a></p>
+&lt;!DOCTYPE HTML&gt;
+
+
+<meta charset="UTF-8">
+<meta http-equiv="refresh" content="0; url=https://daniel-carpenter.github.io/Portfolio/">
+<script type="text/javascript">
+            window.location.href = "https://daniel-carpenter.github.io/Portfolio/"
+        </script>
+<title>
+Page Redirection
+</title>
+
+
+If you are not redirected automatically, follow this <a href="https://daniel-carpenter.github.io/Portfolio/">link to my portfolio home page.</a>.
+
 
 
 
