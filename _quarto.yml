@@ -34,8 +34,8 @@ project:
 
 
   # Copy all assets to public to ensure link access
-  # resources:
-    # - '/dir/'
+  resources:
+  - '/docs/02-Optimization/01-PSO-Portfolio/documentation/'
 
 
   # When devoping the preview:
