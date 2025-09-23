@@ -40,9 +40,9 @@ For demonstration only, the tickers are randomly chosen.
 # Documentation of Process and Research
 
 <ul>
-  <li><a href="/docs/02-Optimization/01-PSO-Portfolio/documentation/Presentation.PDF" target="_blank">Presentation Slides</a></li>
-  <li><a href="/docs/02-Optimization/01-PSO-Portfolio/documentation/Paper.PDF" target="_blank">Research Paper</a></li>
-  <li><a href="/docs/02-Optimization/01-PSO-Portfolio/documentation/Literature.PDF" target="_blank">Literature Review</a></li>
+  <li><a href="/docs/02-Optimization/01-PSO-Portfolio/documentation/Presentation.pdf" target="_blank">Presentation Slides</a></li>
+  <li><a href="/docs/02-Optimization/01-PSO-Portfolio/documentation/Paper.pdf" target="_blank">Research Paper</a></li>
+  <li><a href="/docs/02-Optimization/01-PSO-Portfolio/documentation/Literature.pdf" target="_blank">Literature Review</a></li>
 </ul>
 
 ---
