@@ -1,8 +1,8 @@
 ,Parameter Value
 StockTickers,"['NVDA', 'MSFT', 'AAPL', 'AMZN', 'META', 'AVGO', 'GOOGL', 'GOOG', 'TSLA', 'JPM', 'WMT', 'V', 'LLY', 'ORCL', 'MA', 'NFLX', 'XOM', 'JNJ', 'COST', 'HD', 'BAC']"
-minDate,2010-09-11 09:48:40.205645
-maxDate,2025-09-07 09:48:40.205645
-totalRunTime,97.70107460021973
+minDate,2010-09-29 07:21:40.689538
+maxDate,2025-09-25 07:21:40.689538
+totalRunTime,101.70504260063171
 totalSimulations,1500
 totalIterations,25
 numPorfolios,15
