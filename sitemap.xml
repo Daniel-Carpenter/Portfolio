@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://Daniel-Carpenter.github.io/Portfolio/resume.html</loc>
-    <lastmod>2025-09-23T20:06:51.398Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Daniel-Carpenter.github.io/Portfolio/docs/index.html</loc>
-    <lastmod>2025-09-23T20:06:51.395Z</lastmod>
-  </url>
-  <url>
     <loc>https://Daniel-Carpenter.github.io/Portfolio/docs/01-Visual-Storytelling/02-Post-Mortem/index.html</loc>
-    <lastmod>2025-09-23T20:06:50.961Z</lastmod>
+    <lastmod>2025-09-25T12:48:39.274Z</lastmod>
   </url>
   <url>
     <loc>https://Daniel-Carpenter.github.io/Portfolio/docs/01-Visual-Storytelling/01-Capital-Allocation/index.html</loc>
-    <lastmod>2025-09-23T20:06:50.853Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Daniel-Carpenter.github.io/Portfolio/docs/04-Dashboards/index.html</loc>
-    <lastmod>2025-09-23T20:06:51.375Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Daniel-Carpenter.github.io/Portfolio/docs/02-Optimization/index.html</loc>
-    <lastmod>2025-09-23T20:06:51.372Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Daniel-Carpenter.github.io/Portfolio/docs/02-Optimization/01-PSO-Portfolio/index.html</loc>
-    <lastmod>2025-09-23T20:06:51.369Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Daniel-Carpenter.github.io/Portfolio/docs/03-ML/index.html</loc>
-    <lastmod>2025-09-23T20:06:51.374Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Daniel-Carpenter.github.io/Portfolio/docs/02-Optimization/01-PSO-Portfolio/Optimal_Portfolio.html</loc>
-    <lastmod>2025-09-23T20:06:51.335Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Daniel-Carpenter.github.io/Portfolio/docs/02-Optimization/02-Opt-DSA/index.html</loc>
-    <lastmod>2025-09-23T20:06:51.371Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Daniel-Carpenter.github.io/Portfolio/docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html</loc>
-    <lastmod>2025-09-23T20:06:50.853Z</lastmod>
+    <lastmod>2025-09-25T12:48:39.165Z</lastmod>
   </url>
   <url>
     <loc>https://Daniel-Carpenter.github.io/Portfolio/docs/01-Visual-Storytelling/index.html</loc>
-    <lastmod>2025-09-23T20:06:51.326Z</lastmod>
+    <lastmod>2025-09-25T12:48:39.646Z</lastmod>
   </url>
   <url>
-    <loc>https://Daniel-Carpenter.github.io/Portfolio/docs/01-Visual-Storytelling/03-Marketing-Effectiveness/index.html</loc>
-    <lastmod>2025-09-23T20:06:51.321Z</lastmod>
+    <loc>https://Daniel-Carpenter.github.io/Portfolio/docs/04-Dashboards/index.html</loc>
+    <lastmod>2025-09-25T12:48:39.699Z</lastmod>
   </url>
   <url>
-    <loc>https://Daniel-Carpenter.github.io/Portfolio/docs/05-ETL/index.html</loc>
-    <lastmod>2025-09-23T20:06:51.388Z</lastmod>
+    <loc>https://Daniel-Carpenter.github.io/Portfolio/docs/index.html</loc>
+    <lastmod>2025-09-25T12:48:39.720Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Daniel-Carpenter.github.io/Portfolio/docs/02-Optimization/01-PSO-Portfolio/index.html</loc>
+    <lastmod>2025-09-25T12:48:39.693Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Daniel-Carpenter.github.io/Portfolio/docs/02-Optimization/02-Opt-DSA/index.html</loc>
+    <lastmod>2025-09-25T12:48:39.695Z</lastmod>
   </url>
   <url>
     <loc>https://Daniel-Carpenter.github.io/Portfolio/index.html</loc>
-    <lastmod>2025-09-23T20:06:51.398Z</lastmod>
+    <lastmod>2025-09-25T12:48:39.722Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Daniel-Carpenter.github.io/Portfolio/resume.html</loc>
+    <lastmod>2025-09-25T12:48:39.722Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Daniel-Carpenter.github.io/Portfolio/docs/02-Optimization/index.html</loc>
+    <lastmod>2025-09-25T12:48:39.696Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Daniel-Carpenter.github.io/Portfolio/docs/02-Optimization/01-PSO-Portfolio/Optimal_Portfolio.html</loc>
+    <lastmod>2025-09-25T12:48:39.656Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Daniel-Carpenter.github.io/Portfolio/docs/05-ETL/index.html</loc>
+    <lastmod>2025-09-25T12:48:39.712Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Daniel-Carpenter.github.io/Portfolio/docs/03-ML/index.html</loc>
+    <lastmod>2025-09-25T12:48:39.698Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Daniel-Carpenter.github.io/Portfolio/docs/01-Visual-Storytelling/03-Marketing-Effectiveness/index.html</loc>
+    <lastmod>2025-09-25T12:48:39.641Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Daniel-Carpenter.github.io/Portfolio/docs/01-Visual-Storytelling/01-Capital-Allocation/functions/02-Sankey-Allocations.html</loc>
+    <lastmod>2025-09-25T12:48:39.165Z</lastmod>
   </url>
 </urlset>

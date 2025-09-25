@@ -1,16 +1,5 @@
 [
   {
-    "objectID": "docs/index.html",
-    "href": "docs/index.html",
-    "title": "Projects",
-    "section": "",
-    "text": "NoteNote: Proprietary Information Withheld\n\n\n\nAll proprietary information has been removed to protect organizational confidentiality.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOptimization: Deterministic & Stochastic\n\n\nAdvanced operations research projects in python, AMPL, and gurobipy.\n\n\n\n2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nVisual Analysis to Problem Solve\n\n\nExamples of my approach to business problem solving in R and SQL.\n\n\n\n2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nPackage Development\n\n\nBuilding Tools for Consistent Branding in ggplot2\n\n\n\n2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nDesigning Interactive Business Dashboards\n\n\nDashboards for executive and operator consumption in Tableau, Shiny + bslib, and Power BI.\n\n\n\n2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nAutomating Data Pipelines for Data Science Applications\n\n\nDatabases uses for Data Science applications in Python, R, and SQL.\n\n\n\n2024\n\n\n\n\n\n\n\n\n\n\n\n\n\nApplied Machine Learning\n\n\nProjects leveraging machine learning techniques with scikit-learn, keras, and tensorflow.\n\n\n\n2023\n\n\n\n\n\n\nNo matching items",
-    "crumbs": [
-      "Home",
-      "Projects"
-    ]
-  },
-  {
     "objectID": "docs/01-Visual-Storytelling/02-Post-Mortem/index.html",
     "href": "docs/01-Visual-Storytelling/02-Post-Mortem/index.html",
     "title": "Assessing Impact of Competitor Market Entry",
@@ -63,6 +52,18 @@
     ]
   },
   {
+    "objectID": "docs/01-Visual-Storytelling/index.html",
+    "href": "docs/01-Visual-Storytelling/index.html",
+    "title": "Visual Analysis to Problem Solve",
+    "section": "",
+    "text": "NoteNote: Data is Randomly Generated\n\n\n\nFor demonstration only, the data are randomized and all naming is fictitious.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAllocating Capital for Sustainable Operations\n\n\nReviews how past capital allocation decisions created financial pressure and unsustainable outcomes.\n\n\n\n2024\n\n\n\n\n\n\n\n\n\n\n\n\n\nEvaluating Shifts in Marketing Strategy\n\n\nDemonstrates how marketing adjustments did not offset the pressure from a competitor’s expansion.\n\n\n\n2023\n\n\n\n\n\n\n\n\n\n\n\n\n\nAssessing Impact of Competitor Market Entry\n\n\nAnalyzes the impact of a competitor entering an adjacent market.\n\n\n\n2022\n\n\n\n\n\n\nNo matching items",
+    "crumbs": [
+      "Home",
+      "Projects",
+      "Visual Analysis to Problem Solve"
+    ]
+  },
+  {
     "objectID": "docs/04-Dashboards/index.html",
     "href": "docs/04-Dashboards/index.html",
     "title": "Designing Interactive Business Dashboards",
@@ -75,15 +76,14 @@
     ]
   },
   {
-    "objectID": "docs/02-Optimization/index.html",
-    "href": "docs/02-Optimization/index.html",
-    "title": "Optimization: Deterministic & Stochastic",
+    "objectID": "docs/index.html",
+    "href": "docs/index.html",
+    "title": "Projects",
     "section": "",
-    "text": "NoteNote: Proprietary Information Hidden\n\n\n\nAll projects are either personally developed in free time or at the College of Engineering at the University of Oklahoma.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPortfolio Optimization with Python Particle Swarm Optimizer\n\n\nParticle Swarm Optimization is applied to portfolio choice modeling.\n\n\n\n2023\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolving Resource Allocation with Deterministic and Stochastic Optimization\n\n\nProjects displaying advanced optimization techniques in finance and operations\n\n\n\n2023\n\n\n\n\n\n\nNo matching items",
+    "text": "NoteNote: Proprietary Information Withheld\n\n\n\nAll proprietary information has been removed to protect organizational confidentiality.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOptimization: Deterministic & Stochastic\n\n\nAdvanced operations research projects in python, AMPL, and gurobipy.\n\n\n\n2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nVisual Analysis to Problem Solve\n\n\nExamples of my approach to business problem solving in R and SQL.\n\n\n\n2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nPackage Development\n\n\nBuilding Tools for Consistent Branding in ggplot2\n\n\n\n2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nDesigning Interactive Business Dashboards\n\n\nDashboards for executive and operator consumption in Tableau, Shiny + bslib, and Power BI.\n\n\n\n2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nAutomating Data Pipelines for Data Science Applications\n\n\nDatabases uses for Data Science applications in Python, R, and SQL.\n\n\n\n2024\n\n\n\n\n\n\n\n\n\n\n\n\n\nApplied Machine Learning\n\n\nProjects leveraging machine learning techniques with scikit-learn, keras, and tensorflow.\n\n\n\n2023\n\n\n\n\n\n\nNo matching items",
     "crumbs": [
       "Home",
-      "Projects",
-      "Optimization: Deterministic & Stochastic"
+      "Projects"
     ]
   },
   {
@@ -156,7 +156,7 @@
     "href": "docs/02-Optimization/01-PSO-Portfolio/index.html#compare-optimal-portfolio-to-all-other-simulated-portfolios",
     "title": "Portfolio Optimization with Python Particle Swarm Optimizer",
     "section": "4.3 Compare Optimal Portfolio to All Other Simulated Portfolios",
-    "text": "4.3 Compare Optimal Portfolio to All Other Simulated Portfolios\n\nBenchmarked the optimal result against all simulations to validate consistency and uplift.\n\nSee full function here.\n\n\nView Code Here\nsimulationViewer.plotOptimalVsNonOptSimulations()\n\n\nNote that the min risk portfolio is the same as the sharpe portfolio!",
+    "text": "4.3 Compare Optimal Portfolio to All Other Simulated Portfolios\n\nBenchmarked the optimal result against all simulations to validate consistency and uplift.\n\nSee full function here.\n\n\nView Code Here\nsimulationViewer.plotOptimalVsNonOptSimulations()",
     "crumbs": [
       "Home",
       "Projects",
@@ -169,7 +169,7 @@
     "href": "docs/02-Optimization/01-PSO-Portfolio/index.html#compare-optimal-portfolio-to-all-investable-assets",
     "title": "Portfolio Optimization with Python Particle Swarm Optimizer",
     "section": "4.4 Compare Optimal Portfolio to All Investable Assets",
-    "text": "4.4 Compare Optimal Portfolio to All Investable Assets\n\nShowed diversification benefits versus single assets; improved return per unit of risk.\n\nSee full function here.\n\n\nView Code Here\nsimulationViewer.plotOptimalVsRealizedReturns()\n\n\nNote that the min risk portfolio is the same as the sharpe portfolio!",
+    "text": "4.4 Compare Optimal Portfolio to All Investable Assets\n\nShowed diversification benefits versus single assets; improved return per unit of risk.\n\nSee full function here.\n\n\nView Code Here\nsimulationViewer.plotOptimalVsRealizedReturns()",
     "crumbs": [
       "Home",
       "Projects",
@@ -182,7 +182,7 @@
     "href": "docs/02-Optimization/01-PSO-Portfolio/index.html#other-class-functions",
     "title": "Portfolio Optimization with Python Particle Swarm Optimizer",
     "section": "4.5 Other Class Functions",
-    "text": "4.5 Other Class Functions\n\nExported data and plots; enabled quick checks and repeatable reporting.\n\nSee full function here.\n\n\nView Code Here\n# Exports all Weights Data and Plots to dated folder\nsimulationViewer.exportSimulationData()\n\n\nInput_Parameters saved to:       Output_Data/2025-09-07 09_50/Input_Parameters.csv\nAll_Simulated_Weights saved to:      Output_Data/2025-09-07 09_50/All_Simulated_Weights.csv\nAll_Simulated_Weights_Stats saved to:        Output_Data/2025-09-07 09_50/All_Simulated_Weights_Stats.csv\nMin_Risk_Portfolio saved to:         Output_Data/2025-09-07 09_50/Min_Risk_Portfolio.csv\nMax_Sharpe_Portfolio saved to:       Output_Data/2025-09-07 09_50/Max_Sharpe_Portfolio.csv\nExpected_Returns saved to:       Output_Data/2025-09-07 09_50/Expected_Returns.csv\nExpected_Returns_Stats saved to:         Output_Data/2025-09-07 09_50/Expected_Returns_Stats.csv\n\n\nSee full function here.\n\n\nView Code Here\n# Inspect that the sum of weights constraint is met (100%)\nsimulationViewer.checkSumOfWeights()\n\n# Invested Variability among assets\nsimulationViewer.plotPortfolioVarianceStats(figHeight=7, figWidth=5)\n\n# Process all output at once\nsimulationViewer.processAllOutputAtOnce()",
+    "text": "4.5 Other Class Functions\n\nExported data and plots; enabled quick checks and repeatable reporting.\n\nSee full function here.\n\n\nView Code Here\n# Exports all Weights Data and Plots to dated folder\nsimulationViewer.exportSimulationData()\n\n\nInput_Parameters saved to:       Output_Data/2025-09-25 07_23/Input_Parameters.csv\nAll_Simulated_Weights saved to:      Output_Data/2025-09-25 07_23/All_Simulated_Weights.csv\nAll_Simulated_Weights_Stats saved to:        Output_Data/2025-09-25 07_23/All_Simulated_Weights_Stats.csv\nMin_Risk_Portfolio saved to:         Output_Data/2025-09-25 07_23/Min_Risk_Portfolio.csv\nMax_Sharpe_Portfolio saved to:       Output_Data/2025-09-25 07_23/Max_Sharpe_Portfolio.csv\nExpected_Returns saved to:       Output_Data/2025-09-25 07_23/Expected_Returns.csv\nExpected_Returns_Stats saved to:         Output_Data/2025-09-25 07_23/Expected_Returns_Stats.csv\n\n\nSee full function here.\n\n\nView Code Here\n# Inspect that the sum of weights constraint is met (100%)\nsimulationViewer.checkSumOfWeights()\n\n# Invested Variability among assets\nsimulationViewer.plotPortfolioVarianceStats(figHeight=7, figWidth=5)\n\n# Process all output at once\nsimulationViewer.processAllOutputAtOnce()",
     "crumbs": [
       "Home",
       "Projects",
@@ -191,27 +191,100 @@
     ]
   },
   {
-    "objectID": "docs/03-ML/index.html#forecasting-expected-financial-returns",
-    "href": "docs/03-ML/index.html#forecasting-expected-financial-returns",
-    "title": "Applied Machine Learning",
-    "section": "1 Forecasting Expected Financial Returns",
-    "text": "1 Forecasting Expected Financial Returns\n\nPracticum Project, College of Engineering at the University of Oklahoma\n\n\n\nThis practicum applied machine learning to forecast a key economic indicator for investment strategy. Using LSTM, Elastic Net, and Prophet, LSTM delivered the strongest results, cutting out-of-sample error by ~10%. The workflow used vintage data, time-based validation, and feature engineering to reflect real-world constraints.\n\n\n\n\n\n\nProprietary; details cannot be shared.",
+    "objectID": "docs/02-Optimization/02-Opt-DSA/index.html#particle-swarm-optimization-on-schwefel-benchmark-function",
+    "href": "docs/02-Optimization/02-Opt-DSA/index.html#particle-swarm-optimization-on-schwefel-benchmark-function",
+    "title": "Solving Resource Allocation with Deterministic and Stochastic Optimization",
+    "section": "0.1 Particle Swarm Optimization on Schwefel Benchmark Function",
+    "text": "0.1 Particle Swarm Optimization on Schwefel Benchmark Function\nProblem Instructions: (View problem context)\n\n\nSimulates swarm intelligence to explore a complex search space efficiently.\nParticle Swarm Optimization on GitHub",
     "crumbs": [
       "Home",
       "Projects",
-      "Applied Machine Learning"
+      "Optimization: Deterministic & Stochastic",
+      "Solving Resource Allocation with Deterministic and Stochastic Optimization"
     ]
   },
   {
-    "objectID": "docs/03-ML/index.html#predicting-operational-delivery-times",
-    "href": "docs/03-ML/index.html#predicting-operational-delivery-times",
-    "title": "Applied Machine Learning",
-    "section": "2 Predicting Operational Delivery Times",
-    "text": "2 Predicting Operational Delivery Times\n\nCollege of Engineering at the University of Oklahoma\n\n\n\nThis project built models to improve food delivery time estimates by integrating traffic, accidents, and weather with historical data. The approach reduced variance in arrival predictions versus baseline methods, creating a more reliable framework to support delivery services with better planning accuracy and operational consistency.\nView on GitHub:\n\nPresentation Slides\nPDF Report\nR Code\n\n\n\n\n\n  \n\nClick image to watch presentation",
+    "objectID": "docs/02-Optimization/02-Opt-DSA/index.html#simulated-annealing",
+    "href": "docs/02-Optimization/02-Opt-DSA/index.html#simulated-annealing",
+    "title": "Solving Resource Allocation with Deterministic and Stochastic Optimization",
+    "section": "1.1 Simulated Annealing",
+    "text": "1.1 Simulated Annealing\n\n\nUses iterative improvement with probabilistic acceptance of worse solutions.\nSimulated Annealing on GitHub",
     "crumbs": [
       "Home",
       "Projects",
-      "Applied Machine Learning"
+      "Optimization: Deterministic & Stochastic",
+      "Solving Resource Allocation with Deterministic and Stochastic Optimization"
+    ]
+  },
+  {
+    "objectID": "docs/02-Optimization/02-Opt-DSA/index.html#genetic-algorithm",
+    "href": "docs/02-Optimization/02-Opt-DSA/index.html#genetic-algorithm",
+    "title": "Solving Resource Allocation with Deterministic and Stochastic Optimization",
+    "section": "1.2 Genetic Algorithm",
+    "text": "1.2 Genetic Algorithm\n\n\nApplies crossover and mutation to evolve stronger solutions over generations.\nGenetic Algorithm on GitHub",
+    "crumbs": [
+      "Home",
+      "Projects",
+      "Optimization: Deterministic & Stochastic",
+      "Solving Resource Allocation with Deterministic and Stochastic Optimization"
+    ]
+  },
+  {
+    "objectID": "docs/02-Optimization/02-Opt-DSA/index.html#linear-optimization",
+    "href": "docs/02-Optimization/02-Opt-DSA/index.html#linear-optimization",
+    "title": "Solving Resource Allocation with Deterministic and Stochastic Optimization",
+    "section": "2.1 Linear Optimization",
+    "text": "2.1 Linear Optimization\n\n\nApplies linear programming to optimize resource allocation under constraints.\nLinear Optimization Example on GitHub\n(View problem instructions)",
+    "crumbs": [
+      "Home",
+      "Projects",
+      "Optimization: Deterministic & Stochastic",
+      "Solving Resource Allocation with Deterministic and Stochastic Optimization"
+    ]
+  },
+  {
+    "objectID": "docs/02-Optimization/02-Opt-DSA/index.html#generalized-network-flows-modeling-decay",
+    "href": "docs/02-Optimization/02-Opt-DSA/index.html#generalized-network-flows-modeling-decay",
+    "title": "Solving Resource Allocation with Deterministic and Stochastic Optimization",
+    "section": "2.2 Generalized Network Flows: Modeling Decay",
+    "text": "2.2 Generalized Network Flows: Modeling Decay\n\n\nExtends flow optimization to capture diminishing effects over a network.\nGeneralized Network Flows: Modeling Decay on GitHub",
+    "crumbs": [
+      "Home",
+      "Projects",
+      "Optimization: Deterministic & Stochastic",
+      "Solving Resource Allocation with Deterministic and Stochastic Optimization"
+    ]
+  },
+  {
+    "objectID": "docs/02-Optimization/02-Opt-DSA/index.html#mixed-binary-linear-optimization",
+    "href": "docs/02-Optimization/02-Opt-DSA/index.html#mixed-binary-linear-optimization",
+    "title": "Solving Resource Allocation with Deterministic and Stochastic Optimization",
+    "section": "2.3 Mixed-Binary-Linear Optimization",
+    "text": "2.3 Mixed-Binary-Linear Optimization\nProblem Instructions: (View problem context)\n\n\nCombines integer and binary decision variables for complex allocation problems.\nMixed-Binary-Linear Optimization on GitHub",
+    "crumbs": [
+      "Home",
+      "Projects",
+      "Optimization: Deterministic & Stochastic",
+      "Solving Resource Allocation with Deterministic and Stochastic Optimization"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Portfolio | Daniel Carpenter, MS",
+    "section": "",
+    "text": "Education\nI studied at the University of Oklahoma (2020), double-majoring in Economics and Finance, then earned a Master’s in Data Science and Analytics from OU’s College of Engineering (2023).\n\n\n\nProfessional Experience\nIn 2021, I became an Operational Performance & Analysis Advisor, helping leaders across 25+ businesses improve efficiency and profitability. Two years later (2023), I joined the Office of Investment Management & Strategic Finance as a Senior Advisor, where I support a team of VP’s through analysis of capital decisions to sustain programs and services.\n\n\n\nPersonal Interests\nYou’ll find me in my vegetable garden, hiking with my wife and our two dogs, or out on a trail mountain biking or OneWheeling."
+  },
+  {
+    "objectID": "docs/02-Optimization/index.html",
+    "href": "docs/02-Optimization/index.html",
+    "title": "Optimization: Deterministic & Stochastic",
+    "section": "",
+    "text": "NoteNote: Proprietary Information Hidden\n\n\n\nAll projects are either personally developed in free time or at the College of Engineering at the University of Oklahoma.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPortfolio Optimization with Python Particle Swarm Optimizer\n\n\nParticle Swarm Optimization is applied to portfolio choice modeling.\n\n\n\n2023\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolving Resource Allocation with Deterministic and Stochastic Optimization\n\n\nProjects displaying advanced optimization techniques in finance and operations\n\n\n\n2023\n\n\n\n\n\n\nNo matching items",
+    "crumbs": [
+      "Home",
+      "Projects",
+      "Optimization: Deterministic & Stochastic"
     ]
   },
   {
@@ -299,81 +372,64 @@
     ]
   },
   {
-    "objectID": "docs/02-Optimization/02-Opt-DSA/index.html#particle-swarm-optimization-on-schwefel-benchmark-function",
-    "href": "docs/02-Optimization/02-Opt-DSA/index.html#particle-swarm-optimization-on-schwefel-benchmark-function",
-    "title": "Solving Resource Allocation with Deterministic and Stochastic Optimization",
-    "section": "0.1 Particle Swarm Optimization on Schwefel Benchmark Function",
-    "text": "0.1 Particle Swarm Optimization on Schwefel Benchmark Function\nProblem Instructions: (View problem context)\n\n\nSimulates swarm intelligence to explore a complex search space efficiently.\nParticle Swarm Optimization on GitHub",
+    "objectID": "docs/05-ETL/index.html#project-highlights",
+    "href": "docs/05-ETL/index.html#project-highlights",
+    "title": "Automating Data Pipelines for Data Science Applications",
+    "section": "1 Project Highlights",
+    "text": "1 Project Highlights\nInteract with slides by clicking a slide.\n\n \n\nDesigned in Canva by Daniel Carpenter, MS.",
     "crumbs": [
       "Home",
       "Projects",
-      "Optimization: Deterministic & Stochastic",
-      "Solving Resource Allocation with Deterministic and Stochastic Optimization"
+      "Automating Data Pipelines for Data Science Applications"
     ]
   },
   {
-    "objectID": "docs/02-Optimization/02-Opt-DSA/index.html#simulated-annealing",
-    "href": "docs/02-Optimization/02-Opt-DSA/index.html#simulated-annealing",
-    "title": "Solving Resource Allocation with Deterministic and Stochastic Optimization",
-    "section": "1.1 Simulated Annealing",
-    "text": "1.1 Simulated Annealing\n\n\nUses iterative improvement with probabilistic acceptance of worse solutions.\nSimulated Annealing on GitHub",
+    "objectID": "docs/05-ETL/index.html#database-implementation-project",
+    "href": "docs/05-ETL/index.html#database-implementation-project",
+    "title": "Automating Data Pipelines for Data Science Applications",
+    "section": "2 Database Implementation Project",
+    "text": "2 Database Implementation Project\n\nCollege of Engineering at the University of Oklahoma",
     "crumbs": [
       "Home",
       "Projects",
-      "Optimization: Deterministic & Stochastic",
-      "Solving Resource Allocation with Deterministic and Stochastic Optimization"
+      "Automating Data Pipelines for Data Science Applications"
     ]
   },
   {
-    "objectID": "docs/02-Optimization/02-Opt-DSA/index.html#genetic-algorithm",
-    "href": "docs/02-Optimization/02-Opt-DSA/index.html#genetic-algorithm",
-    "title": "Solving Resource Allocation with Deterministic and Stochastic Optimization",
-    "section": "1.2 Genetic Algorithm",
-    "text": "1.2 Genetic Algorithm\n\n\nApplies crossover and mutation to evolve stronger solutions over generations.\nGenetic Algorithm on GitHub",
+    "objectID": "docs/03-ML/index.html#forecasting-expected-financial-returns",
+    "href": "docs/03-ML/index.html#forecasting-expected-financial-returns",
+    "title": "Applied Machine Learning",
+    "section": "1 Forecasting Expected Financial Returns",
+    "text": "1 Forecasting Expected Financial Returns\n\nPracticum Project, College of Engineering at the University of Oklahoma\n\n\n\nThis practicum applied machine learning to forecast a key economic indicator for investment strategy. Using LSTM, Elastic Net, and Prophet, LSTM delivered the strongest results, cutting out-of-sample error by ~10%. The workflow used vintage data, time-based validation, and feature engineering to reflect real-world constraints.\n\n\n\n\n\n\nProprietary; details cannot be shared.",
     "crumbs": [
       "Home",
       "Projects",
-      "Optimization: Deterministic & Stochastic",
-      "Solving Resource Allocation with Deterministic and Stochastic Optimization"
+      "Applied Machine Learning"
     ]
   },
   {
-    "objectID": "docs/02-Optimization/02-Opt-DSA/index.html#linear-optimization",
-    "href": "docs/02-Optimization/02-Opt-DSA/index.html#linear-optimization",
-    "title": "Solving Resource Allocation with Deterministic and Stochastic Optimization",
-    "section": "2.1 Linear Optimization",
-    "text": "2.1 Linear Optimization\n\n\nApplies linear programming to optimize resource allocation under constraints.\nLinear Optimization Example on GitHub\n(View problem instructions)",
+    "objectID": "docs/03-ML/index.html#predicting-operational-delivery-times",
+    "href": "docs/03-ML/index.html#predicting-operational-delivery-times",
+    "title": "Applied Machine Learning",
+    "section": "2 Predicting Operational Delivery Times",
+    "text": "2 Predicting Operational Delivery Times\n\nCollege of Engineering at the University of Oklahoma\n\n\n\nThis project built models to improve food delivery time estimates by integrating traffic, accidents, and weather with historical data. The approach reduced variance in arrival predictions versus baseline methods, creating a more reliable framework to support delivery services with better planning accuracy and operational consistency.\nView on GitHub:\n\nPresentation Slides\nPDF Report\nR Code\n\n\n\n\n\n  \n\nClick image to watch presentation",
     "crumbs": [
       "Home",
       "Projects",
-      "Optimization: Deterministic & Stochastic",
-      "Solving Resource Allocation with Deterministic and Stochastic Optimization"
+      "Applied Machine Learning"
     ]
   },
   {
-    "objectID": "docs/02-Optimization/02-Opt-DSA/index.html#generalized-network-flows-modeling-decay",
-    "href": "docs/02-Optimization/02-Opt-DSA/index.html#generalized-network-flows-modeling-decay",
-    "title": "Solving Resource Allocation with Deterministic and Stochastic Optimization",
-    "section": "2.2 Generalized Network Flows: Modeling Decay",
-    "text": "2.2 Generalized Network Flows: Modeling Decay\n\n\nExtends flow optimization to capture diminishing effects over a network.\nGeneralized Network Flows: Modeling Decay on GitHub",
+    "objectID": "docs/01-Visual-Storytelling/03-Marketing-Effectiveness/index.html",
+    "href": "docs/01-Visual-Storytelling/03-Marketing-Effectiveness/index.html",
+    "title": "Evaluating Shifts in Marketing Strategy",
+    "section": "",
+    "text": "NoteNote: Data is Randomly Generated\n\n\n\nFor demonstration only, the data are randomized and all naming is fictitious.\n\n\n\n\nView Code Here\n# Get the R files containing the functions with plots\npurrr::walk(list.files(\n  'docs//01-Visual-Storytelling//03-Marketing-Effectiveness//functions//', \n  pattern = \"\\\\.R$\", full.names = TRUE), \n  source\n)\n\n\n\n\n1 Rising Discounts with Limited Impact\n\nDiscounts increased sharply, but revenue and gross profit gains remained minimal.\n\nSee full function here.\n\n\nView Code Here\nplots_marketing_effectiveness &lt;- marketing_effectiveness()\n\nplots_marketing_effectiveness$plot_discount_trend # display\n\n\n\n\n\n\n\n\n\nView Code Here\nplots_marketing_effectiveness$plot_discount_per_gp # display\n\n\n\n\n\n\n\n\n\nView Code Here\nplots_marketing_effectiveness$plot_rev_per_gp # display\n\n\n\n\n\n\n\n\n\n\n\n\n\n2 Performance Shifts Parallel to Marketing Response\n\nMarket performance shifted at the same time as strategy changes, but results did not improve meaningfully.\n\n\n\nView Code Here\nplots_marketing_effectiveness$plot_scatter # display\n\n\n\n\n\n\n\n\n\nView Code Here\nplots_marketing_effectiveness$plot_density # display\n\n\n\n\n\n\n\n\n\n\n\n\n\n3 Patron Density Remains Steady Across Service Area\n\nPatron density remained steady across the service area; revenue pressure likely came from conversion and pricing, not coverage.\n\nOutput created with Tableau. File withheld.",
     "crumbs": [
       "Home",
       "Projects",
-      "Optimization: Deterministic & Stochastic",
-      "Solving Resource Allocation with Deterministic and Stochastic Optimization"
-    ]
-  },
-  {
-    "objectID": "docs/02-Optimization/02-Opt-DSA/index.html#mixed-binary-linear-optimization",
-    "href": "docs/02-Optimization/02-Opt-DSA/index.html#mixed-binary-linear-optimization",
-    "title": "Solving Resource Allocation with Deterministic and Stochastic Optimization",
-    "section": "2.3 Mixed-Binary-Linear Optimization",
-    "text": "2.3 Mixed-Binary-Linear Optimization\nProblem Instructions: (View problem context)\n\n\nCombines integer and binary decision variables for complex allocation problems.\nMixed-Binary-Linear Optimization on GitHub",
-    "crumbs": [
-      "Home",
-      "Projects",
-      "Optimization: Deterministic & Stochastic",
-      "Solving Resource Allocation with Deterministic and Stochastic Optimization"
+      "Visual Analysis to Problem Solve",
+      "Evaluating Shifts in Marketing Strategy"
     ]
   },
   {
@@ -450,61 +506,5 @@
       "Functions",
       "Sankey Diagram - Capital Allocation"
     ]
-  },
-  {
-    "objectID": "docs/01-Visual-Storytelling/index.html",
-    "href": "docs/01-Visual-Storytelling/index.html",
-    "title": "Visual Analysis to Problem Solve",
-    "section": "",
-    "text": "NoteNote: Data is Randomly Generated\n\n\n\nFor demonstration only, the data are randomized and all naming is fictitious.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAllocating Capital for Sustainable Operations\n\n\nReviews how past capital allocation decisions created financial pressure and unsustainable outcomes.\n\n\n\n2024\n\n\n\n\n\n\n\n\n\n\n\n\n\nEvaluating Shifts in Marketing Strategy\n\n\nDemonstrates how marketing adjustments did not offset the pressure from a competitor’s expansion.\n\n\n\n2023\n\n\n\n\n\n\n\n\n\n\n\n\n\nAssessing Impact of Competitor Market Entry\n\n\nAnalyzes the impact of a competitor entering an adjacent market.\n\n\n\n2022\n\n\n\n\n\n\nNo matching items",
-    "crumbs": [
-      "Home",
-      "Projects",
-      "Visual Analysis to Problem Solve"
-    ]
-  },
-  {
-    "objectID": "docs/01-Visual-Storytelling/03-Marketing-Effectiveness/index.html",
-    "href": "docs/01-Visual-Storytelling/03-Marketing-Effectiveness/index.html",
-    "title": "Evaluating Shifts in Marketing Strategy",
-    "section": "",
-    "text": "NoteNote: Data is Randomly Generated\n\n\n\nFor demonstration only, the data are randomized and all naming is fictitious.\n\n\n\n\nView Code Here\n# Get the R files containing the functions with plots\npurrr::walk(list.files(\n  'docs//01-Visual-Storytelling//03-Marketing-Effectiveness//functions//', \n  pattern = \"\\\\.R$\", full.names = TRUE), \n  source\n)\n\n\n\n\n1 Rising Discounts with Limited Impact\n\nDiscounts increased sharply, but revenue and gross profit gains remained minimal.\n\nSee full function here.\n\n\nView Code Here\nplots_marketing_effectiveness &lt;- marketing_effectiveness()\n\nplots_marketing_effectiveness$plot_discount_trend # display\n\n\n\n\n\n\n\n\n\nView Code Here\nplots_marketing_effectiveness$plot_discount_per_gp # display\n\n\n\n\n\n\n\n\n\nView Code Here\nplots_marketing_effectiveness$plot_rev_per_gp # display\n\n\n\n\n\n\n\n\n\n\n\n\n\n2 Performance Shifts Parallel to Marketing Response\n\nMarket performance shifted at the same time as strategy changes, but results did not improve meaningfully.\n\n\n\nView Code Here\nplots_marketing_effectiveness$plot_scatter # display\n\n\n\n\n\n\n\n\n\nView Code Here\nplots_marketing_effectiveness$plot_density # display\n\n\n\n\n\n\n\n\n\n\n\n\n\n3 Patron Density Remains Steady Across Service Area\n\nPatron density remained steady across the service area; revenue pressure likely came from conversion and pricing, not coverage.\n\nOutput created with Tableau. File withheld.",
-    "crumbs": [
-      "Home",
-      "Projects",
-      "Visual Analysis to Problem Solve",
-      "Evaluating Shifts in Marketing Strategy"
-    ]
-  },
-  {
-    "objectID": "docs/05-ETL/index.html#project-highlights",
-    "href": "docs/05-ETL/index.html#project-highlights",
-    "title": "Automating Data Pipelines for Data Science Applications",
-    "section": "1 Project Highlights",
-    "text": "1 Project Highlights\nInteract with slides by clicking a slide.\n\n \n\nDesigned in Canva by Daniel Carpenter, MS.",
-    "crumbs": [
-      "Home",
-      "Projects",
-      "Automating Data Pipelines for Data Science Applications"
-    ]
-  },
-  {
-    "objectID": "docs/05-ETL/index.html#database-implementation-project",
-    "href": "docs/05-ETL/index.html#database-implementation-project",
-    "title": "Automating Data Pipelines for Data Science Applications",
-    "section": "2 Database Implementation Project",
-    "text": "2 Database Implementation Project\n\nCollege of Engineering at the University of Oklahoma",
-    "crumbs": [
-      "Home",
-      "Projects",
-      "Automating Data Pipelines for Data Science Applications"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Portfolio | Daniel Carpenter, MS",
-    "section": "",
-    "text": "Education\nI studied at the University of Oklahoma (2020), double-majoring in Economics and Finance, then earned a Master’s in Data Science and Analytics from OU’s College of Engineering (2023).\n\n\n\nProfessional Experience\nIn 2021, I became an Operational Performance & Analysis Advisor, helping leaders across 25+ businesses improve efficiency and profitability. Two years later (2023), I joined the Office of Investment Management & Strategic Finance as a Senior Advisor, where I support a team of VP’s through analysis of capital decisions to sustain programs and services.\n\n\n\nPersonal Interests\nYou’ll find me in my vegetable garden, hiking with my wife and our two dogs, or out on a trail mountain biking or OneWheeling."
   }
 ]
